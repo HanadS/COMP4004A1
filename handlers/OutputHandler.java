@@ -40,9 +40,15 @@ public Output librarianLogin(String input) {
 	Output output = new Output("",0);
 	
 	if(input.equalsIgnoreCase("admin")){
-			
 			output.setState(LIBRARIANLOGIN);
 	}
+	else{
+			output.setState(LIBRARIAN);
+		}
+
+
+	
+	
 	return output;
 	
 }

@@ -27,6 +27,8 @@ public class UnitTests {
 
 				assertEquals("Check if password is correct.",handler.processInput("admin",InputHandler.LIBRARIAN).getState(), InputHandler.LIBRARIANLOGIN );
 
+				assertEquals("Check if password is incorrect.",handler.processInput("sdcmslkd",InputHandler.LIBRARIAN).getState(), InputHandler.LIBRARIAN );
+
 
 				
 				
