@@ -15,6 +15,9 @@ public class Initialization {
 		assertEquals("Check if librarian.",handler.processInput("librarian",InputHandler.ROLEDETERMINED).getState(), InputHandler.LIBRARIAN  );
 
 		
+		assertEquals("Check if User.",handler.processInput("user",InputHandler.ROLEDETERMINED).getState(), InputHandler.USER  );
+
+		
 	//	assertEquals("Take user input",handler.processInput(" ",));
 		
 		

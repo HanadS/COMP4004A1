@@ -8,6 +8,7 @@ public class InputHandler {
 	public static final int WAITING = 0;
 	public static final int ROLEDETERMINED=1;
 	public static final int LIBRARIAN = 2;
+	public static final int USER = 3;
 	
 
 	
@@ -29,6 +30,11 @@ public class InputHandler {
 		            	state=LIBRARIAN;
 			            oo.setState(state);
 		            }
+	        	 else if (input.equalsIgnoreCase("user")) {
+		            	state=USER;
+			            oo.setState(state);
+		            }
+	        	 
 	         }
 	        return oo;
 	}
