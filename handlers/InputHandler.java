@@ -9,6 +9,7 @@ public class InputHandler {
 	public static final int ROLEDETERMINED=1;
 	public static final int LIBRARIAN = 2;
 	public static final int USER = 3;
+	public static final int LIBRARIANLOGIN = 4;
 	
 
 	
@@ -47,7 +48,15 @@ public class InputHandler {
 	 	        		oo.setOutput(output);
 		            }
 	        	 
-	         }
+	         }else if(state==LIBRARIAN){
+		        	o=outputHandler.librarianLogin(input);
+	        		state=o.getState();
+		            oo.setState(state);
+		        }
+	        
+	        
+	        
+	        
 	        return oo;
 	}
 	 

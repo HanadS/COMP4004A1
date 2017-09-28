@@ -24,7 +24,12 @@ public class UnitTests {
 	public void librarianTests() {
 		
 				assertEquals("Prompt for password.",handler.processInput("librarian",InputHandler.ROLEDETERMINED).getOutput(), "Please Input The Password." );
-		
+
+				assertEquals("Check if password is correct.",handler.processInput("admin",InputHandler.LIBRARIAN).getState(), InputHandler.LIBRARIANLOGIN );
+
+
+				
+				
 	}
 	
 	
