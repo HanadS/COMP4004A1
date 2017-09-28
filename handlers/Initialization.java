@@ -18,7 +18,10 @@ public class Initialization {
 		assertEquals("Check if User.",handler.processInput("user",InputHandler.ROLEDETERMINED).getState(), InputHandler.USER  );
 
 		
-	//	assertEquals("Take user input",handler.processInput(" ",));
+		assertEquals("Handle Incorrect Input.",handler.processInput("teacher",InputHandler.ROLEDETERMINED).getOutput(), "Role not recognized. Are you a librarian or a User?");
+
+		
+		
 		
 		
 		

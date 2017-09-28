@@ -35,6 +35,12 @@ public class InputHandler {
 			            oo.setState(state);
 		            }
 	        	 
+	        	 else{
+	        		 	o = outputHandler.determineRole();
+	 	        		output = "Role not recognized. "+o.getOutput();
+	 	        		oo.setOutput(output);
+		            }
+	        	 
 	         }
 	        return oo;
 	}
