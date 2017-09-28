@@ -6,6 +6,11 @@ import logic.handler.model.ServerOutput;
 public class InputHandler {
 
 	public static final int WAITING = 0;
+	public static final int ROLEDETERMINED=1;
+	public static final int LIBRARIAN = 2;
+	
+
+	
     
     OutputHandler outputHandler=new OutputHandler();
 
@@ -18,8 +23,13 @@ public class InputHandler {
 	        	o = outputHandler.determineRole();
 	        	output = o.getOutput();
 		        oo.setOutput(output);
+	         }else if (state == ROLEDETERMINED) {
+	        	 
+	        	 if (input.equalsIgnoreCase("librarian")) {
+		            	state=LIBRARIAN;
+			            oo.setState(state);
+		            }
 	         }
-	        
 	        return oo;
 	}
 	 
