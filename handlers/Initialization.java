@@ -8,7 +8,11 @@ public class Initialization {
 	public void determineRole() {
 	
 		InputHandler handler =new InputHandler();
-		assertEquals("Ask User if librarian or user.",handler.processInput(" ",InputHandler.WAITING), "Are you a librarian or a User?" );
+		assertEquals("Ask User if librarian or user.",handler.processInput(" ",InputHandler.WAITING).getOutput(), "Are you a librarian or a User?" );
+		
+		
+		
+		
 	}
 	
 	

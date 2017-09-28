@@ -10,17 +10,17 @@ public class InputHandler {
     OutputHandler outputHandler=new OutputHandler();
 
 
-	public String processInput(String input, int state) {
+	public ServerOutput processInput(String input, int state) {
 		 String output = "";
 		 Output o = new Output("",0);
 		 ServerOutput oo = new ServerOutput(output,o.getState());
 	        if (state == WAITING) {
 	        	o = outputHandler.determineRole();
 	        	output = o.getOutput();
-		         oo.setOutput(output);
+		        oo.setOutput(output);
 	         }
 	        
-	        return oo.getOutput();
+	        return oo;
 	}
 	 
 
