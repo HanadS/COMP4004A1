@@ -29,10 +29,16 @@ public class InputHandler {
 	        	 if (input.equalsIgnoreCase("librarian")) {
 		            	state=LIBRARIAN;
 			            oo.setState(state);
+			            
+			            o = outputHandler.promptPassword();
+			            output = o.getOutput();
+			            oo.setOutput(output);
+			            
 		            }
 	        	 else if (input.equalsIgnoreCase("user")) {
 		            	state=USER;
 			            oo.setState(state);
+
 		            }
 	        	 
 	        	 else{
