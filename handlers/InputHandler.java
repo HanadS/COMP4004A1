@@ -48,10 +48,14 @@ public class InputHandler {
 	 	        		oo.setOutput(output);
 		            }
 	        	 
-	         }else if(state==LIBRARIAN){
-		        	o=outputHandler.librarianLogin(input);
-	        		state=o.getState();
-		            oo.setState(state);
+	        }else if(state==LIBRARIAN){
+		        o=outputHandler.librarianLogin(input);
+	        	state=o.getState();
+		        oo.setState(state);
+		            
+		        output = o.getOutput();
+		        oo.setOutput(output);
+		        
 		        }
 	        
 	        

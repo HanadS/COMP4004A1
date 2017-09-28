@@ -30,7 +30,15 @@ public class UnitTests {
 				assertEquals("Check if password is incorrect.",handler.processInput("sdcmslkd",InputHandler.LIBRARIAN).getState(), InputHandler.LIBRARIAN );
 
 
-				
+				assertEquals("Display Librarian Terminal",handler.processInput("admin",InputHandler.LIBRARIAN).getOutput(),"What can I do for you?"
+						
+						+ " Menu:"
+						+ "Create User"
+						+ "Create Title"
+						+ "Create Item"
+						+ "Delete User"
+						+ "Delete Title"
+						+ "Delete Item." );
 				
 	}
 	

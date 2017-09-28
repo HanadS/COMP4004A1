@@ -41,9 +41,20 @@ public Output librarianLogin(String input) {
 	
 	if(input.equalsIgnoreCase("admin")){
 			output.setState(LIBRARIANLOGIN);
+			output.setOutput("What can I do for you?"
+					
+					+ " Menu:"
+					+ "Create User"
+					+ "Create Title"
+					+ "Create Item"
+					+ "Delete User"
+					+ "Delete Title"
+					+ "Delete Item.");
+			
 	}
 	else{
 			output.setState(LIBRARIAN);
+			output.setOutput("Wrong password");
 		}
 
 
