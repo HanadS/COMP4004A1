@@ -50,7 +50,8 @@ public class UnitTests {
 
 				assertEquals("Prompting librarian for username and password to delete",handler.processInput("delete user",InputHandler.DELETEUSER).getOutput(),"TO DELETE -> Please Input User Info: username,password:");
 
-				
+				assertEquals("Prompting librarian for Title to delete",handler.processInput("delete title",InputHandler.DELETETITLE).getOutput(),"TO DELETE -> Please Input Title Info:'ISBN,title'");
+
 				
 	}
 	
