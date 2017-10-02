@@ -13,6 +13,7 @@ public class InputHandler {
 	
 	
 	public static final int CREATEUSER = 5;
+	public static final int CREATETITLE=6;
  
 
 	
@@ -62,7 +63,7 @@ public class InputHandler {
 		        oo.setOutput(output);
 		        
 		        }
-	        else if (input.equalsIgnoreCase("create user") ){
+	        else if (input.equalsIgnoreCase("create user")){
 	        	
 	        	o = outputHandler.promptUserInfo();
 	        	state = o.getState();
@@ -71,7 +72,16 @@ public class InputHandler {
             	oo.setState(state);
             	oo.setOutput(output);
 	        }
+	        else if (input.equalsIgnoreCase("create title")) {
+
+	        	o = outputHandler.promptTitleInfo();
+	        	state = o.getState();
+	        	output = o.getOutput();
 	        	
+            	oo.setState(state);
+            	oo.setOutput(output);
+	        
+	        }
 	        
 	        
 	        
