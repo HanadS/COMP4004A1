@@ -19,6 +19,8 @@ public class OutputHandler {
 	public static final int CREATEUSER = 5;
 	public static final int CREATETITLE=6;
 	public static final int CREATEITEM=7;
+	public static final int DELETEUSER = 5;
+
 
 	
 	public Output determineRole() {

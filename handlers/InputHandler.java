@@ -15,6 +15,7 @@ public class InputHandler {
 	public static final int CREATEUSER = 5;
 	public static final int CREATETITLE=6;
 	public static final int CREATEITEM=7;
+	public static final int DELETEUSER = 5;
  
 
 	
@@ -64,10 +65,9 @@ public class InputHandler {
 		        oo.setOutput(output);
 		        
 		        }
-	        else if (input.equalsIgnoreCase("create user")){
+	        else if (input.equalsIgnoreCase("create user") ){
 	        	
 	        	o = outputHandler.promptUserInfo();
-	        	state = o.getState();
 	        	output = o.getOutput();
 	        	
             	oo.setState(state);
@@ -76,7 +76,6 @@ public class InputHandler {
 	        else if (input.equalsIgnoreCase("create title")) {
 
 	        	o = outputHandler.promptTitleInfo();
-	        	state = o.getState();
 	        	output = o.getOutput();
 	        	
             	oo.setState(state);
@@ -87,13 +86,25 @@ public class InputHandler {
 	        else if (input.equalsIgnoreCase("create item")) {
 
 	        	o = outputHandler.promptItemInfo();
-	        	state = o.getState();
 	        	output = o.getOutput();
 	        	
             	oo.setState(state);
             	oo.setOutput(output);
 	        
 	        }
+	        
+	        else if (input.equalsIgnoreCase("delete user") ){
+	        		        	o = outputHandler.promptUserInfo();
+	    
+	        	output = o.getOutput();
+	        	state=DELETEUSER;
+	        	output = "TO DELETE -> " + output;
+	        	
+            	oo.setState(state);
+            	oo.setOutput(output);
+	        }
+	        
+	        
 	        
 	        return oo;
 	}

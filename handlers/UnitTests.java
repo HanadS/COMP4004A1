@@ -44,10 +44,14 @@ public class UnitTests {
 				assertEquals("Prompting librarian for username and password.",handler.processInput("create user",InputHandler.CREATEUSER).getOutput(),"Please Input User Info: username,password:");
 			
 				assertEquals("Prompting librarian for Title.",handler.processInput("create title",InputHandler.CREATETITLE).getOutput(),"Please Input Title Info:'ISBN,title'");
-				
+		
 				assertEquals("Prompting librarian for Item.",handler.processInput("create item",InputHandler.CREATEITEM).getOutput(),"Please Input Item Info:'ISBN':");
 
 
+				assertEquals("Prompting librarian for username and password to delete",handler.processInput("delete user",InputHandler.DELETEUSER).getOutput(),"TO DELETE -> Please Input User Info: username,password:");
+
+				
+				
 	}
 	
 	
