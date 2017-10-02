@@ -40,6 +40,9 @@ public class UnitTests {
 						+ "Delete Title"
 						+ "Delete Item." );
 				
+				
+				assertEquals("Prompting librarian for username and password.",handler.processInput("create user",InputHandler.CREATEUSER).getOutput(),"Please Input User Info: username,password:");
+			
 	}
 	
 	

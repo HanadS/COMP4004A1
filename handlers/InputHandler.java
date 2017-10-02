@@ -11,6 +11,11 @@ public class InputHandler {
 	public static final int USER = 3;
 	public static final int LIBRARIANLOGIN = 4;
 	
+	
+	public static final int CREATEUSER = 5;
+ 
+
+	
 
 	
     
@@ -50,14 +55,23 @@ public class InputHandler {
 	        	 
 	        }else if(state==LIBRARIAN){
 		        o=outputHandler.librarianLogin(input);
-	        	state=o.getState();
+		        state=o.getState();
 		        oo.setState(state);
 		            
 		        output = o.getOutput();
 		        oo.setOutput(output);
 		        
 		        }
-	        
+	        else if (input.equalsIgnoreCase("create user") ){
+	        	
+	        	o = outputHandler.promptUserInfo();
+	        	state = o.getState();
+	        	output = o.getOutput();
+	        	
+            	oo.setState(state);
+            	oo.setOutput(output);
+	        }
+	        	
 	        
 	        
 	        

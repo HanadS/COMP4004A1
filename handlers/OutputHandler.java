@@ -15,7 +15,8 @@ public class OutputHandler {
 	public static final int LIBRARIAN = 2;
 	public static final int USER = 3;
 	public static final int LIBRARIANLOGIN = 4;
-
+	
+	public static final int CREATEUSER = 5;
 
 	
 	public Output determineRole() {
@@ -33,16 +34,23 @@ public Output promptPassword() {
 		return output;
 	}
 
+public Output promptUserInfo() {
+	
+	Output output=new Output("",0);
+	output.setOutput("Please Input User Info: username,password:");
+	output.setState(CREATEUSER);
+	return output;
+}
+
+
+
+
 
 public Output librarianLogin(String input) {
-	
-	
 	Output output = new Output("",0);
-	
 	if(input.equalsIgnoreCase("admin")){
 			output.setState(LIBRARIANLOGIN);
 			output.setOutput("What can I do for you?"
-					
 					+ " Menu:"
 					+ "Create User"
 					+ "Create Title"
@@ -50,18 +58,14 @@ public Output librarianLogin(String input) {
 					+ "Delete User"
 					+ "Delete Title"
 					+ "Delete Item.");
-			
 	}
+	
 	else{
 			output.setState(LIBRARIAN);
 			output.setOutput("Wrong password");
 		}
-
-
-	
 	
 	return output;
-	
 }
 
 
