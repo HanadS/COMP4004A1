@@ -14,6 +14,7 @@ public class InputHandler {
 	
 	public static final int CREATEUSER = 5;
 	public static final int CREATETITLE=6;
+	public static final int CREATEITEM=7;
  
 
 	
@@ -83,7 +84,16 @@ public class InputHandler {
 	        
 	        }
 	        
+	        else if (input.equalsIgnoreCase("create item")) {
+
+	        	o = outputHandler.promptItemInfo();
+	        	state = o.getState();
+	        	output = o.getOutput();
+	        	
+            	oo.setState(state);
+            	oo.setOutput(output);
 	        
+	        }
 	        
 	        return oo;
 	}
