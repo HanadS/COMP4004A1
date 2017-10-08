@@ -87,9 +87,10 @@ public class OutputHandler {
 		    
 		if(result.equals(true)){
 		   output.setOutput("Success!");
-		   output.setState(LIBRARIAN);
-		 }
-		   
+		 }else{
+     		output.setOutput("The User Already Exists!");
+     	}
+		 output.setState(LIBRARIAN);
         }
 		return output;
 	}
