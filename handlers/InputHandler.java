@@ -16,6 +16,13 @@ public class InputHandler {
 	public static final int CREATETITLE = 6;
 	public static final int CREATEITEM = 7;
 	
+	
+	public static final int DELETEUSER = 8;
+	public static final int	DELETETITLE = 9;
+	
+	
+	
+	
 
 	
 
@@ -104,10 +111,20 @@ public class InputHandler {
 		        	output = o.getOutput();
 		        	output = "TO DELETE -> " + output;
 		        	
+		        	state=DELETEUSER;
 	            	oo.setState(state);
 	            	oo.setOutput(output);
 		        }
-	         
+	         else if (input.equalsIgnoreCase("delete title") ){
+		        	o = outputHandler.promptTitleInfo();
+	
+		        	output = o.getOutput();
+					state=DELETETITLE;
+					output = "TO DELETE -> " + output;
+					
+					oo.setState(state);
+					oo.setOutput(output);
+		        }
 	         
 	         
 	        	
