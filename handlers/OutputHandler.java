@@ -17,6 +17,8 @@ public class OutputHandler {
 	public static final int LIBRARIANLOGIN = 4;
 	
 	public static final int CREATEUSER = 5;
+	public static final int CREATETITLE = 6;
+	
 
 	
 	public Output determineRole() {
@@ -26,22 +28,29 @@ public class OutputHandler {
 		return output;
 	}
 	
+		
+	public Output promptPassword() {
+			
+			Output output=new Output("",0);
+			output.setOutput("Please Input The Password.");
+			return output;
+		}
 	
-public Output promptPassword() {
+	public Output promptUserInfo() {
 		
 		Output output=new Output("",0);
-		output.setOutput("Please Input The Password.");
+		output.setOutput("Please Input User Info: username,password:");
+		output.setState(CREATEUSER);
 		return output;
 	}
-
-public Output promptUserInfo() {
 	
-	Output output=new Output("",0);
-	output.setOutput("Please Input User Info: username,password:");
-	output.setState(CREATEUSER);
-	return output;
-}
-
+	public Output promptTitleInfo() {
+	
+		Output output=new Output("",0);
+		output.setOutput("Please Input Title Info:'ISBN,title'");
+		return output;
+	
+	}
 
 
 
