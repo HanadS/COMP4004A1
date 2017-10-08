@@ -2,6 +2,9 @@ package handlers;
 import static org.junit.Assert.*;
 import org.junit.Test;
 
+import server.logic.model.User;
+
+
 public class UnitTests {
 
 	
@@ -49,12 +52,18 @@ public class UnitTests {
 				
 				assertEquals("Prompting librarian for username and password to delete",handler.processInput("delete user",InputHandler.LIBRARIANLOGIN).getOutput(),"TO DELETE -> Please Input User Info: username,password:");
 				assertEquals("Prompting librarian for Title to delete",handler.processInput("delete title",InputHandler.LIBRARIANLOGIN).getOutput(),"TO DELETE -> Please Input Title Info:'ISBN,title'");
-				assertEquals("Prompting librarian for Item to delete",handler.processInput("delete item",InputHandler.LIBRARIANLOGIN).getOutput(),"TO DELETE -> Please Input Item Info:'ISBN':");
-
-				
-				
-				
+				assertEquals("Prompting librarian for Item to delete",handler.processInput("delete item",InputHandler.LIBRARIANLOGIN).getOutput(),"TO DELETE -> Please Input Item Info:'ISBN':");		
 	}
+	@Test
+	public void UserTests() {
+
+			User testUser = new User (0,"jim@carleton.ca","jim");
+			assertEquals("get UserId", testUser.getUserid(),0);
+			assertEquals("get username", testUser.getUsername(),"jim@carleton.ca");
+			assertEquals("get password", testUser.getPassword(),"jim");
+			
+			
+		}
 	
 	
 	
