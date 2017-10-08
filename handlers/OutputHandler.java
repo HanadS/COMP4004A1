@@ -3,6 +3,7 @@ package handlers;
 
 
 import logic.handler.model.Output;
+import server.logic.tables.UserTable;
 
 
 
@@ -86,6 +87,23 @@ public Output librarianLogin(String input) {
 	
 	return output;
 }
+
+public Output createUser(String input) {
+	Output output=new Output("",0);
+	String[] strArray = null;   
+    strArray = input.split(",");
+    boolean email=strArray[0].contains("@");
+    boolean dot  = strArray[0].contains(".");
+    
+    if(strArray.length!=2 || email!=true || dot != true){
+    		output.setOutput("Your input should in this format:'username,password'");
+    		output.setState(CREATEUSER);
+    }
+	return output;
+}
+
+
+
 
 
 

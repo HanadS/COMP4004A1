@@ -39,12 +39,12 @@ public class UnitTests {
 						+ "Delete Item." );
 				
 				
-				assertEquals("Prompting librarian for username and password.",handler.processInput("create user",InputHandler.CREATEUSER).getOutput(),"Please Input User Info: username,password:");
-				assertEquals("Prompting librarian for Title.",handler.processInput("create title",InputHandler.CREATETITLE).getOutput(),"Please Input Title Info:'ISBN,title'");
-				assertEquals("Prompting librarian for Item.",handler.processInput("create item",InputHandler.CREATEITEM).getOutput(),"Please Input Item Info:'ISBN':");
-				assertEquals("Prompting librarian for username and password to delete",handler.processInput("delete user",InputHandler.DELETEUSER).getOutput(),"TO DELETE -> Please Input User Info: username,password:");
-				assertEquals("Prompting librarian for Title to delete",handler.processInput("delete title",InputHandler.DELETETITLE).getOutput(),"TO DELETE -> Please Input Title Info:'ISBN,title'");
-				assertEquals("Prompting librarian for Item to delete",handler.processInput("delete item",InputHandler.DELETEITEM).getOutput(),"TO DELETE -> Please Input Item Info:'ISBN':");
+				assertEquals("Prompting librarian for username and password.",handler.processInput("create user",InputHandler.LIBRARIANLOGIN).getOutput(),"Please Input User Info: username,password:");
+				assertEquals("Prompting librarian for Title.",handler.processInput("create title",InputHandler.LIBRARIANLOGIN).getOutput(),"Please Input Title Info:'ISBN,title'");
+				assertEquals("Prompting librarian for Item.",handler.processInput("create item",InputHandler.LIBRARIANLOGIN).getOutput(),"Please Input Item Info:'ISBN':");
+				assertEquals("Prompting librarian for username and password to delete",handler.processInput("delete user",InputHandler.LIBRARIANLOGIN).getOutput(),"TO DELETE -> Please Input User Info: username,password:");
+				assertEquals("Prompting librarian for Title to delete",handler.processInput("delete title",InputHandler.LIBRARIANLOGIN).getOutput(),"TO DELETE -> Please Input Title Info:'ISBN,title'");
+				assertEquals("Prompting librarian for Item to delete",handler.processInput("delete item",InputHandler.LIBRARIANLOGIN).getOutput(),"TO DELETE -> Please Input Item Info:'ISBN':");
 	}
 	
 	
@@ -61,6 +61,11 @@ public class UnitTests {
 			
 
 			assertTrue( "Check if UserTable Initialized correctly", UserTable.getInstance().getUserTable().get(0).sameUser(testUser) );
+			
+			//assertEquals("Check if correct username", handler.processInput("jim$carleton}ca,jim,jimmy",InputHandler.DELETEITEM).getOutput() );
+
+			
+			
 		}
 	
 	

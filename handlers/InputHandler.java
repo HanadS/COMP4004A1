@@ -66,73 +66,79 @@ public class InputHandler {
 		        oo.setOutput(output);
 		        
 		        }
-	        else if (input.equalsIgnoreCase("create user") ){
+	        
+	        else if(state == LIBRARIANLOGIN) {
 	        	
-	        	o = outputHandler.promptUserInfo();
-	        	output = o.getOutput();
 	        	
-	        	state=CREATEUSER;
-	        	
-            	oo.setState(state);
-            	oo.setOutput(output);
+		         if (input.equalsIgnoreCase("create user") ){
+		        	
+		        	o = outputHandler.promptUserInfo();
+		        	output = o.getOutput();
+		        	
+		        	state=CREATEUSER;
+		        	
+	            	oo.setState(state);
+	            	oo.setOutput(output);
+		        }
+		        else if (input.equalsIgnoreCase("create title")) {
+	
+		        	o = outputHandler.promptTitleInfo();
+		        	output = o.getOutput();
+		        	
+		        	state=CREATETITLE;
+		        	
+	            	oo.setState(state);
+	            	oo.setOutput(output);
+		        
+		        }
+		        
+		        else if (input.equalsIgnoreCase("create item")) {
+	
+		        	o = outputHandler.promptItemInfo();
+		        	output = o.getOutput();
+		        	
+		        	state=CREATEUSER;
+		        	
+	            	oo.setState(state);
+	            	oo.setOutput(output);
+		        
+		        }
+		        
+		        else if (input.equalsIgnoreCase("delete user") ){
+		        	o = outputHandler.promptUserInfo();
+		    
+		        	output = o.getOutput();
+		        	state=DELETEUSER;
+		        	output = "TO DELETE -> " + output;
+		        	
+	            	oo.setState(state);
+	            	oo.setOutput(output);
+		        }
+		        
+		        else if (input.equalsIgnoreCase("delete title") ){
+		        	o = outputHandler.promptTitleInfo();
+	
+		        	output = o.getOutput();
+					state=DELETETITLE;
+					output = "TO DELETE -> " + output;
+					
+					oo.setState(state);
+					oo.setOutput(output);
+		        }
+		        else if (input.equalsIgnoreCase("delete item") ){
+		        	o = outputHandler.promptItemInfo();
+	
+		        	output = o.getOutput();
+					state=DELETEITEM;
+					output = "TO DELETE -> " + output;
+					
+					oo.setState(state);
+					oo.setOutput(output);
+		        }
 	        }
-	        else if (input.equalsIgnoreCase("create title")) {
-
-	        	o = outputHandler.promptTitleInfo();
-	        	output = o.getOutput();
-	        	
-	        	state=CREATETITLE;
-	        	
-            	oo.setState(state);
-            	oo.setOutput(output);
 	        
-	        }
-	        
-	        else if (input.equalsIgnoreCase("create item")) {
-
-	        	o = outputHandler.promptItemInfo();
-	        	output = o.getOutput();
-	        	
-	        	state=CREATEUSER;
-	        	
-            	oo.setState(state);
-            	oo.setOutput(output);
-	        
-	        }
-	        
-	        else if (input.equalsIgnoreCase("delete user") ){
-	        	o = outputHandler.promptUserInfo();
-	    
-	        	output = o.getOutput();
-	        	state=DELETEUSER;
-	        	output = "TO DELETE -> " + output;
-	        	
-            	oo.setState(state);
-            	oo.setOutput(output);
-	        }
-	        
-	        else if (input.equalsIgnoreCase("delete title") ){
-	        	o = outputHandler.promptTitleInfo();
-
-	        	output = o.getOutput();
-				state=DELETETITLE;
-				output = "TO DELETE -> " + output;
-				
-				oo.setState(state);
-				oo.setOutput(output);
-	        }
-	        else if (input.equalsIgnoreCase("delete item") ){
-	        	o = outputHandler.promptItemInfo();
-
-	        	output = o.getOutput();
-				state=DELETEITEM;
-				output = "TO DELETE -> " + output;
-				
-				oo.setState(state);
-				oo.setOutput(output);
-	        }
-	        
-	        
+	
+	
 	        return oo;
 	}
 	 
