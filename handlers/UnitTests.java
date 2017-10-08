@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 import server.logic.model.User;
+import server.logic.tables.UserTable;
 
 
 
@@ -17,11 +18,8 @@ public class UnitTests {
 	public void determineRole() {
 	
 		assertEquals("Ask if librarian or user.",handler.processInput(" ",InputHandler.WAITING).getOutput(), "Are you a librarian or a User?" );
-		
 		assertEquals("Check if librarian.",handler.processInput("librarian",InputHandler.ROLEDETERMINED).getState(), InputHandler.LIBRARIAN  );
-		
 		assertEquals("Check if User.",handler.processInput("user",InputHandler.ROLEDETERMINED).getState(), InputHandler.USER  );
-		
 		assertEquals("Handle Incorrect Input.",handler.processInput("teacher",InputHandler.ROLEDETERMINED).getOutput(), "Role not recognized. Are you a librarian or a User?");
 	}
 	
@@ -49,18 +47,20 @@ public class UnitTests {
 				assertEquals("Prompting librarian for Item to delete",handler.processInput("delete item",InputHandler.DELETEITEM).getOutput(),"TO DELETE -> Please Input Item Info:'ISBN':");
 	}
 	
+	
+	
+	
+	
 	@Test
 	public void creationTests() {
 
-			User testUser = new User (100,"Sun@carleton.ca","jim");
-			assertEquals("get UserId", testUser.getUserid(),100);
-			assertEquals("get username", testUser.getUsername(),"Sun@carleton.ca");
+			User testUser = new User (0,"jim@carleton.ca","jim");
+			assertEquals("get UserId", testUser.getUserid(),0);
+			assertEquals("get username", testUser.getUsername(),"jim@carleton.ca");
 			assertEquals("get password", testUser.getPassword(),"jim");
-
-			
 			
 
-
+			assertTrue( "Check if UserTable Initialized correctly", UserTable.getInstance().getUserTable().get(0).sameUser(testUser) );
 		}
 	
 	
