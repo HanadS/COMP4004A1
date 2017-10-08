@@ -68,14 +68,12 @@ public class UnitTests {
 			UserTable.getInstance();
 
 			
-			assertEquals("Check if User was added to User Table properly.",handler.processInput("sun@carleton.ca,sun",InputHandler.CREATEUSER).getOutput(),"Success!");		
+			assertEquals("Add User to User Table.",handler.processInput("sun@carleton.ca,sun",InputHandler.CREATEUSER).getOutput(),"Success!");		
 			assertEquals("Check if User has correct password or username ",handler.processInput("sun^carleton.ca,sun,hey",InputHandler.CREATEUSER).getOutput(),"Your input should in this format:'username,password'");	
-			
-
 			assertEquals("Check if User already exists",handler.processInput("jim@carleton.ca,jim",InputHandler.CREATEUSER).getOutput(),"The User Already Exists!");	
 
-			
-			
+			assertEquals("Delete User from User Table.",handler.processInput("jim@carleton.ca,jim",InputHandler.DELETEUSER).getOutput(),"Success!");		
+
 			
 			
 		}

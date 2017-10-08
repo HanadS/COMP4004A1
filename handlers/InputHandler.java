@@ -151,7 +151,17 @@ public class InputHandler {
 	        	
 	        }
 	        
+	        else if(state==DELETEUSER){
+	        	
+	        		o=outputHandler.deleteUser(input);
+	        		output=o.getOutput();
+	        		state=o.getState();
+	        		oo.setOutput(output);
+		            oo.setState(state);
+	        	}
 	        
+	        
+		
 	        
 	        return oo;
 	}

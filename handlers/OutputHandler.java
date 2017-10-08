@@ -90,11 +90,27 @@ public class OutputHandler {
 		 }else{
      		output.setOutput("The User Already Exists!");
      	}
-		 output.setState(LIBRARIAN);
+		 output.setState(LIBRARIANLOGIN);
         }
 		return output;
 	}
 
+	public Output deleteUser(String input) {
+		Output output=new Output("",0);
+		String[] strArray = null;   
+        strArray = input.split(",");
+        int userid=UserTable.getInstance().lookup(strArray[0]);
+        Object result="";
+       
+        	result=UserTable.getInstance().delete(userid);
+        	if(result.equals("success")){
+        		output.setOutput("Success!");
+        	}else{
+        		output.setOutput(result+"!");
+        	}
+        	output.setState(LIBRARIANLOGIN);
+		return output;
+	}
 
 
 	

@@ -62,6 +62,41 @@ public class UserTable {
 	  public List<User> getUserTable() {
 			return userList;
 		}
+	  
+	  public int lookup(String string) {
+			int userid=-1;
+			for(int i=0;i<userList.size();i++){
+				if(userList.get(i).getUsername().equalsIgnoreCase(string)){
+					userid=i;
+				}
+			}
+			return userid;
+		}
+	  
+	  public Object delete(int i) {
+			String result="";
+			int flag=0;
+			int index=0;
+			for(int j=0;j<userList.size();j++){
+				if(userList.get(j).getUserid()==i){
+					index=j;
+					flag=flag+1;
+				}
+			}
+			
+			
+			
+				if(flag ==  1){
+					userList.get(index).setUserid(i);
+					userList.get(index).setPassword("N/A");
+					userList.get(index).setUsername("N/A");
+					result="success";
+				}
+			
+				
+			return result;
+
+		}
 	
 	
 }
