@@ -63,8 +63,16 @@ public class UnitTests {
 			assertEquals("get username", testUser.getUsername(),"jim@carleton.ca");
 			assertEquals("get password", testUser.getPassword(),"jim");
 			
-			assertTrue( "Check if UserTable Initialized correctly", UserTable.getInstance().getUserTable().get(0).sameUser(testUser) );
+			assertTrue( "Check if UserTable Initialized correctly", UserTable.getInstance().getUserTable().get(0).sameUser(testUser));
+			
+			UserTable.getInstance();
 
+			
+			assertEquals("Check if User was added to User Table properly. ",handler.processInput("sun@carleton.ca,sun",InputHandler.CREATEUSER).getOutput(),"Success!");		
+			
+
+			
+			
 			
 			
 			

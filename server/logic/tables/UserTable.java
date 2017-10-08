@@ -28,10 +28,20 @@ public class UserTable {
 	    	for(int i=0;i<usernameList.length;i++){
 				User theUser=new User(i,usernameList[i],passwordList[i]);
 				userList.add(theUser);
-	    	}
-		  
-		  
+	    	} 
 	  };
+	  
+	  
+		public Object createuser(String string, String string2) {		
+			boolean result=true;
+			
+			
+			
+			User newuser=new User(userList.size(),string,string2);
+			result=userList.add(newuser);
+			return result;
+		}
+	  
 	  
 	  
 	  public static final UserTable getInstance() {

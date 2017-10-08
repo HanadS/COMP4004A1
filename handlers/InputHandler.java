@@ -136,11 +136,21 @@ public class InputHandler {
 					
 					oo.setState(state);
 					oo.setOutput(output);
-		        }
-	         
-	         
+		        }	
+	        }
+	        else if(state == CREATEUSER) {
+	        	
+	        	
+	        	o=outputHandler.createUser(input);
+        		output=o.getOutput();
+        		state=o.getState();
+        		oo.setOutput(output);
+	            oo.setState(state);
+	        	
+	        	
 	        	
 	        }
+	        
 	        
 	        
 	        return oo;

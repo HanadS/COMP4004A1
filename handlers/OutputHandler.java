@@ -3,6 +3,7 @@ package handlers;
 
 
 import logic.handler.model.Output;
+import server.logic.tables.UserTable;
 
 
 
@@ -63,6 +64,32 @@ public class OutputHandler {
 		return output;
 
 	}
+
+	
+	public Output createUser(String input) {
+		Output output=new Output("",0);
+		String[] strArray = null;   
+	    strArray = input.split(",");
+	    
+        Object result="";
+
+	    
+	    boolean email=strArray[0].contains("@");
+	    boolean dot  = strArray[0].contains(".");
+	    
+		  
+		result=UserTable.getInstance().createuser(strArray[0], strArray[1]);
+		    
+		if(result.equals(true)){
+		   output.setOutput("Success!");
+		   output.setState(LIBRARIAN);
+		 }
+		   
+	   
+		return output;
+	}
+
+
 
 	
 
