@@ -62,17 +62,19 @@ public class InputHandler {
 		        oo.setOutput(output);
 		        
 		        }
-	        else if (input.equalsIgnoreCase("create user") ){
-	        	
-	        	o = outputHandler.promptUserInfo();
-	        	state = o.getState();
-	        	output = o.getOutput();
-	        	
-            	oo.setState(state);
-            	oo.setOutput(output);
-	        }
-	        	
 	        
+	        else if(state == LIBRARIANLOGIN) {
+	         if (input.equalsIgnoreCase("create user") ){
+	        	
+		        	o = outputHandler.promptUserInfo();
+		        	state = o.getState();
+		        	output = o.getOutput();
+		        	
+	            	oo.setState(state);
+	            	oo.setOutput(output);
+		        }
+	        	
+	        }
 	        
 	        
 	        return oo;
