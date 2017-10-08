@@ -3,6 +3,7 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 import server.logic.model.User;
+import server.logic.model.Title;
 import server.logic.tables.UserTable;
 
 
@@ -77,8 +78,16 @@ public class UnitTests {
 		}
 	
 	
-	
-	
+	@Test
+	public void TitleCreationTests() {
+
+		Title testTitle = new Title("9781442668584","TestBook");
+		assertEquals("get ISBN", testTitle.getISBN(),"9781442668584");
+		assertEquals("get Title", testTitle.getBooktitle(),"TestBook");
+		
+		
+		
+	}
 	
 
 }
