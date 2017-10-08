@@ -135,13 +135,19 @@ public class OutputHandler {
 		Output output=new Output("",0);
 		String[] strArray = null;   
         strArray = input.split(",");
+        boolean number=isInteger(strArray[0]);
         Object result="";
-        
+        if(strArray.length!=2 || number!=true){
+        	output.setOutput("Your input should in this format:'ISBN,title',ISBN should be a 13-digit number");
+        	output.setState(CREATETITLE);
+        }else{
         	result=TitleTable.getInstance().createtitle(strArray[0], strArray[1]);
         	if(result.equals(true)){
         		output.setOutput("Success!");
         	}
         	output.setState(LIBRARIANLOGIN);
+        }
+        
         
 		return output;
 	}
@@ -170,7 +176,18 @@ public Output librarianLogin(String input) {
 	
 	return output;
 }
-
+public static boolean isInteger(String value) {
+	char[] ch = value.toCharArray();
+	boolean isNumber=true;
+	if(value.length()==13){
+		for (int i = 0; i < ch.length; i++) {
+			isNumber = Character.isDigit(ch[i]);
+		}
+	}else{
+		isNumber=false;
+	}
+	return isNumber;
+	 }
 
 
 	
