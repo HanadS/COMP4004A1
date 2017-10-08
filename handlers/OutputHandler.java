@@ -144,7 +144,10 @@ public class OutputHandler {
         	result=TitleTable.getInstance().createtitle(strArray[0], strArray[1]);
         	if(result.equals(true)){
         		output.setOutput("Success!");
+        	}else{
+        		output.setOutput("The Title Already Exists!");
         	}
+        	
         	output.setState(LIBRARIANLOGIN);
         }
         
