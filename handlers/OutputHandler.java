@@ -108,6 +108,9 @@ public class OutputHandler {
         if(strArray.length!=1 || email!=true){
         		output.setOutput("Your input should in this format:'useremail'");
         		output.setState(DELETEUSER);
+        }else if(userid==-1){
+        	output.setOutput("The User Does Not Exist!");
+        	output.setState(DELETEUSER);
         }
         
         else{

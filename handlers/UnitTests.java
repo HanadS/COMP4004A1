@@ -56,28 +56,27 @@ public class UnitTests {
 				assertEquals("Prompting librarian for Item to delete",handler.processInput("delete item",InputHandler.LIBRARIANLOGIN).getOutput(),"TO DELETE -> Please Input Item Info:'ISBN':");		
 	}
 	@Test
-	public void UserTests() {
+	public void UserCreationTests() {
 
 			User testUser = new User (0,"jim@carleton.ca","jim");
 			assertEquals("get UserId", testUser.getUserid(),0);
 			assertEquals("get username", testUser.getUsername(),"jim@carleton.ca");
 			assertEquals("get password", testUser.getPassword(),"jim");
 			
-			assertTrue( "Check if UserTable Initialized correctly", UserTable.getInstance().getUserTable().get(0).sameUser(testUser));
-			
+			assertTrue( "Check if UserTable Initialized correctly", UserTable.getInstance().getUserTable().get(0).sameUser(testUser));			
 			UserTable.getInstance();
 
-			
 			assertEquals("Add User to User Table.",handler.processInput("sun@carleton.ca,sun",InputHandler.CREATEUSER).getOutput(),"Success!");		
 			assertEquals("Check if User has correct password or username ",handler.processInput("sun^carleton.ca,sun,hey",InputHandler.CREATEUSER).getOutput(),"Your input should in this format:'username,password'");	
 			assertEquals("Check if User already exists",handler.processInput("jim@carleton.ca,jim",InputHandler.CREATEUSER).getOutput(),"The User Already Exists!");	
 
 			assertEquals("Delete User from User Table.",handler.processInput("jim@carleton.ca",InputHandler.DELETEUSER).getOutput(),"Success!");		
 			assertEquals("Delete User with incorrect username.",handler.processInput("jim^carleton.ca",InputHandler.DELETEUSER).getOutput(),"Your input should in this format:'useremail'");		
+			assertEquals("Delete User that does not exist",handler.processInput("timmy@carleton.ca",InputHandler.DELETEUSER).getOutput(),"The User Does Not Exist!");		
 
-			
-			
 		}
+	
+	
 	
 	
 	
