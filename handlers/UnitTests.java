@@ -52,8 +52,13 @@ public class UnitTests {
 	@Test
 	public void creationTests() {
 
-			User testUser = new User (100,"jim","Sun@carleton.ca");
+			User testUser = new User (100,"Sun@carleton.ca","jim");
 			assertEquals("get UserId", testUser.getUserid(),100);
+			assertEquals("get username", testUser.getUsername(),"Sun@carleton.ca");
+			
+			
+			
+
 
 		}
 	

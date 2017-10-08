@@ -4,11 +4,9 @@ package server.logic.model;
 
 public class User {
 
-int userid;
-
-String username;
-
-String password;
+		int userid;
+		String username;
+		String password;
 
 
 		public User(int userid,String username,String password){
@@ -30,8 +28,15 @@ String password;
 		}
 
 
+		public String getUsername() {
+			return username;
+		}
 
+		public void setUsername(String username) {
+			this.username = username;
+		}
 
+	
 
 
 
