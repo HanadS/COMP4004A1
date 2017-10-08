@@ -19,6 +19,7 @@ public class InputHandler {
 	
 	public static final int DELETEUSER = 8;
 	public static final int	DELETETITLE = 9;
+	public static final int	DELETEITEM = 10;
 	
 	
 	
@@ -120,6 +121,17 @@ public class InputHandler {
 	
 		        	output = o.getOutput();
 					state=DELETETITLE;
+					output = "TO DELETE -> " + output;
+					
+					oo.setState(state);
+					oo.setOutput(output);
+		        }
+	         
+	         else if (input.equalsIgnoreCase("delete item") ){
+		        	o = outputHandler.promptItemInfo();
+	
+		        	output = o.getOutput();
+					state=DELETEITEM;
 					output = "TO DELETE -> " + output;
 					
 					oo.setState(state);
