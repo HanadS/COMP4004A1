@@ -21,6 +21,7 @@ public class OutputHandler {
 	public static final int CREATEITEM=7;
 	public static final int DELETEUSER = 8;
 	public static final int	DELETETITLE = 9;
+	public static final int	DELETEITEM = 10;
 
 
 	
@@ -43,14 +44,12 @@ public Output promptUserInfo() {
 	
 	Output output=new Output("",0);
 	output.setOutput("Please Input User Info: username,password:");
-	output.setState(CREATEUSER);
 	return output;
 }
 public Output promptTitleInfo() {
 
 	Output output=new Output("",0);
 	output.setOutput("Please Input Title Info:'ISBN,title'");
-	output.setState(CREATETITLE);
 	return output;
 
 }
@@ -59,7 +58,6 @@ public Output promptItemInfo() {
 
 	Output output=new Output("",0);
 	output.setOutput("Please Input Item Info:'ISBN':");
-	output.setState(CREATEITEM);
 	return output;
 
 }
@@ -91,5 +89,5 @@ public Output librarianLogin(String input) {
 
 
 
-	
+
 }
