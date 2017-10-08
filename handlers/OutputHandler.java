@@ -173,7 +173,9 @@ public class OutputHandler {
 
        if(result.equals("success")){
         	output.setOutput("Success!");
-        }
+        }else{
+    		output.setOutput(result+"!");
+    	}
             output.setState(LIBRARIANLOGIN);
 		 }
 

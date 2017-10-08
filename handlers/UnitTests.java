@@ -96,7 +96,7 @@ public class UnitTests {
 
 		assertEquals("Delete Title from User Table.",handler.processInput("9781442668584",InputHandler.DELETETITLE).getOutput(),"Success!");		
 		assertEquals("Delete Title with incorrect ISBN.",handler.processInput("32423424234234243242",InputHandler.DELETETITLE).getOutput(),"Your input should in this format:'ISBN',ISBN should be a 13-digit number");
-
+		assertEquals("Delete Title that does not exist",handler.processInput("1111111111111",InputHandler.DELETETITLE).getOutput(),"The Title Does Not Exist!");
 
 		
 
