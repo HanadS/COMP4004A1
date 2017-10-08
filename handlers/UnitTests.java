@@ -5,6 +5,8 @@ import org.junit.Test;
 import server.logic.model.User;
 import server.logic.model.Title;
 import server.logic.tables.UserTable;
+import server.logic.tables.TitleTable;
+
 
 
 public class UnitTests {
@@ -85,7 +87,8 @@ public class UnitTests {
 		assertEquals("get ISBN", testTitle.getISBN(),"9781442668584");
 		assertEquals("get Title", testTitle.getBooktitle(),"TestBook");
 		
-		
+		assertTrue( "Initializing TitleTable Class", TitleTable.getInstance().getTitleTable().get(0).sameTitle(testTitle));			
+
 		
 	}
 	

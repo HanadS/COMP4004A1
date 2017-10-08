@@ -30,4 +30,13 @@ public class Title {
 	}
 
 
+	public boolean sameTitle(Title b){
+		if (this.getISBN() == b.getISBN() && this.getBooktitle() == b.getBooktitle() ){
+			return true;
+			}
+			return false;
+		}
+	
+	
+	
 }
