@@ -3,6 +3,7 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 import server.logic.model.User;
+import server.logic.tables.UserTable;
 
 
 public class UnitTests {
@@ -61,6 +62,10 @@ public class UnitTests {
 			assertEquals("get UserId", testUser.getUserid(),0);
 			assertEquals("get username", testUser.getUsername(),"jim@carleton.ca");
 			assertEquals("get password", testUser.getPassword(),"jim");
+			
+			assertTrue( "Check if UserTable Initialized correctly", UserTable.getInstance().getUserTable().get(0).sameUser(testUser) );
+
+			
 			
 			
 		}

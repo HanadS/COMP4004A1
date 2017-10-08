@@ -45,7 +45,12 @@ public class User {
 		}
 
 	
-
+		public boolean sameUser(User b){
+			if (this.getUserid() == b.getUserid() && this.getUsername() == b.getUsername() && this.getPassword() == b.getPassword() ){
+				return true;
+				}
+				return false;
+			}
 
 
 
