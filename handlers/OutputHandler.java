@@ -20,6 +20,7 @@ public class OutputHandler {
 	public static final int CREATEUSER = 5;
 	public static final int CREATETITLE = 6;
 	public static final int CREATEITEM = 7;
+	public static final int  DELETEUSER = 8;
 
 	
 
@@ -100,16 +101,28 @@ public class OutputHandler {
 		String[] strArray = null;   
         strArray = input.split(",");
         int userid=UserTable.getInstance().lookup(strArray[0]);
+        boolean email=strArray[0].contains("@");
+
         Object result="";
        
-        	result=UserTable.getInstance().delete(userid);
-        	if(result.equals("success")){
-        		output.setOutput("Success!");
-        	}else{
-        		output.setOutput(result+"!");
-        	}
-        	output.setState(LIBRARIANLOGIN);
-		return output;
+        if(strArray.length!=1 || email!=true){
+        		output.setOutput("Your input should in this format:'useremail'");
+        		output.setState(DELETEUSER);
+        }
+        
+        else{
+        		result=UserTable.getInstance().delete(userid);
+        		if(result.equals("success")){
+        			output.setOutput("Success!");
+        		}else{
+        			output.setOutput(result+"!");
+        		}
+        		output.setState(LIBRARIANLOGIN);
+        		
+		
+        }
+        
+        return output;
 	}
 
 
