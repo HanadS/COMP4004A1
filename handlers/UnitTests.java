@@ -94,7 +94,9 @@ public class UnitTests {
 		assertEquals("Add incorrect title to Title Table",handler.processInput("3242342423423424,incorrectBook",InputHandler.CREATETITLE).getOutput(),"Your input should in this format:'ISBN,title',ISBN should be a 13-digit number");		
 		assertEquals("Add title that already exists to Title Table",handler.processInput("9781442668584,TestBook",InputHandler.CREATETITLE).getOutput(),"The Title Already Exists!");		
 
-		assertEquals("Delete Title from User Table.",handler.processInput("2978133181221,TestBook",InputHandler.DELETETITLE).getOutput(),"Success!");		
+		assertEquals("Delete Title from User Table.",handler.processInput("9781442668584",InputHandler.DELETETITLE).getOutput(),"Success!");		
+		assertEquals("Delete Title with incorrect ISBN.",handler.processInput("32423424234234243242",InputHandler.DELETETITLE).getOutput(),"Your input should in this format:'ISBN',ISBN should be a 13-digit number");
+
 
 		
 

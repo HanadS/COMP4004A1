@@ -55,16 +55,19 @@ public class TitleTable {
 			if(titleList.get(i).getISBN().equalsIgnoreCase(string)){
 				flag=flag+1;
 				index=i;
+			}else{
+				flag=flag+0;
 			}
 		}
-		
-		
-	titleList.remove(index);
-	result="success";
-				
-			
-		
-		return result;
+		if(flag!=0){
+			titleList.remove(index);
+			result="success";
+		}else{
+			result="The Title Does Not Exist";
+		}
+
+			return result;
+
 	}
 
 }
