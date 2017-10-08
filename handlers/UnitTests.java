@@ -87,7 +87,11 @@ public class UnitTests {
 		assertEquals("get ISBN", testTitle.getISBN(),"9781442668584");
 		assertEquals("get Title", testTitle.getBooktitle(),"TestBook");
 		
-		assertTrue( "Initializing TitleTable Class", TitleTable.getInstance().getTitleTable().get(0).sameTitle(testTitle));			
+		assertTrue( "Initializing TitleTable Class", TitleTable.getInstance().getTitleTable().get(0).sameTitle(testTitle));	
+		
+		TitleTable.getInstance();
+		assertEquals("Add title to Title Table.",handler.processInput("2978133181221,TestBook",InputHandler.CREATETITLE).getOutput(),"Success!");		
+
 
 		
 	}

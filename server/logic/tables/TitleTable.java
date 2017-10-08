@@ -27,7 +27,12 @@ public class TitleTable {
 	public List<Title> getTitleTable() {
 		return titleList;
 	}
-    
+	public Object createtitle(String string, String string2) {		
+			boolean result=true;
+			Title newtitle=new Title(string,string2);
+			result=titleList.add(newtitle);
+			return result;	
+	}
 	
 
 

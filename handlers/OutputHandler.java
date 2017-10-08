@@ -3,6 +3,7 @@ package handlers;
 
 
 import logic.handler.model.Output;
+import server.logic.tables.TitleTable;
 import server.logic.tables.UserTable;
 
 
@@ -130,7 +131,20 @@ public class OutputHandler {
 
 	
 		
-	
+	public Output createTitle(String input) {
+		Output output=new Output("",0);
+		String[] strArray = null;   
+        strArray = input.split(",");
+        Object result="";
+        
+        	result=TitleTable.getInstance().createtitle(strArray[0], strArray[1]);
+        	if(result.equals(true)){
+        		output.setOutput("Success!");
+        	}
+        	output.setState(LIBRARIANLOGIN);
+        
+		return output;
+	}
 	
 
 

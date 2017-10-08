@@ -160,7 +160,14 @@ public class InputHandler {
 		            oo.setState(state);
 	        	}
 	        
-	        
+	        else if(state==CREATETITLE){
+	        	
+	        		o=outputHandler.createTitle(input);
+	        		output=o.getOutput();
+	        		state=o.getState();
+	        		oo.setOutput(output);
+		            oo.setState(state);
+	        	}
 	        
 	        return oo;
 	}
