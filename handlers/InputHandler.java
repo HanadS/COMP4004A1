@@ -86,6 +86,21 @@ public class InputHandler {
 	            	oo.setOutput(output);
 		        
 		        }
+	         
+	         else if (input.equalsIgnoreCase("create item")) {
+	        		
+		        	o = outputHandler.promptItemInfo();
+		        	output = o.getOutput();
+		        	
+		        	state=CREATEUSER;
+		        	
+	            	oo.setState(state);
+	            	oo.setOutput(output);
+		        
+		        }
+	         
+	         
+	         
 	        	
 	        }
 	        

@@ -52,6 +52,15 @@ public class OutputHandler {
 	
 	}
 
+	public Output promptItemInfo() {
+
+		Output output=new Output("",0);
+		output.setOutput("Please Input Item Info:'ISBN':");
+		return output;
+
+	}
+
+	
 
 
 
