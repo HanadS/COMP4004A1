@@ -68,10 +68,10 @@ public class UnitTests {
 			UserTable.getInstance();
 
 			
-			assertEquals("Check if User was added to User Table properly. ",handler.processInput("sun@carleton.ca,sun",InputHandler.CREATEUSER).getOutput(),"Success!");		
+			assertEquals("Check if User was added to User Table properly.",handler.processInput("sun@carleton.ca,sun",InputHandler.CREATEUSER).getOutput(),"Success!");		
+			assertEquals("Check if User has correct password or username ",handler.processInput("sun^carleton.ca,sun,hey",InputHandler.CREATEUSER).getOutput(),"Your input should in this format:'username,password'");	
 			
 
-			
 			
 			
 			

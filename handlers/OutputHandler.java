@@ -78,6 +78,11 @@ public class OutputHandler {
 	    boolean dot  = strArray[0].contains(".");
 	    
 		  
+	    if(strArray.length!=2 || email!=true || dot != true ){
+        	output.setOutput("Your input should in this format:'username,password'");
+        	output.setState(CREATEUSER);
+        }else{
+	    
 		result=UserTable.getInstance().createuser(strArray[0], strArray[1]);
 		    
 		if(result.equals(true)){
@@ -85,7 +90,7 @@ public class OutputHandler {
 		   output.setState(LIBRARIAN);
 		 }
 		   
-	   
+        }
 		return output;
 	}
 

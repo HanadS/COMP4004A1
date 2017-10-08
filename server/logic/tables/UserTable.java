@@ -34,9 +34,6 @@ public class UserTable {
 	  
 		public Object createuser(String string, String string2) {		
 			boolean result=true;
-			
-			
-			
 			User newuser=new User(userList.size(),string,string2);
 			result=userList.add(newuser);
 			return result;
