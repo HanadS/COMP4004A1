@@ -18,6 +18,8 @@ public class OutputHandler {
 	
 	public static final int CREATEUSER = 5;
 	public static final int CREATETITLE = 6;
+	public static final int CREATEITEM = 7;
+
 	
 
 	
@@ -48,6 +50,7 @@ public class OutputHandler {
 	
 		Output output=new Output("",0);
 		output.setOutput("Please Input Title Info:'ISBN,title'");
+		output.setState(CREATETITLE);
 		return output;
 	
 	}
@@ -56,6 +59,7 @@ public class OutputHandler {
 
 		Output output=new Output("",0);
 		output.setOutput("Please Input Item Info:'ISBN':");
+		output.setState(CREATEITEM);
 		return output;
 
 	}
