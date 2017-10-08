@@ -156,7 +156,22 @@ public class OutputHandler {
 	}
 	
 
-
+	public Output deleteTitle(String input) {
+		Output output=new Output("",0);
+		String[] strArray = null;   
+        strArray = input.split(",");
+        Object result="";
+       
+        	result=TitleTable.getInstance().delete(strArray[0]);
+        	if(result.equals("success")){
+        		output.setOutput("Success!");
+        	}else{
+        		output.setOutput(result+"!");
+        	}
+        	output.setState(LIBRARIANLOGIN);
+        
+		return output;
+	}
 
 public Output librarianLogin(String input) {
 	Output output = new Output("",0);

@@ -47,6 +47,24 @@ public class TitleTable {
 		return result;	
 	}
 	
-
+	public Object delete(String string) {
+		String result="";
+		int index=0;
+		int flag=0;
+		for(int i=0;i<titleList.size();i++){
+			if(titleList.get(i).getISBN().equalsIgnoreCase(string)){
+				flag=flag+1;
+				index=i;
+			}
+		}
+		
+		
+	titleList.remove(index);
+	result="success";
+				
+			
+		
+		return result;
+	}
 
 }

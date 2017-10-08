@@ -169,6 +169,19 @@ public class InputHandler {
 		            oo.setState(state);
 	        	}
 	        
+	        
+	        
+	        else if(state==DELETETITLE){
+	        	
+	        		o=outputHandler.deleteTitle(input);
+	        		output=o.getOutput();
+	        		state=o.getState();
+	        		oo.setOutput(output);
+		            oo.setState(state);
+	        	
+	        }
+	        
+	        
 	        return oo;
 	}
 	 
