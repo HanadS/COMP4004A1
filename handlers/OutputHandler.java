@@ -285,6 +285,12 @@ public Output librarianLogin(String input) {
 	return output;
 }
 
+
+
+
+
+
+
 public Output borrow(String input) {
 	Output output=new Output("",0);
 	String[] strArray = null;   
@@ -328,17 +334,26 @@ public Output renew(String input) {
     boolean email=strArray[0].contains("@");
     int userid=UserTable.getInstance().lookup(strArray[0]);
     Object result="";
-    if(userid==-1){
+    if(strArray.length!=3 || email!=true){
+    	output.setOutput("Your input should in this format:'useremail,ISBN,copynumber'");
+    	output.setState(RENEW);
+    }else if(userid==-1){
     	output.setOutput("The User Does Not Exist!");
     	output.setState(RENEW);
     }else{
-    	result=LoanTable.getInstance().renewal(userid, strArray[1], strArray[2], new Date());
-    	if(result.equals("success")){
-        	output.setOutput("Success!");
-        }else{
-        	output.setOutput(result+"!");
-        }
-    	
+    	boolean ISBN=isInteger(strArray[1]);
+    	boolean copynumber=isNumber(strArray[2]);
+    	if(ISBN!=true || copynumber!=true){
+    		output.setOutput("Your input should in this format:'useremail,ISBN,copynumber'");
+        	output.setState(RENEW);
+    	}else{
+    		result=LoanTable.getInstance().renewal(userid, strArray[1], strArray[2], new Date());
+    		if(result.equals("success")){
+        		output.setOutput("Success!");
+        	}else{
+        		output.setOutput(result+"!");
+        	}
+    	}
     	output.setState(USERLOGIN);
     }
 	return output;
