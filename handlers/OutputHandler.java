@@ -359,6 +359,23 @@ public Output renew(String input) {
 	return output;
 }
 
+public Output returnBook(String input) {
+	Output output=new Output("",0);
+	String[] strArray = null;   
+    strArray = input.split(",");
+    boolean email=strArray[0].contains("@");
+    int userid=UserTable.getInstance().lookup(strArray[0]);
+    Object result="";
+    
+    result=LoanTable.getInstance().returnItem(userid, strArray[1], strArray[2], new Date());
+    if(result.equals("success")){
+        	output.setOutput("Success!");
+        }
+    output.setState(USERLOGIN);
+    return output;
+   
+}
+	
 
 
 
