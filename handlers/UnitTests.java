@@ -144,12 +144,16 @@ public class UnitTests {
     					+ "Return"
     					+ "Pay Fine." );
 		
-		
-		
-				
-			}
+			
+	
+	assertEquals("Prompting user for borrow info",handler.processInput("borrow",InputHandler.USERLOGIN).getState(),InputHandler.BORROW);
+	
+
 	
 	
+	
+	
+	}
 	
 
 }

@@ -18,6 +18,8 @@ public class OutputHandler {
 	public static final int LIBRARIAN = 2;
 	public static final int USER = 3;
 	public static final int LIBRARIANLOGIN = 4;
+	public static final int USERLOGIN = 11;
+
 	
 	public static final int CREATEUSER = 5;
 	public static final int CREATETITLE = 6;
@@ -26,8 +28,9 @@ public class OutputHandler {
 	public static final int  DELETETITLE = 9;
 	public static final int  DELETEITEM = 10;
 	
-	
-	public static final int USERLOGIN = 11;
+	public static final int BORROW = 12;
+    public static final int RENEW=13;
+
 
 	
 
@@ -73,7 +76,13 @@ public class OutputHandler {
 
 	}
 
-	
+	public Output promptInputInfo() {
+
+		Output output=new Output("",0);
+		output.setOutput("Please Input Info:'useremail,ISBN,copynumber'");
+		return output;
+
+	}
 	
 	
 	public Output createUser(String input) {

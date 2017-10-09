@@ -10,6 +10,8 @@ public class InputHandler {
 	public static final int LIBRARIAN = 2;
 	public static final int USER = 3;
 	public static final int LIBRARIANLOGIN = 4;
+	public static final int USERLOGIN = 11;
+
 	
 	
 	public static final int CREATEUSER = 5;
@@ -22,8 +24,9 @@ public class InputHandler {
 	public static final int	DELETEITEM = 10;
 	
 	
-	public static final int USERLOGIN = 11;
-	
+	public static final int BORROW = 12;
+    public static final int RENEW=13;
+
 
 	
 
@@ -152,8 +155,20 @@ public class InputHandler {
 		        }	
 	        }
 	        
-	        
-	        
+	        else if (state==USERLOGIN){
+	        	if (input.equalsIgnoreCase("borrow")) {
+	        		o=outputHandler.promptInputInfo();
+	        		output=o.getOutput();
+	        		
+	        		state = BORROW;
+	        		
+	        		oo.setOutput(output);
+		            oo.setState(state);
+	            }
+	        	
+	        	
+	        	
+	        }
 	        
 	        
 	        else if(state == CREATEUSER) {
