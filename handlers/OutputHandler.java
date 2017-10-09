@@ -274,7 +274,12 @@ public Output userLogin(String input) {
     }else{
     	result=UserTable.getInstance().checkUser(strArray[0], strArray[1]);
     	if(result==0){
-    		output.setOutput("What can I do for you?Menu:Borrow,Renew,Return,Pay Fine.");
+    		output.setOutput("What can I do for you?"
+    					+ "Menu:"
+    					+ "Borrow"
+    					+ "Renew"
+    					+ "Return"
+    					+ "Pay Fine.");
         	output.setState(USERLOGIN);
     	}else if(result==1){
     		output.setOutput("Wrong Password!Please Input Username and Password:'username,password'");
@@ -285,7 +290,7 @@ public Output userLogin(String input) {
     	}
     }
     
-    System.out.print("output"+output.getOutput());
+    //System.out.print("output"+output.getOutput());
     
 	return output;
     }
