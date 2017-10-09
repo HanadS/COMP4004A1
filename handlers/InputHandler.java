@@ -27,7 +27,7 @@ public class InputHandler {
 	public static final int BORROW = 12;
     public static final int RENEW=13;
     public static final int RETURN=12;
-
+    public static final int PAYFINE=13;
 
 	
 
@@ -179,6 +179,14 @@ public class InputHandler {
 		            state=RETURN;
 		            oo.setOutput(output);
 		            oo.setState(state);
+	            }
+	        	else if (input.equalsIgnoreCase("pay fine")) {
+	        		o = outputHandler.promptPayFine();
+		        	state = o.getState();
+		        	output = o.getOutput();
+		        	
+	            	oo.setState(state);
+	            	oo.setOutput(output);
 	            }
 	        	
 	        	

@@ -149,6 +149,7 @@ public class UnitTests {
 	assertEquals("Prompting user for borrow info",handler.processInput("borrow",InputHandler.USERLOGIN).getState(),InputHandler.BORROW);
 	assertEquals("Prompting user for renew info",handler.processInput("renew",InputHandler.USERLOGIN).getState(), InputHandler.RENEW);
 	assertEquals("Prompting user for return info",handler.processInput("return",InputHandler.USERLOGIN).getState(), InputHandler.RETURN);
+	assertEquals("Prompting user for fine info",handler.processInput("pay fine",InputHandler.USERLOGIN).getState(), InputHandler.PAYFINE);
 
 
 

@@ -31,6 +31,7 @@ public class OutputHandler {
 	public static final int BORROW = 12;
     public static final int RENEW=13;
     public static final int RETURN=12;
+    public static final int PAYFINE=13;
 
 
 	
@@ -81,6 +82,15 @@ public class OutputHandler {
 
 		Output output=new Output("",0);
 		output.setOutput("Please Input Info:'useremail,ISBN,copynumber'");
+		return output;
+
+	}
+	
+	public Output promptPayFine() {
+
+		Output output=new Output("",0);
+		output.setOutput("Please Input User Info:'useremail'");
+		output.setState(PAYFINE);
 		return output;
 
 	}
