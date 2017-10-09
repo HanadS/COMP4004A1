@@ -240,7 +240,14 @@ public class InputHandler {
 		            oo.setState(state);
 	        	}
 	        
-	        
+	        else if(state==BORROW){
+	        		o=outputHandler.borrow(input);
+	        		output=o.getOutput();
+	        		state=o.getState();
+	        		oo.setOutput(output);
+		            oo.setState(state);
+	        	
+	        }
 	        
 	        
 	        return oo;

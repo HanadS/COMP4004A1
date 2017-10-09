@@ -2,8 +2,11 @@ package handlers;
 
 
 
+import java.util.Date;
+
 import logic.handler.model.Output;
 import server.logic.tables.ItemTable;
+import server.logic.tables.LoanTable;
 import server.logic.tables.TitleTable;
 import server.logic.tables.UserTable;
 
@@ -279,6 +282,21 @@ public Output librarianLogin(String input) {
 			output.setOutput("Wrong password");
 		}
 	
+	return output;
+}
+
+public Output borrow(String input) {
+	Output output=new Output("",0);
+	String[] strArray = null;   
+    strArray = input.split(",");
+    boolean email=strArray[0].contains("@");
+    int userid=UserTable.getInstance().lookup(strArray[0]);    
+    
+    Object result="";
+    result=LoanTable.getInstance().createloan(userid, strArray[1], strArray[2], new Date());
+    output.setOutput(result+"!");
+    
+    output.setState(USER);
 	return output;
 }
 

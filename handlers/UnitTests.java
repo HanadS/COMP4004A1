@@ -130,17 +130,17 @@ public class UnitTests {
 	@Test
 	public void UserInitializationTests() {
 		
-		handler.processInput("jim@carleton.ca.ca,jim",InputHandler.CREATEUSER);
+		handler.processInput("jim@carleton.ca,jim",InputHandler.CREATEUSER);
 		
 		assertEquals("Prompt for Username and Password.",handler.processInput("User",InputHandler.ROLEDETERMINED).getOutput(), "Please Input User Info: username,password:" );
 
 				
-		assertEquals("User Login",handler.processInput("jim@carleton.ca.ca,jim",InputHandler.USER).getState(), InputHandler.USERLOGIN );
-		assertEquals("Check if User format is correct",handler.processInput("tim&carleton.ca.ca,tim",InputHandler.USER).getOutput(),  "Your input should in this format:'username,password'");
-		assertEquals("User Incorrect Passowrd",handler.processInput("jim@carleton.ca.ca,tim",InputHandler.USER).getOutput(),  "Wrong Password!Please Input Username and Password:'username,password'");
+		assertEquals("User Login",handler.processInput("jim@carleton.ca,jim",InputHandler.USER).getState(), InputHandler.USERLOGIN );
+		assertEquals("Check if User format is correct",handler.processInput("tim&carleton.ca,tim",InputHandler.USER).getOutput(),  "Your input should in this format:'username,password'");
+		assertEquals("User Incorrect Passowrd",handler.processInput("jim@carleton.ca,tim",InputHandler.USER).getOutput(),  "Wrong Password!Please Input Username and Password:'username,password'");
 		assertEquals("User does not exist",handler.processInput("tim@carleton.ca,tim",InputHandler.USER).getOutput(),  "The User Does Not Exist!Please Enter The Username and Password:'username,password'");
 
-		assertEquals("Display User Terminal",handler.processInput("jim@carleton.ca.ca,jim",InputHandler.USER).getOutput(),"What can I do for you?"
+		assertEquals("Display User Terminal",handler.processInput("jim@carleton.ca,jim",InputHandler.USER).getOutput(),"What can I do for you?"
     					+ "Menu:"
     					+ "Borrow"
     					+ "Renew"
@@ -160,7 +160,10 @@ public class UnitTests {
 	public void UserTests() {
 		
 		
-		Date testDate = new Date();	
+		handler.processInput("jim@carleton.ca,jim",InputHandler.CREATEUSER);
+		handler.processInput("9781442668584,TestBook",InputHandler.CREATETITLE);
+
+		
 		
 		Loan testLoan = new Loan(0,"9781442668584","1", new Date()  ,"0");
 		
@@ -173,7 +176,8 @@ public class UnitTests {
 		
 		assertTrue( "Initializing LoanTable Class", LoanTable.getInstance().getLoanTable().get(0).sameLoan(testLoan));
 
-		
+		assertEquals("Create a loan by burrowing",handler.processInput("jim@carleton.ca,9781442668584,1",InputHandler.BORROW).getOutput(),"success!");	
+
 
 		
 		

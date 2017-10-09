@@ -17,7 +17,6 @@ public class LoanTable {
     private LoanTable(){
     	//set up the default list with some instances
     	
-	    	Date testDate = new Date();	
 	    	Loan loan=new Loan(0,"9781442668584","1",new Date(),"0");
 	    	loanList.add(loan);
 	    	
@@ -30,7 +29,19 @@ public class LoanTable {
 	public List<Loan> getLoanTable() {
 		return loanList;
 	}
-
+	public Object createloan(int i, String string, String string2, Date date) {
+		String result="";
+		
+		
+			Loan loan=new Loan(i,string,string2,date,"0");
+			loanList.add(loan);
+			result="success";
+			
+		
+		
+    	return result;
+	}
+	
 	
 
 	
