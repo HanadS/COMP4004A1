@@ -290,22 +290,35 @@ public Output borrow(String input) {
 	String[] strArray = null;   
     strArray = input.split(",");
     boolean email=strArray[0].contains("@");
-    int userid=UserTable.getInstance().lookup(strArray[0]);    
+    int userid=UserTable.getInstance().lookup(strArray[0]);
     
     
     Object result="";
-    result=LoanTable.getInstance().createloan(userid, strArray[1], strArray[2], new Date());    
-    if(result.equals("success")){
-		output.setOutput("Success!");
-	}else{
-		output.setOutput(result+"!");
-	}
+    if(strArray.length!=3 || email!=true){
+    	output.setOutput("Your input should in this format:'useremail,ISBN,copynumber'");
+    	output.setState(BORROW);
+    }else if(userid==-1){
+    	output.setOutput("The User Does Not Exist!");
+    	output.setState(BORROW);
+    }else{
+    	boolean ISBN=isInteger(strArray[1]);
+    	boolean copynumber=isNumber(strArray[2]);
+    	if(ISBN!=true || copynumber!=true){
+    		output.setOutput("Your input should in this format:'useremail,ISBN,copynumber'");
+        	output.setState(BORROW);
+    	}else{
+    		result=LoanTable.getInstance().createloan(userid, strArray[1], strArray[2], new Date());
+    		if(result.equals("success")){
+        		output.setOutput("Success!");
+        	}else{
+        		output.setOutput(result+"!");
+        	}
+    	}
+    	output.setState(USER);
+    }
     
-    System.out.println("userid"+userid);
-
-    
-    output.setState(USER);
 	return output;
+		
 }
 
 public Output userLogin(String input) {
