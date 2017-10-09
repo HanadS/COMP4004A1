@@ -120,6 +120,7 @@ public class UnitTests {
 		assertEquals("Delete item from Item Table.",handler.processInput("9781442668584,1",InputHandler.DELETEITEM).getOutput(),"Success!");		
 		assertEquals("Delete item with incorrect ISBN.",handler.processInput("32423424234234243242,1",InputHandler.DELETEITEM).getOutput(),"Your input should in this format:'ISBN,copynumber',ISBN should be a 13-digit number");
 		assertEquals("Delete item with incorrect copynumber.",handler.processInput("9781442668584,asd",InputHandler.DELETEITEM).getOutput(),"Your input should in this format:'ISBN,copynumber',ISBN should be a 13-digit number");
+		assertEquals("Delete item that does not exist",handler.processInput("9781452668584,1",InputHandler.DELETEITEM).getOutput(),"The Item Does Not Exist!");
 
 
 

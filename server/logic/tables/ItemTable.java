@@ -26,20 +26,31 @@ public class ItemTable {
 
     public Object delete(String string, String string2) {
 
-		String result="";
-		int index=0;
-		for(int i=0;i<itemList.size();i++){
-			String ISBN=(itemList.get(i)).getISBN();
-			String copynumber=(itemList.get(i)).getCopynumber();
-			if(ISBN.equalsIgnoreCase(string) && copynumber.equalsIgnoreCase(string2)){
-				index=i;
-			}
-		}			
-			itemList.get(index).setCopynumber("N/A");
-			result="success";
-			
+    	//Since the itemid and copynumber in is automatically assigned to the item,upon its creation.
+    			//Each item has a unique itemid and copynumber.Even it is deleted,they can not be assigned to other item.
+    			//To maintain the correctness of the data,here instead delete index from the List.
+    			//I choose to remove the item's information instead the whole index.
+    			String result="";
+    			int index=0;
+    			int flag=0;
+    			for(int i=0;i<itemList.size();i++){
+    				String ISBN=(itemList.get(i)).getISBN();
+    				String copynumber=(itemList.get(i)).getCopynumber();
+    				if(ISBN.equalsIgnoreCase(string) && copynumber.equalsIgnoreCase(string2)){
+    					index=i;
+    					flag=flag+1;
+    				}else{
+    					flag=flag+0;
+    				}
+    			}
+    			if(flag!=0){    			
+    				itemList.get(index).setCopynumber("N/A");
+    				result="success";
 	
-		return result;
+    			}else{
+    				result="The Item Does Not Exist";
+    			}
+    			return result;
 	}
     
 	public Object createitem(String string) {

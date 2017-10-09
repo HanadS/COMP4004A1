@@ -225,10 +225,13 @@ public class OutputHandler {
         		result=ItemTable.getInstance().delete(strArray[0], strArray[1]);
             	if(result.equals("success")){
             		output.setOutput("Success!");
+            	}else{
+            		output.setOutput(result+"!");
             	}
             	output.setState(LIBRARIANLOGIN);
         	}
         }
+        System.out.println(output.getOutput());
 		return output;
 	}
 	
