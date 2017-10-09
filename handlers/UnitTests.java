@@ -1,4 +1,7 @@
 package handlers;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import static org.junit.Assert.*;
 import org.junit.Test;
 
@@ -150,14 +153,32 @@ public class UnitTests {
 	assertEquals("Prompting user for renew info",handler.processInput("renew",InputHandler.USERLOGIN).getState(), InputHandler.RENEW);
 	assertEquals("Prompting user for return info",handler.processInput("return",InputHandler.USERLOGIN).getState(), InputHandler.RETURN);
 	assertEquals("Prompting user for fine info",handler.processInput("pay fine",InputHandler.USERLOGIN).getState(), InputHandler.PAYFINE);
-
-
-
-	
-	
-	
-	
 	}
 	
+	
+	@Test
+	public void UserTests() {
+		
+		
+		Date testDate = new Date();	
+		
+		Loan testLoan = new Loan(0,"9781442668584","1",testDate,"0");
+		
+		assertEquals("get id", testLoan.getUserid(),0);
+		assertEquals("get ISBN", testLoan.getIsbn(),"9781442668584");
+		assertEquals("get Copynumber", testLoan.getCopynumber(),"1");
+		assertEquals("get Date", testLoan.getDate(),testDate);
+		assertEquals("get renewstate", testLoan.getRenewstate(),"0");
+
+		
+
+		
+		
+		
+		}
+
 
 }
+	
+
+

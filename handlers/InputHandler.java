@@ -85,9 +85,7 @@ public class InputHandler {
 	        		state=o.getState();
 	        		oo.setOutput(output);
 		            oo.setState(state);
-		            
-		            System.out.println(state);
-		            
+		           		            
 		        }
 	        
 	        else if(state == LIBRARIANLOGIN) {
