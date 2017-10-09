@@ -2,10 +2,8 @@ package handlers;
 import static org.junit.Assert.*;
 import org.junit.Test;
 
-import server.logic.model.User;
-import server.logic.model.Title;
-import server.logic.tables.UserTable;
-import server.logic.tables.TitleTable;
+import server.logic.model.*;
+import server.logic.tables.*;
 
 
 
@@ -97,11 +95,21 @@ public class UnitTests {
 		assertEquals("Delete Title from User Table.",handler.processInput("9781442668584",InputHandler.DELETETITLE).getOutput(),"Success!");		
 		assertEquals("Delete Title with incorrect ISBN.",handler.processInput("32423424234234243242",InputHandler.DELETETITLE).getOutput(),"Your input should in this format:'ISBN',ISBN should be a 13-digit number");
 		assertEquals("Delete Title that does not exist",handler.processInput("1111111111111",InputHandler.DELETETITLE).getOutput(),"The Title Does Not Exist!");
-
-		
-
 		
 	}
+	
+	@Test
+	public void ItemCreationTests() {
+		
+		Item testItem = new Item(0,"9781442668584","1");
+		
+		assertEquals("get id", testItem.getItemid(),0);
+		assertEquals("get ISBN", testItem.getISBN(),"9781442668584");
+		assertEquals("get Title", testItem.getCopynumber(),"1");
+		
+		
+		}
+	
 	
 
 }
