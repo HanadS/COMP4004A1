@@ -34,6 +34,18 @@ public class Item {
 		this.copynumber = copynumber;
 	}
 	
+
+
+
+	public boolean sameItem(Item b){
+
+	if (this.getItemid() == b.getItemid() && this.getISBN() == b.getISBN() && this.getCopynumber() == b.getCopynumber() ){
+			return true;
+	}
+
+		return false;
+
+	}
 	
 
 }
