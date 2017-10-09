@@ -182,6 +182,17 @@ public class InputHandler {
 	        }
 	        
 	        
+	        else if(state==CREATEITEM){
+	        	
+	        		o=outputHandler.createItem(input);
+	        		output=o.getOutput();
+	        		state=o.getState();
+	        		oo.setOutput(output);
+		            oo.setState(state);
+	        	
+	        }
+	        
+	        
 	        return oo;
 	}
 	 

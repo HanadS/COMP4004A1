@@ -102,12 +102,22 @@ public class UnitTests {
 	public void ItemCreationTests() {
 		
 		Item testItem = new Item(0,"9781442668584","1");
+		handler.processInput("9781442668584,TestBook",InputHandler.CREATETITLE);
+
 		
 		assertEquals("get id", testItem.getItemid(),0);
 		assertEquals("get ISBN", testItem.getISBN(),"9781442668584");
 		assertEquals("get Title", testItem.getCopynumber(),"1");
 		
+		
 		assertTrue( "Initializing ItemTable Class", ItemTable.getInstance().getItemTable().get(0).sameItem(testItem));
+		
+		assertEquals("Add Item to Item Table.",handler.processInput("9781442668584",InputHandler.CREATEITEM).getOutput(),"Success!");	
+
+		
+		
+
+		
 		
 		
 		}

@@ -3,6 +3,7 @@ package handlers;
 
 
 import logic.handler.model.Output;
+import server.logic.tables.ItemTable;
 import server.logic.tables.TitleTable;
 import server.logic.tables.UserTable;
 
@@ -183,6 +184,25 @@ public class OutputHandler {
 
 	}
 
+	public Output createItem(String input) {
+		Output output=new Output("",0);
+		String[] strArray = null;   
+        strArray = input.split(",");
+        Object result="";
+       
+        result=ItemTable.getInstance().createitem(strArray[0]);
+        if(result.equals(true)){
+        	output.setOutput("Success!");
+        }
+        
+        
+        output.setState(LIBRARIANLOGIN);
+        
+        	
+        	
+		return output;
+	}
+	
 public Output librarianLogin(String input) {
 	Output output = new Output("",0);
 	if(input.equalsIgnoreCase("admin")){

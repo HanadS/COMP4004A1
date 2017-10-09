@@ -25,7 +25,26 @@ public class ItemTable {
     }
 
 	
-	
+    
+	public Object createitem(String string) {
+		boolean result=true;
+		result=TitleTable.getInstance().lookup(string);
+		if(result){
+		int flag=0;
+		for(int i=0;i<itemList.size();i++){
+			if(itemList.get(i).getISBN().equalsIgnoreCase(string)){
+				flag=flag+1;
+			}else{
+				flag=flag+0;
+			}
+		}
+		Item newitem=new Item(itemList.size(),string,String.valueOf(flag+1));
+		itemList.add(newitem);
+		}
+		return result;
+	}
+		
+		
 	public List<Item> getItemTable() {
 		return itemList;
 	}
