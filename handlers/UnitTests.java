@@ -136,6 +136,10 @@ public class UnitTests {
 		assertEquals("Check if User format is correct",handler.processInput("tim&carleton.ca.ca,tim",InputHandler.USER).getOutput(),  "Your input should in this format:'username,password'");
 		assertEquals("User Incorrect Passowrd",handler.processInput("jim@carleton.ca.ca,tim",InputHandler.USER).getOutput(),  "Wrong Password!Please Input Username and Password:'username,password'");
 
+		assertEquals("User does not exist",handler.processInput("tim@carleton.ca,tim",InputHandler.USER).getOutput(),  "The User Does Not Exist!Please Enter The Username and Password:'username,password'");
+
+		
+		
 		
 		
 				

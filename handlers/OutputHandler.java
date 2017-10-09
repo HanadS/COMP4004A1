@@ -279,14 +279,18 @@ public Output userLogin(String input) {
     	}else if(result==1){
     		output.setOutput("Wrong Password!Please Input Username and Password:'username,password'");
         	output.setState(USER);
+    	}else{
+    		output.setOutput("The User Does Not Exist!Please Enter The Username and Password:'username,password'");
+        	output.setState(USER);
     	}
     }
-
     
-    System.out.println("output"+output.getOutput());
+    System.out.print("output"+output.getOutput());
     
 	return output;
-}
+    }
+
+
 
 public static boolean isInteger(String value) {
 	char[] ch = value.toCharArray();
