@@ -128,11 +128,15 @@ public class UnitTests {
 	public void UserInitializationTests() {
 		
 		handler.processInput("jim@carleton.ca.ca,jim",InputHandler.CREATEUSER);
+		
 		assertEquals("Prompt for Username and Password.",handler.processInput("User",InputHandler.ROLEDETERMINED).getOutput(), "Please Input User Info: username,password:" );
 
 				
 		assertEquals("User Login",handler.processInput("jim@carleton.ca.ca,jim",InputHandler.USER).getState(), InputHandler.USERLOGIN );
+		assertEquals("Check if User password is incorrect.",handler.processInput("tim&carleton.ca.ca,tim",InputHandler.USER).getOutput(),  "Your input should in this format:'username,password'");
 
+		
+		
 				
 			}
 	
