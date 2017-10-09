@@ -54,6 +54,13 @@ public class InputHandler {
 	        	 else if (input.equalsIgnoreCase("user")) {
 		            	state=USER;
 			            oo.setState(state);
+			            
+			            o = outputHandler.promptUserInfo();
+			            output = o.getOutput();
+			            oo.setOutput(output);
+			           
+			            
+			            System.out.println(output);
 
 		            }
 	        	 
@@ -138,21 +145,20 @@ public class InputHandler {
 					oo.setOutput(output);
 		        }	
 	        }
+	        
+	        
+	        
+	        
+	        
 	        else if(state == CREATEUSER) {
-	        	
-	        	
 	        	o=outputHandler.createUser(input);
         		output=o.getOutput();
         		state=o.getState();
         		oo.setOutput(output);
 	            oo.setState(state);
-	        	
-	        	
-	        	
 	        }
 	        
 	        else if(state==DELETEUSER){
-	        	
 	        		o=outputHandler.deleteUser(input);
 	        		output=o.getOutput();
 	        		state=o.getState();
@@ -161,40 +167,31 @@ public class InputHandler {
 	        	}
 	        
 	        else if(state==CREATETITLE){
-	        	
 	        		o=outputHandler.createTitle(input);
 	        		output=o.getOutput();
 	        		state=o.getState();
 	        		oo.setOutput(output);
 		            oo.setState(state);
 	        	}
-	        
-	        
-	        
-	        else if(state==DELETETITLE){
-	        	
+
+	        else if(state==DELETETITLE){	        	
 	        		o=outputHandler.deleteTitle(input);
 	        		output=o.getOutput();
 	        		state=o.getState();
 	        		oo.setOutput(output);
 		            oo.setState(state);
-	        	
 	        }
 	        
 	        
 	        else if(state==CREATEITEM){
-	        	
 	        		o=outputHandler.createItem(input);
 	        		output=o.getOutput();
 	        		state=o.getState();
 	        		oo.setOutput(output);
 		            oo.setState(state);
-	        	
 	        }
 	        
 	        else if(state==DELETEITEM){
-	        	
-	        	
 	        		o=outputHandler.deleteItem(input);
 	        		output=o.getOutput();
 	        		state=o.getState();

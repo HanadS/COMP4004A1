@@ -71,6 +71,8 @@ public class OutputHandler {
 	}
 
 	
+	
+	
 	public Output createUser(String input) {
 		Output output=new Output("",0);
 		String[] strArray = null;   
@@ -231,7 +233,6 @@ public class OutputHandler {
             	output.setState(LIBRARIANLOGIN);
         	}
         }
-        System.out.println(output.getOutput());
 		return output;
 	}
 	

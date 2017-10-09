@@ -28,7 +28,7 @@ public class UnitTests {
 	}
 	
 	@Test
-	public void librarianTests() {
+	public void librarianInitializationTests() {
 		
 				assertEquals("Prompt for password.",handler.processInput("librarian",InputHandler.ROLEDETERMINED).getOutput(), "Please Input The Password." );
 
@@ -122,12 +122,15 @@ public class UnitTests {
 		assertEquals("Delete item with incorrect copynumber.",handler.processInput("9781442668584,asd",InputHandler.DELETEITEM).getOutput(),"Your input should in this format:'ISBN,copynumber',ISBN should be a 13-digit number");
 		assertEquals("Delete item that does not exist",handler.processInput("9781452668584,1",InputHandler.DELETEITEM).getOutput(),"The Item Does Not Exist!");
 
-
-
-		
-		
-		
 		}
+
+	@Test
+	public void UserInitializationTests() {
+		
+				assertEquals("Prompt for Username and Password.",handler.processInput("User",InputHandler.ROLEDETERMINED).getOutput(), "Please Input User Info: username,password:" );
+
+			}
+	
 	
 	
 
