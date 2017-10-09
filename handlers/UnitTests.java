@@ -162,13 +162,16 @@ public class UnitTests {
 		
 		Date testDate = new Date();	
 		
-		Loan testLoan = new Loan(0,"9781442668584","1",testDate,"0");
+		Loan testLoan = new Loan(0,"9781442668584","1", new Date()  ,"0");
 		
 		assertEquals("get id", testLoan.getUserid(),0);
 		assertEquals("get ISBN", testLoan.getIsbn(),"9781442668584");
 		assertEquals("get Copynumber", testLoan.getCopynumber(),"1");
-		assertEquals("get Date", testLoan.getDate(),testDate);
 		assertEquals("get renewstate", testLoan.getRenewstate(),"0");
+
+
+		
+		assertTrue( "Initializing LoanTable Class", LoanTable.getInstance().getLoanTable().get(0).sameLoan(testLoan));
 
 		
 

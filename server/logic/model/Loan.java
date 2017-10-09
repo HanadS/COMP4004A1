@@ -55,5 +55,20 @@ public class Loan {
 	public void setRenewstate(String renewstate) {
 		this.renewstate = renewstate;
 	}
+	
+	public boolean sameLoan(Loan b){
+				if (this.getUserid() == b.getUserid()
+				&& this.getIsbn() == b.getIsbn() 
+			&& this.getCopynumber() == b.getCopynumber() 
+				&& this.getRenewstate() == b.getRenewstate()
+				){
+				return true;
+		}
+				
+				System.out.println("false");
+			return false;
+		}
+	
+	
 
 }
