@@ -112,10 +112,10 @@ public class UnitTests {
 		
 		assertTrue( "Initializing ItemTable Class", ItemTable.getInstance().getItemTable().get(0).sameItem(testItem));
 		
-		assertEquals("Add Item to Item Table.",handler.processInput("9781442668584",InputHandler.CREATEITEM).getOutput(),"Success!");	
+		assertEquals("Add item to Item Table.",handler.processInput("9781442668584",InputHandler.CREATEITEM).getOutput(),"Success!");	
+		assertEquals("Add incorrect item to Item Table",handler.processInput("9781455344556368584",InputHandler.CREATEITEM).getOutput(),"Your input should in this format:'ISBN',ISBN should be a 13-digit number");
+		assertEquals("Add item that already exists to Item Table",handler.processInput("9781452668584",InputHandler.CREATEITEM).getOutput(),"The Title Does Not Exists!");		
 
-		assertEquals("Add incorrect Item to Item Table",handler.processInput("9781455344556368584",InputHandler.CREATEITEM).getOutput(),"Your input should in this format:'ISBN',ISBN should be a 13-digit number");
-		
 
 		
 		

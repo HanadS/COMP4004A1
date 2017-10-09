@@ -197,6 +197,8 @@ public class OutputHandler {
         	result=ItemTable.getInstance().createitem(strArray[0]);
         	if(result.equals(true)){
         		output.setOutput("Success!");
+        	}else{
+        		output.setOutput("The Title Does Not Exists!");
         	}
         	output.setState(LIBRARIANLOGIN);
         }
