@@ -114,7 +114,7 @@ public class UnitTests {
 		
 		assertEquals("Add Item to Item Table.",handler.processInput("9781442668584",InputHandler.CREATEITEM).getOutput(),"Success!");	
 
-		
+		assertEquals("Add incorrect Item to Item Table",handler.processInput("9781455344556368584",InputHandler.CREATEITEM).getOutput(),"Your input should in this format:'ISBN',ISBN should be a 13-digit number");
 		
 
 		

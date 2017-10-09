@@ -40,6 +40,8 @@ public class ItemTable {
 		}
 		Item newitem=new Item(itemList.size(),string,String.valueOf(flag+1));
 		itemList.add(newitem);
+		}else{
+			result=false;
 		}
 		return result;
 	}

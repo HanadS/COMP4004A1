@@ -188,18 +188,18 @@ public class OutputHandler {
 		Output output=new Output("",0);
 		String[] strArray = null;   
         strArray = input.split(",");
+        boolean number=isInteger(strArray[0]);
         Object result="";
-       
-        result=ItemTable.getInstance().createitem(strArray[0]);
-        if(result.equals(true)){
-        	output.setOutput("Success!");
+        if(strArray.length!=1 || number!=true){
+        	output.setOutput("Your input should in this format:'ISBN',ISBN should be a 13-digit number");
+        	output.setState(CREATEITEM);
+        }else{
+        	result=ItemTable.getInstance().createitem(strArray[0]);
+        	if(result.equals(true)){
+        		output.setOutput("Success!");
+        	}
+        	output.setState(LIBRARIANLOGIN);
         }
-        
-        
-        output.setState(LIBRARIANLOGIN);
-        
-        	
-        	
 		return output;
 	}
 	
