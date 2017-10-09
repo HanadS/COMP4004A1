@@ -321,6 +321,32 @@ public Output borrow(String input) {
 		
 }
 
+public Output renew(String input) {
+	Output output=new Output("",0);
+	String[] strArray = null;   
+    strArray = input.split(",");
+    boolean email=strArray[0].contains("@");
+    int userid=UserTable.getInstance().lookup(strArray[0]);
+    Object result="";
+	
+	result=LoanTable.getInstance().renewal(userid, strArray[1], strArray[2], new Date());
+	
+    if(result.equals("success")){
+        output.setOutput("Success!");
+    }else{
+        output.setOutput(result+"!");
+    }
+    	
+   output.setState(USER);
+    
+	return output;
+}
+
+
+
+
+
+
 public Output userLogin(String input) {
 	Output output=new Output("",0);
 	String[] strArray = null;   

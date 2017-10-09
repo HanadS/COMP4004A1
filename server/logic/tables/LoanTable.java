@@ -93,7 +93,31 @@ public class LoanTable {
 		}
 		return result;
 	}
-
+	public Object renewal(int j, String string, String string2, Date date) {
+		String result="";
+		int index=0;
+		boolean limit=LoanTable.getInstance().checkLimit(j);
+		for(int i=0;i<loanList.size();i++){
+			String ISBN=(loanList.get(i)).getIsbn();
+			String copynumber=(loanList.get(i)).getCopynumber();
+			int userid=(loanList.get(i)).getUserid();
+			if((userid==j) && ISBN.equalsIgnoreCase(string) && copynumber.equalsIgnoreCase(string2)){
+			
+				index=i;
+			}
+		}
+		if(limit){
+				if(loanList.get(index).getRenewstate().equalsIgnoreCase("0")){
+					loanList.get(index).setUserid(j);
+					loanList.get(index).setIsbn(string);
+					loanList.get(index).setCopynumber(string2);
+					loanList.get(index).setDate(new Date());
+					loanList.get(index).setRenewstate("1");
+					result="success";
+				}
+		}
+		return result;
+	}
 	
 	
 }

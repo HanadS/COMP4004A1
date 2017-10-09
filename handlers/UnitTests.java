@@ -172,18 +172,16 @@ public class UnitTests {
 		assertEquals("get Copynumber", testLoan.getCopynumber(),"1");
 		assertEquals("get renewstate", testLoan.getRenewstate(),"0");
 
-
-		
 		assertTrue( "Initializing LoanTable Class", LoanTable.getInstance().getLoanTable().get(0).sameLoan(testLoan));
-
 		assertEquals("Create a loan by borrowing",handler.processInput("jim@carleton.ca,9781442668584,1",InputHandler.BORROW).getOutput(),"Success!");	
-
 		assertEquals("Create a loan by burrowing with invlaid user",handler.processInput("kjnknk@carleton.ca,9781442668584,1",InputHandler.BORROW).getOutput(), "The User Does Not Exist!");	
-////
 		assertEquals("Create a loan by burrowing with invlaid isbn",handler.processInput("jim@carleton.ca,9781234234234584,1",InputHandler.BORROW).getOutput(), "Your input should in this format:'useremail,ISBN,copynumber'");	
-////
 		assertEquals("Create a loan by burrowing with invlaid copynumber",handler.processInput("jim@carleton.ca,9781442668584,3",InputHandler.BORROW).getOutput(), "Copynumber Invalid!");	
 
+		assertEquals("Create a loan by renewing",handler.processInput("jim@carleton.ca,9781442668584,1",InputHandler.RENEW).getOutput(),"Success!");	
+
+		
+		
 		
 	
 		

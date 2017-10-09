@@ -247,6 +247,14 @@ public class InputHandler {
 	        		oo.setOutput(output);
 		            oo.setState(state);
 	        	
+	        }else if(state==RENEW){
+	        	
+	        		o=outputHandler.renew(input);
+	        		output=o.getOutput();
+	        		state=o.getState();
+	        		oo.setOutput(output);
+		            oo.setState(state);
+	        	
 	        }
 	        
 	        
