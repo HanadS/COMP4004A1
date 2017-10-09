@@ -30,6 +30,7 @@ public class OutputHandler {
 	
 	public static final int BORROW = 12;
     public static final int RENEW=13;
+    public static final int RETURN=12;
 
 
 	

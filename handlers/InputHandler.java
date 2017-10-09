@@ -26,6 +26,7 @@ public class InputHandler {
 	
 	public static final int BORROW = 12;
     public static final int RENEW=13;
+    public static final int RETURN=12;
 
 
 	
@@ -173,7 +174,12 @@ public class InputHandler {
 	                oo.setOutput(output);
 	                oo.setState(state);
 
-	        	}
+	        	}else if (input.equalsIgnoreCase("return")) {
+	                o=outputHandler.promptInputInfo();
+		            state=RETURN;
+		            oo.setOutput(output);
+		            oo.setState(state);
+	            }
 	        	
 	        	
 	        }
