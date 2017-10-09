@@ -165,7 +165,15 @@ public class InputHandler {
 	        		oo.setOutput(output);
 		            oo.setState(state);
 	            }
-	        	
+	        	if (input.equalsIgnoreCase("renew")) {
+
+	                o=outputHandler.promptInputInfo();
+	                output=o.getOutput();
+	                state=RENEW;
+	                oo.setOutput(output);
+	                oo.setState(state);
+
+	        	}
 	        	
 	        	
 	        }
