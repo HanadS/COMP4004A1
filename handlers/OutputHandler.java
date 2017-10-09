@@ -314,7 +314,7 @@ public Output borrow(String input) {
         		output.setOutput(result+"!");
         	}
     	}
-    	output.setState(USER);
+    	output.setState(USERLOGIN);
     }
     
 	return output;
@@ -328,17 +328,19 @@ public Output renew(String input) {
     boolean email=strArray[0].contains("@");
     int userid=UserTable.getInstance().lookup(strArray[0]);
     Object result="";
-	
-	result=LoanTable.getInstance().renewal(userid, strArray[1], strArray[2], new Date());
-	
-    if(result.equals("success")){
-        output.setOutput("Success!");
+    if(userid==-1){
+    	output.setOutput("The User Does Not Exist!");
+    	output.setState(RENEW);
     }else{
-        output.setOutput(result+"!");
-    }
+    	result=LoanTable.getInstance().renewal(userid, strArray[1], strArray[2], new Date());
+    	if(result.equals("success")){
+        	output.setOutput("Success!");
+        }else{
+        	output.setOutput(result+"!");
+        }
     	
-   output.setState(USER);
-    
+    	output.setState(USERLOGIN);
+    }
 	return output;
 }
 
