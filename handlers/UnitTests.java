@@ -176,11 +176,12 @@ public class UnitTests {
 		
 		assertTrue( "Initializing LoanTable Class", LoanTable.getInstance().getLoanTable().get(0).sameLoan(testLoan));
 
-		assertEquals("Create a loan by burrowing",handler.processInput("jim@carleton.ca,9781442668584,1",InputHandler.BORROW).getOutput(),"success!");	
+		assertEquals("Create a loan by burrowing",handler.processInput("jim@carleton.ca,9781442668584,1",InputHandler.BORROW).getOutput(),"Success!");	
 
+		assertEquals("Create a loan by burrowing with invlaid user",handler.processInput("kjnknk@carleton.ca,9781442668584,1",InputHandler.BORROW).getOutput(), "User Invalid!");	
 
 		
-		
+	
 		
 		}
 

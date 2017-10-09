@@ -32,17 +32,23 @@ public class LoanTable {
 	public Object createloan(int i, String string, String string2, Date date) {
 		String result="";
 		
+		boolean user=UserTable.getInstance().lookup(i);
+
+		//System.out.println(user);
 		
+		if(user==false){
+			result="User Invalid";
+		}
+		else{		
 			Loan loan=new Loan(i,string,string2,date,"0");
 			loanList.add(loan);
 			result="success";
-			
+		}
 		
 		
     	return result;
 	}
 	
 	
-
 	
 }

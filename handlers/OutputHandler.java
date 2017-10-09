@@ -292,9 +292,17 @@ public Output borrow(String input) {
     boolean email=strArray[0].contains("@");
     int userid=UserTable.getInstance().lookup(strArray[0]);    
     
+    
     Object result="";
-    result=LoanTable.getInstance().createloan(userid, strArray[1], strArray[2], new Date());
-    output.setOutput(result+"!");
+    result=LoanTable.getInstance().createloan(userid, strArray[1], strArray[2], new Date());    
+    if(result.equals("success")){
+		output.setOutput("Success!");
+	}else{
+		output.setOutput(result+"!");
+	}
+    
+    System.out.println("userid"+userid);
+
     
     output.setState(USER);
 	return output;
