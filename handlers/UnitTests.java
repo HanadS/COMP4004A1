@@ -133,7 +133,8 @@ public class UnitTests {
 
 				
 		assertEquals("User Login",handler.processInput("jim@carleton.ca.ca,jim",InputHandler.USER).getState(), InputHandler.USERLOGIN );
-		assertEquals("Check if User password is incorrect.",handler.processInput("tim&carleton.ca.ca,tim",InputHandler.USER).getOutput(),  "Your input should in this format:'username,password'");
+		assertEquals("Check if User format is correct",handler.processInput("tim&carleton.ca.ca,tim",InputHandler.USER).getOutput(),  "Your input should in this format:'username,password'");
+		assertEquals("User Incorrect Passowrd",handler.processInput("jim@carleton.ca.ca,tim",InputHandler.USER).getOutput(),  "Wrong Password!Please Input Username and Password:'username,password'");
 
 		
 		

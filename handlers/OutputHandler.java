@@ -276,6 +276,9 @@ public Output userLogin(String input) {
     	if(result==0){
     		output.setOutput("What can I do for you?Menu:Borrow,Renew,Return,Pay Fine.");
         	output.setState(USERLOGIN);
+    	}else if(result==1){
+    		output.setOutput("Wrong Password!Please Input Username and Password:'username,password'");
+        	output.setState(USER);
     	}
     }
 
