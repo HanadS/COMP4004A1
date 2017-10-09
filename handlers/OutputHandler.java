@@ -63,7 +63,7 @@ public class OutputHandler {
 	public Output promptItemInfo() {
 
 		Output output=new Output("",0);
-		output.setOutput("Please Input Item Info:'ISBN':");
+		output.setOutput("Please Input Item Info:'ISBN,copynumber'");
 		output.setState(CREATEITEM);
 		return output;
 
@@ -204,6 +204,24 @@ public class OutputHandler {
         }
 		return output;
 	}
+	
+	public Output deleteItem(String input) {
+		Output output=new Output("",0);
+		String[] strArray = null;   
+        strArray = input.split(",");
+        Object result="";
+
+        result=ItemTable.getInstance().delete(strArray[0], strArray[1]);
+        if(result.equals("success")){
+            output.setOutput("Success!");
+         }
+           	output.setState(LIBRARIANLOGIN);
+        	
+           	
+           	
+		return output;
+	}
+	
 	
 public Output librarianLogin(String input) {
 	Output output = new Output("",0);

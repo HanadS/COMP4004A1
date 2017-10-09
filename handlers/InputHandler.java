@@ -192,6 +192,18 @@ public class InputHandler {
 	        	
 	        }
 	        
+	        else if(state==DELETEITEM){
+	        	
+	        	
+	        		o=outputHandler.deleteItem(input);
+	        		output=o.getOutput();
+	        		state=o.getState();
+	        		oo.setOutput(output);
+		            oo.setState(state);
+	        	}
+	        
+	        
+	        
 	        
 	        return oo;
 	}

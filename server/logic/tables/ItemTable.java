@@ -24,7 +24,23 @@ public class ItemTable {
         return ItemListHolder.INSTANCE;
     }
 
+    public Object delete(String string, String string2) {
+
+		String result="";
+		int index=0;
+		for(int i=0;i<itemList.size();i++){
+			String ISBN=(itemList.get(i)).getISBN();
+			String copynumber=(itemList.get(i)).getCopynumber();
+			if(ISBN.equalsIgnoreCase(string) && copynumber.equalsIgnoreCase(string2)){
+				index=i;
+			}
+		}			
+			itemList.get(index).setCopynumber("N/A");
+			result="success";
+			
 	
+		return result;
+	}
     
 	public Object createitem(String string) {
 		boolean result=true;

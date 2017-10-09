@@ -50,11 +50,11 @@ public class UnitTests {
 				
 				assertEquals("Prompting librarian for username and password.",handler.processInput("create user",InputHandler.LIBRARIANLOGIN).getOutput(),"Please Input User Info: username,password:");
 				assertEquals("Prompting librarian for Title.",handler.processInput("create title",InputHandler.LIBRARIANLOGIN).getOutput(),"Please Input Title Info:'ISBN,title'");
-				assertEquals("Prompting librarian for Item.",handler.processInput("create item",InputHandler.LIBRARIANLOGIN).getOutput(),"Please Input Item Info:'ISBN':");
+				assertEquals("Prompting librarian for Item.",handler.processInput("create item",InputHandler.LIBRARIANLOGIN).getOutput(),"Please Input Item Info:'ISBN,copynumber'");
 				
 				assertEquals("Prompting librarian for username and password to delete",handler.processInput("delete user",InputHandler.LIBRARIANLOGIN).getOutput(),"TO DELETE -> Please Input User Info: username,password:");
 				assertEquals("Prompting librarian for Title to delete",handler.processInput("delete title",InputHandler.LIBRARIANLOGIN).getOutput(),"TO DELETE -> Please Input Title Info:'ISBN,title'");
-				assertEquals("Prompting librarian for Item to delete",handler.processInput("delete item",InputHandler.LIBRARIANLOGIN).getOutput(),"TO DELETE -> Please Input Item Info:'ISBN':");		
+				assertEquals("Prompting librarian for Item to delete",handler.processInput("delete item",InputHandler.LIBRARIANLOGIN).getOutput(),"TO DELETE -> Please Input Item Info:'ISBN,copynumber'");		
 	}
 	@Test
 	public void UserCreationTests() {
@@ -116,6 +116,8 @@ public class UnitTests {
 		assertEquals("Add incorrect item to Item Table",handler.processInput("9781455344556368584",InputHandler.CREATEITEM).getOutput(),"Your input should in this format:'ISBN',ISBN should be a 13-digit number");
 		assertEquals("Add item that already exists to Item Table",handler.processInput("9781452668584",InputHandler.CREATEITEM).getOutput(),"The Title Does Not Exists!");		
 
+		
+		assertEquals("Delete item from Item Table.",handler.processInput("9781442668584,1",InputHandler.DELETEITEM).getOutput(),"Success!");		
 
 		
 		
