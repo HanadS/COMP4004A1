@@ -217,17 +217,18 @@ public class OutputHandler {
         	output.setOutput("Your input should in this format:'ISBN,copynumber',ISBN should be a 13-digit number");
         	output.setState(DELETEITEM);
         }else{
+        	boolean copynumber=isNumber(strArray[1]);
+        	if(copynumber!=true){
+        		output.setOutput("Your input should in this format:'ISBN,copynumber',ISBN should be a 13-digit number");
+            	output.setState(DELETEITEM);
+        	}else{
         		result=ItemTable.getInstance().delete(strArray[0], strArray[1]);
             	if(result.equals("success")){
             		output.setOutput("Success!");
             	}
             	output.setState(LIBRARIANLOGIN);
-        	
+        	}
         }
-        
-       
-        
-        
 		return output;
 	}
 	
