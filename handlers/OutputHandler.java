@@ -23,8 +23,11 @@ public class OutputHandler {
 	public static final int CREATETITLE = 6;
 	public static final int CREATEITEM = 7;
 	public static final int  DELETEUSER = 8;
-	public static final int  DELETETITLE = 8;
-	public static final int  DELETEITEM = 9;
+	public static final int  DELETETITLE = 9;
+	public static final int  DELETEITEM = 10;
+	
+	
+	public static final int USERLOGIN = 11;
 
 	
 
@@ -258,6 +261,22 @@ public Output librarianLogin(String input) {
 	
 	return output;
 }
+
+public Output userLogin(String input) {
+	Output output=new Output("",0);
+	String[] strArray = null;   
+    strArray = input.split(",");
+    int result=0;
+   
+    result=UserTable.getInstance().checkUser(strArray[0], strArray[1]);
+    if(result==0){
+    	output.setOutput("What can I do for you?Menu:Borrow,Renew,Return,Pay Fine.");
+        output.setState(USERLOGIN);
+    }
+
+	return output;
+}
+
 public static boolean isInteger(String value) {
 	char[] ch = value.toCharArray();
 	boolean isNumber=true;

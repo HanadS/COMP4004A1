@@ -32,7 +32,7 @@ public class UnitTests {
 		
 				assertEquals("Prompt for password.",handler.processInput("librarian",InputHandler.ROLEDETERMINED).getOutput(), "Please Input The Password." );
 
-				assertEquals("Check if password is correct.",handler.processInput("admin",InputHandler.LIBRARIAN).getState(), InputHandler.LIBRARIANLOGIN );
+				assertEquals("Librarian login",handler.processInput("admin",InputHandler.LIBRARIAN).getState(), InputHandler.LIBRARIANLOGIN );
 
 				assertEquals("Check if password is incorrect.",handler.processInput("sdcmslkd",InputHandler.LIBRARIAN).getState(), InputHandler.LIBRARIAN );
 
@@ -127,8 +127,13 @@ public class UnitTests {
 	@Test
 	public void UserInitializationTests() {
 		
-				assertEquals("Prompt for Username and Password.",handler.processInput("User",InputHandler.ROLEDETERMINED).getOutput(), "Please Input User Info: username,password:" );
+		handler.processInput("jim@carleton.ca.ca,jim",InputHandler.CREATEUSER);
+		assertEquals("Prompt for Username and Password.",handler.processInput("User",InputHandler.ROLEDETERMINED).getOutput(), "Please Input User Info: username,password:" );
 
+				
+		assertEquals("User Login",handler.processInput("jim@carleton.ca.ca,jim",InputHandler.USER).getState(), InputHandler.USERLOGIN );
+
+				
 			}
 	
 	

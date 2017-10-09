@@ -22,7 +22,7 @@ public class InputHandler {
 	public static final int	DELETEITEM = 10;
 	
 	
-	
+	public static final int USERLOGIN = 11;
 	
 
 	
@@ -42,26 +42,23 @@ public class InputHandler {
 		        oo.setOutput(output);
 	         }else if (state == ROLEDETERMINED) {
 	        	 
-	        	 if (input.equalsIgnoreCase("librarian")) {
-		            	state=LIBRARIAN;
-			            oo.setState(state);
-			            
+	        	 if (input.equalsIgnoreCase("librarian")) {	            
 			            o = outputHandler.promptPassword();
 			            output = o.getOutput();
+			            state=LIBRARIAN;
+			            oo.setState(state);
 			            oo.setOutput(output);
 			            
 		            }
 	        	 else if (input.equalsIgnoreCase("user")) {
-		            	state=USER;
-			            oo.setState(state);
-			            
+		            	
 			            o = outputHandler.promptUserInfo();
 			            output = o.getOutput();
-			            oo.setOutput(output);
-			           
 			            
-			            System.out.println(output);
-
+			            state=USER;
+			            oo.setState(state);
+			            
+			            oo.setOutput(output);
 		            }
 	        	 
 	        	 else{
@@ -78,6 +75,15 @@ public class InputHandler {
 		        output = o.getOutput();
 		        oo.setOutput(output);
 		        
+		        }else if(state==USER){
+		        	o=outputHandler.userLogin(input);
+	        		output=o.getOutput();
+	        		state=o.getState();
+	        		oo.setOutput(output);
+		            oo.setState(state);
+		            
+		            System.out.println(state);
+		            
 		        }
 	        
 	        else if(state == LIBRARIANLOGIN) {
