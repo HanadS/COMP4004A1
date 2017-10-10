@@ -23,7 +23,16 @@ public class Fee {
 	public void setFee(int fee) {
 		this.fee = fee;
 	}
-	
+	public boolean sameFee(Fee b){
+
+		if (this.getUserid() == b.getUserid() && this.getFee() == b.getFee()){
+				return true;
+		}
+
+				return false;
+
+		}
+		
 	
 
 }
