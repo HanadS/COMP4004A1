@@ -186,6 +186,7 @@ public class UnitTests {
 		
 		assertEquals("return an item",handler.processInput("jim@carleton.ca,9781442668584,1",InputHandler.RETURN).getOutput(),"Success!");	
 		assertEquals("returning with invalid user",handler.processInput("tim@carleton.ca,9781442668584,1",InputHandler.RETURN).getOutput(),"The User Does Not Exist!");
+		assertEquals("returning with invlaid isbn",handler.processInput("jim@carleton.ca,9781234234234584,1",InputHandler.RETURN).getOutput(), "Your input should in this format:'useremail,ISBN,copynumber'");	
 
 		
 		
