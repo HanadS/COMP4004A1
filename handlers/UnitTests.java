@@ -176,10 +176,14 @@ public class UnitTests {
 		
 		
 		assertEquals("Create a loan by borrowing",handler.processInput("jim@carleton.ca,9781442668584,1",InputHandler.BORROW).getOutput(),"Success!");	
+		
+		
+		
+		
 		assertEquals("Create a loan by burrowing with invlaid user",handler.processInput("kjnknk@carleton.ca,9781442668584,1",InputHandler.BORROW).getOutput(), "The User Does Not Exist!");	
 		assertEquals("Create a loan by burrowing with invlaid isbn",handler.processInput("jim@carleton.ca,9781234234234584,1",InputHandler.BORROW).getOutput(), "Your input should in this format:'useremail,ISBN,copynumber'");	
 		assertEquals("Create a loan by burrowing with invlaid copynumber",handler.processInput("jim@carleton.ca,9781442668584,3",InputHandler.BORROW).getOutput(), "Copynumber Invalid!");	
-		
+//		
 		assertEquals("Create a loan by renewing",handler.processInput("jim@carleton.ca,9781442668584,1",InputHandler.RENEW).getOutput(),"Success!");	
 		assertEquals("Create a loan by renewing with invalid user",handler.processInput("tim@carleton.ca,9781442668584,1",InputHandler.RENEW).getOutput(),"The User Does Not Exist!");	
 		assertEquals("Create a loan by renewing with invalid isbn",handler.processInput("jim@carleton.ca,9781234234234584,1",InputHandler.RENEW).getOutput(), "Your input should in this format:'useremail,ISBN,copynumber'");	
@@ -198,10 +202,12 @@ public class UnitTests {
 		assertEquals("get Fee", testFee.getFee(),5);
 		
 		assertTrue( "Initializing FeeTable Class", FeeTable.getInstance().getFeeTable().get(0).sameFee(testFee));
+		
+		//handler.processInput("jim@carleton.ca",InputHandler.PAYFINE).getOutput();
+		assertEquals("Pay fee",handler.processInput("jim@carleton.ca",InputHandler.PAYFINE).getOutput(),"Success!");	
 
 		
-		
-		
+
 		
 	}
 

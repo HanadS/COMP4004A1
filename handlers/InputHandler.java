@@ -26,8 +26,8 @@ public class InputHandler {
 	
 	public static final int BORROW = 12;
     public static final int RENEW=13;
-    public static final int RETURN=12;
-    public static final int PAYFINE=13;
+    public static final int RETURN=14;
+    public static final int PAYFINE=15;
 
 	
 
@@ -40,6 +40,8 @@ public class InputHandler {
 		 String output = "";
 		 Output o = new Output("",0);
 		 ServerOutput oo = new ServerOutput(output,o.getState());
+		 
+	
 	        if (state == WAITING) {
 	        	o = outputHandler.determineRole();
 	        	output = o.getOutput();
@@ -225,6 +227,8 @@ public class InputHandler {
 	        
 	        
 	        else if(state==CREATEITEM){
+	        	
+
 	        		o=outputHandler.createItem(input);
 	        		output=o.getOutput();
 	        		state=o.getState();
@@ -233,6 +237,7 @@ public class InputHandler {
 	        }
 	        
 	        else if(state==DELETEITEM){
+
 	        		o=outputHandler.deleteItem(input);
 	        		output=o.getOutput();
 	        		state=o.getState();
@@ -240,14 +245,22 @@ public class InputHandler {
 		            oo.setState(state);
 	        	}
 	        
+	        
+	        
 	        else if(state==BORROW){
+	        	
+
+
+
 	        		o=outputHandler.borrow(input);
 	        		output=o.getOutput();
 	        		state=o.getState();
 	        		oo.setOutput(output);
 		            oo.setState(state);
 	        	
-	        }else if(state==RENEW){
+	        }  else if(state==RENEW){
+	        	
+
 	        	
 	        		o=outputHandler.renew(input);
 	        		output=o.getOutput();
@@ -257,11 +270,23 @@ public class InputHandler {
 	        }
 	        else if(state==RETURN){
 	        	
+
+	        	
 	        		o=outputHandler.returnBook(input);
 	        		output=o.getOutput();
 	        		state=o.getState();
 	        		oo.setOutput(output);
 		            oo.setState(state);
+	        }else if(state==PAYFINE){
+	        	
+	        		 o = outputHandler.payFine(input);
+	        		output=o.getOutput();
+	        		state=o.getState();
+	        		oo.setOutput(output);
+		            oo.setState(state);
+		            
+
+		           		            
 	        }
 	        
 	        

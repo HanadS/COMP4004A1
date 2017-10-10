@@ -28,6 +28,47 @@ public class FeeTable {
 	}
 	
 	
+	public Object payfine(int i) {
+		String result="";
+		int fee=0;
+		int index=0;
+		boolean user=FeeTable.getInstance().checkuser(i);
+		if(user){
+			for(int m=0;m<feeList.size();m++){
+				if(feeList.get(m).getUserid()==i){
+					fee=feeList.get(m).getFee();
+					index=m;
+				}else{
+					fee=0;
+				}
+			}
+		}else{
+			fee=0;
+		}
+		
+			feeList.get(index).setUserid(i);
+			feeList.get(index).setFee(0);
+			result="success";
+		
+		return result;
+	}
+	private boolean checkuser(int j) {
+		boolean result=true;
+		int fee = 0;
+		for(int i=0;i<feeList.size();i++){
+			int userid=(feeList.get(i)).getUserid();
+			if(userid==j){
+				fee=fee+1;
+			}else{
+				fee=fee+0;
+			}
+		}	
+		if(fee==0){
+			result=false;
+		}
+		return result;
+	}
+	
 	
 
 }

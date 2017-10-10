@@ -5,6 +5,7 @@ package handlers;
 import java.util.Date;
 
 import logic.handler.model.Output;
+import server.logic.tables.FeeTable;
 import server.logic.tables.ItemTable;
 import server.logic.tables.LoanTable;
 import server.logic.tables.TitleTable;
@@ -33,8 +34,8 @@ public class OutputHandler {
 	
 	public static final int BORROW = 12;
     public static final int RENEW=13;
-    public static final int RETURN=12;
-    public static final int PAYFINE=13;
+    public static final int RETURN=14;
+    public static final int PAYFINE=15;
 
 
 	
@@ -286,11 +287,6 @@ public Output librarianLogin(String input) {
 }
 
 
-
-
-
-
-
 public Output borrow(String input) {
 	Output output=new Output("",0);
 	String[] strArray = null;   
@@ -322,6 +318,7 @@ public Output borrow(String input) {
     	}
     	output.setState(USERLOGIN);
     }
+    
     
 	return output;
 		
@@ -358,6 +355,7 @@ public Output renew(String input) {
     }
 	return output;
 }
+
 
 public Output returnBook(String input) {
 	
@@ -428,10 +426,26 @@ public Output userLogin(String input) {
     	}
     }
     
-    //System.out.print("output"+output.getOutput());
     
 	return output;
     }
+public Output payFine(String input) {
+	
+	
+	Output output=new Output("",0);
+	String[] strArray = null;   
+    strArray = input.split(",");
+    int userid=UserTable.getInstance().lookup(strArray[0]);
+    Object result="";
+ 
+    result=FeeTable.getInstance().payfine(userid);	
+    if(result.equals("success")){
+    	output.setOutput("Success!");
+    	}
+    		
+    	
+	return output;
+}
 
 
 
