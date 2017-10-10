@@ -430,18 +430,19 @@ public Output userLogin(String input) {
 	return output;
     }
 public Output payFine(String input) {
-	
-	
 	Output output=new Output("",0);
 	String[] strArray = null;   
     strArray = input.split(",");
     boolean email=strArray[0].contains("@");
     int userid=UserTable.getInstance().lookup(strArray[0]);
     Object result="";
-     if(userid==-1){
+    if(strArray.length!=1 || email!=true){
+    	output.setOutput("Your input should in this format:'useremail'");
+    	output.setState(PAYFINE);
+    }else if(userid==-1){
     	output.setOutput("The User Does Not Exist!");
     	output.setState(PAYFINE);
-     }else{
+    }else{
     	result=FeeTable.getInstance().payfine(userid);	
     	if(result.equals("success")){
     		output.setOutput("Success!");
@@ -449,9 +450,10 @@ public Output payFine(String input) {
         		output.setOutput(result+"!");
         	}
     		output.setState(USER);
-     }
+    	}
     	
 	return output;
+	
 }
 
 

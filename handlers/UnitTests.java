@@ -204,12 +204,13 @@ public class UnitTests {
 		
 		assertEquals("Pay fee",handler.processInput("jim@carleton.ca",InputHandler.PAYFINE).getOutput(),"Success!");	
 		
-		assertEquals("Pay fee",handler.processInput("tim@carleton.ca",InputHandler.PAYFINE).getOutput(),"The User Does Not Exist!");	
+		assertEquals("user that deos not exists pays fee",handler.processInput("tim@carleton.ca",InputHandler.PAYFINE).getOutput(),"The User Does Not Exist!");	
 
+		assertEquals("improper email format ",handler.processInput("tim^&arleton.ca",InputHandler.PAYFINE).getOutput(),"Your input should in this format:'useremail'");	
 
 		
 
-		
+	
 	}
 
 
