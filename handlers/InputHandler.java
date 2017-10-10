@@ -224,11 +224,7 @@ public class InputHandler {
 	        		oo.setOutput(output);
 		            oo.setState(state);
 	        }
-	        
-	        
 	        else if(state==CREATEITEM){
-	        	
-
 	        		o=outputHandler.createItem(input);
 	        		output=o.getOutput();
 	        		state=o.getState();
@@ -237,7 +233,6 @@ public class InputHandler {
 	        }
 	        
 	        else if(state==DELETEITEM){
-
 	        		o=outputHandler.deleteItem(input);
 	        		output=o.getOutput();
 	        		state=o.getState();
@@ -245,23 +240,15 @@ public class InputHandler {
 		            oo.setState(state);
 	        	}
 	        
-	        
-	        
+
 	        else if(state==BORROW){
-	        	
-
-
-
 	        		o=outputHandler.borrow(input);
 	        		output=o.getOutput();
 	        		state=o.getState();
 	        		oo.setOutput(output);
 		            oo.setState(state);
-	        	
 	        }  else if(state==RENEW){
-	        	
 
-	        	
 	        		o=outputHandler.renew(input);
 	        		output=o.getOutput();
 	        		state=o.getState();
@@ -269,8 +256,6 @@ public class InputHandler {
 		            oo.setState(state);
 	        }
 	        else if(state==RETURN){
-	        	
-
 	        	
 	        		o=outputHandler.returnBook(input);
 	        		output=o.getOutput();
@@ -284,9 +269,6 @@ public class InputHandler {
 	        		state=o.getState();
 	        		oo.setOutput(output);
 		            oo.setState(state);
-		            
-		       	 System.out.println("output"+output);
-
 		           		            
 	        }
 	        

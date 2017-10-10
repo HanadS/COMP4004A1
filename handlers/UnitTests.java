@@ -157,7 +157,7 @@ public class UnitTests {
 	
 	
 	@Test
-	public void UserTests() {
+	public void UserBorrowRenewReturnTests() {
 		
 		
 		handler.processInput("jim@carleton.ca,jim",InputHandler.CREATEUSER);
@@ -197,21 +197,18 @@ public class UnitTests {
 		Fee testFee = new Fee(0,5);
 		assertEquals("get id", testFee.getUserid(),0);
 		assertEquals("get Fee", testFee.getFee(),5);
-		
 		assertTrue( "Initializing FeeTable Class", FeeTable.getInstance().getFeeTable().get(0).sameFee(testFee));
-		
-		
-		
 		assertEquals("Pay fee",handler.processInput("jim@carleton.ca",InputHandler.PAYFINE).getOutput(),"Success!");	
-		
 		assertEquals("user that deos not exists pays fee",handler.processInput("tim@carleton.ca",InputHandler.PAYFINE).getOutput(),"The User Does Not Exist!");	
-
 		assertEquals("improper email format ",handler.processInput("tim^&arleton.ca",InputHandler.PAYFINE).getOutput(),"Your input should in this format:'useremail'");	
-
-		
-
 	
 	}
+	
+	
+	
+	
+	
+	
 
 
 }
