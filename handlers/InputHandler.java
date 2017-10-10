@@ -181,6 +181,7 @@ public class InputHandler {
 		            oo.setState(state);
 	            }
 	        	else if (input.equalsIgnoreCase("pay fine")) {
+	        		
 	        		o = outputHandler.promptPayFine();
 		        	state = o.getState();
 		        	output = o.getOutput();
@@ -194,81 +195,225 @@ public class InputHandler {
 	        
 	        
 	        else if(state == CREATEUSER) {
+	        	if(input.equalsIgnoreCase("log out")){
+	            	output = "Successfully Log Out!";
+	                state = WAITING;
+	                oo.setOutput(output);
+		            oo.setState(state);
+	        	}else if(input.equalsIgnoreCase("main menu")){
+	        		output = "What can I do for you?Menu:Create User/Title/Item,Delete User/Title/Item.";
+	                state = LIBRARIANLOGIN;
+	                oo.setOutput(output);
+		            oo.setState(state);
+	        	}else{
 	        	o=outputHandler.createUser(input);
         		output=o.getOutput();
         		state=o.getState();
         		oo.setOutput(output);
 	            oo.setState(state);
+	        	}
 	        }
 	        
 	        else if(state==DELETEUSER){
+	        	if(input.equalsIgnoreCase("log out")){
+	            	output = "Successfully Log Out!";
+	                state = WAITING;
+	                oo.setOutput(output);
+		            oo.setState(state);
+	        	}else if(input.equalsIgnoreCase("main menu")){
+	        		output = "What can I do for you?Menu:Create User/Title/Item,Delete User/Title/Item.";
+	                state = LIBRARIANLOGIN;
+	                oo.setOutput(output);
+		            oo.setState(state);
+	        	}else{
+	        	
 	        		o=outputHandler.deleteUser(input);
 	        		output=o.getOutput();
 	        		state=o.getState();
 	        		oo.setOutput(output);
 		            oo.setState(state);
 	        	}
+	        	}
 	        
 	        else if(state==CREATETITLE){
+	        	
+	        	if(input.equalsIgnoreCase("log out")){
+	            	output = "Successfully Log Out!";
+	                state = WAITING;
+	                oo.setOutput(output);
+		            oo.setState(state);
+	        	}else if(input.equalsIgnoreCase("main menu")){
+	        		output = "What can I do for you?Menu:Create User/Title/Item,Delete User/Title/Item.";
+	                state = LIBRARIANLOGIN;
+	                oo.setOutput(output);
+		            oo.setState(state);
+	        	}else{
+	        	
 	        		o=outputHandler.createTitle(input);
 	        		output=o.getOutput();
 	        		state=o.getState();
 	        		oo.setOutput(output);
 		            oo.setState(state);
 	        	}
+	        	}
 
-	        else if(state==DELETETITLE){	        	
+	        else if(state==DELETETITLE){	  
+	        	if(input.equalsIgnoreCase("log out")){
+            	output = "Successfully Log Out!";
+                state = WAITING;
+                oo.setOutput(output);
+	            oo.setState(state);
+        	}else if(input.equalsIgnoreCase("main menu")){
+        		output = "What can I do for you?Menu:Create User/Title/Item,Delete User/Title/Item.";
+                state = LIBRARIANLOGIN;
+                oo.setOutput(output);
+	            oo.setState(state);
+        	}else{      	
 	        		o=outputHandler.deleteTitle(input);
 	        		output=o.getOutput();
 	        		state=o.getState();
 	        		oo.setOutput(output);
 		            oo.setState(state);
+        	}
 	        }
 	        else if(state==CREATEITEM){
+	        	if(input.equalsIgnoreCase("log out")){
+	            	output = "Successfully Log Out!";
+	                state = WAITING;
+	                oo.setOutput(output);
+		            oo.setState(state);
+	        	}else if(input.equalsIgnoreCase("main menu")){
+	        		output = "What can I do for you?Menu:Create User/Title/Item,Delete User/Title/Item.";
+	                state = LIBRARIANLOGIN;
+	                oo.setOutput(output);
+		            oo.setState(state);
+	        	}else{
 	        		o=outputHandler.createItem(input);
 	        		output=o.getOutput();
 	        		state=o.getState();
 	        		oo.setOutput(output);
 		            oo.setState(state);
+	        	}
 	        }
 	        
 	        else if(state==DELETEITEM){
+	        	if(input.equalsIgnoreCase("log out")){
+	            	output = "Successfully Log Out!";
+	                state = WAITING;
+	                oo.setOutput(output);
+		            oo.setState(state);
+	        	}else if(input.equalsIgnoreCase("main menu")){
+	        		output = "What can I do for you?Menu:Create User/Title/Item,Delete User/Title/Item.";
+	                state = LIBRARIANLOGIN;
+	                oo.setOutput(output);
+		            oo.setState(state);
+	        	}else{
+	        	
 	        		o=outputHandler.deleteItem(input);
 	        		output=o.getOutput();
 	        		state=o.getState();
 	        		oo.setOutput(output);
 		            oo.setState(state);
+		            
+	        		}
 	        	}
 	        
 
+	        
+	        
+	        
 	        else if(state==BORROW){
+	        	
+	        	if(input.equalsIgnoreCase("log out")){
+	            	output = "Successfully Log Out!";
+	                state = WAITING;
+	                oo.setOutput(output);
+		            oo.setState(state);
+	        	}else if(input.equalsIgnoreCase("main menu")){
+	        		output = "What can I do for you?Menu:Borrow,Renew,Return,Pay Fine.";
+	                state = USERLOGIN;
+	                oo.setOutput(output);
+		            oo.setState(state);
+	        	}
+	        	else{
+	        	
+	        	
 	        		o=outputHandler.borrow(input);
 	        		output=o.getOutput();
 	        		state=o.getState();
 	        		oo.setOutput(output);
 		            oo.setState(state);
+		            
+		            
+	        	}
 	        }  else if(state==RENEW){
 
+	        	if(input.equalsIgnoreCase("log out")){
+	            	output = "Successfully Log Out!";
+	                state = WAITING;
+	                oo.setOutput(output);
+		            oo.setState(state);
+	        	}else if(input.equalsIgnoreCase("main menu")){
+	        		output = "What can I do for you?Menu:Borrow,Renew,Return,Pay Fine.";
+	                state = USERLOGIN;
+	                oo.setOutput(output);
+		            oo.setState(state);
+	        	}
+	        	else{
+	        	
 	        		o=outputHandler.renew(input);
 	        		output=o.getOutput();
 	        		state=o.getState();
 	        		oo.setOutput(output);
 		            oo.setState(state);
+		            
+	        	}
 	        }
 	        else if(state==RETURN){
+	        	
+	        	
+	        	if(input.equalsIgnoreCase("log out")){
+	            	output = "Successfully Log Out!";
+	                state = WAITING;
+	                oo.setOutput(output);
+		            oo.setState(state);
+	        	}else if(input.equalsIgnoreCase("main menu")){
+	        		output = "What can I do for you?Menu:Borrow,Renew,Return,Pay Fine.";
+	                state = USERLOGIN;
+	                oo.setOutput(output);
+		            oo.setState(state);
+	        	}
+	        	else{
 	        	
 	        		o=outputHandler.returnBook(input);
 	        		output=o.getOutput();
 	        		state=o.getState();
 	        		oo.setOutput(output);
 		            oo.setState(state);
+		            
+		            
+		            
+	        	}
 	        }else if(state==PAYFINE){
 	        	
+	        	if(input.equalsIgnoreCase("log out")){
+	            	output = "Successfully Log Out!";
+	                state = WAITING;
+	                oo.setOutput(output);
+		            oo.setState(state);
+	        	}else if(input.equalsIgnoreCase("main menu")){
+	        		output = "What can I do for you?Menu:Borrow,Renew,Return,Pay Fine.";
+	                state = USERLOGIN;
+	                oo.setOutput(output);
+		            oo.setState(state);
+	        	}
+	        	else{
 	        		 o = outputHandler.payFine(input);
 	        		output=o.getOutput();
 	        		state=o.getState();
 	        		oo.setOutput(output);
 		            oo.setState(state);
+	        	}
 		           		            
 	        }
 	        

@@ -204,10 +204,25 @@ public class UnitTests {
 	
 	}
 	
+	@Test
+	public void logOutanddMainMenuPrompts() {
+		
+		
+		
+		assertEquals("main menu",handler.processInput("main menu",InputHandler.DELETEUSER).getOutput(),"What can I do for you?Menu:Create User/Title/Item,Delete User/Title/Item.");		
+		assertEquals("main menu",handler.processInput("main menu",InputHandler.BORROW).getOutput(),"What can I do for you?Menu:Borrow,Renew,Return,Pay Fine.");	
+		assertEquals("log out.",handler.processInput("log out",InputHandler.CREATEITEM).getOutput(),"Successfully Log Out!");	
+		assertEquals("log out",handler.processInput("log out",InputHandler.DELETEITEM).getOutput(),"Successfully Log Out!");		
+		assertEquals("Log out",handler.processInput("log out",InputHandler.RETURN).getOutput(),"Successfully Log Out!");	
+		assertEquals("Log out",handler.processInput("log out",InputHandler.PAYFINE).getOutput(),"Successfully Log Out!");
+		
+		
+		
+		
+
 	
 	
-	
-	
+	}
 	
 
 
