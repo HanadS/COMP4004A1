@@ -151,7 +151,9 @@ public class LoanTable {
 		if(flag!=0){
 			long time = date.getTime()-loanList.get(index).getDate().getTime();
 			loanList.remove(index);
-			
+			if(time> 60000){
+				FeeTable.getInstance().applyfee(j,time);
+			}
 			result="success";
 		}else{
 			result="The Loan Does Not Exist";
@@ -160,7 +162,22 @@ public class LoanTable {
 		return result;
 	}
 	
-	
+	public boolean looklimit(int j) {
+		boolean result=true;
+		int flag=0;
+		for(int i=0;i<loanList.size();i++){
+			int userid=(loanList.get(i)).getUserid();
+			if(userid==j){
+				flag=flag+1;
+			}else{
+				flag=flag+0;	
+			}
+		}
+		if(flag!=0){
+			result=false;
+		}
+		return result;
+	}
 	
 	
 }

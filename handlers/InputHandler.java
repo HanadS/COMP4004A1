@@ -285,6 +285,7 @@ public class InputHandler {
 	        		oo.setOutput(output);
 		            oo.setState(state);
 		            
+		       	 System.out.println("output"+output);
 
 		           		            
 	        }

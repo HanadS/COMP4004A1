@@ -30,6 +30,7 @@ public class FeeTable {
 	
 	public Object payfine(int i) {
 		String result="";
+		boolean oloan=LoanTable.getInstance().looklimit(i);
 		int fee=0;
 		int index=0;
 		boolean user=FeeTable.getInstance().checkuser(i);
@@ -46,9 +47,17 @@ public class FeeTable {
 			fee=0;
 		}
 		
-			feeList.get(index).setUserid(i);
-			feeList.get(index).setFee(0);
-			result="success";
+			if(oloan==false){
+				result="Borrowing Items Exist";
+			}else{
+				feeList.get(index).setUserid(i);
+				feeList.get(index).setFee(0);
+				result="success";
+			}
+		
+		
+	
+		
 		
 		return result;
 	}
@@ -67,6 +76,37 @@ public class FeeTable {
 			result=false;
 		}
 		return result;
+	}
+	public void applyfee(int j, long time) {
+		int flag=0;
+		int index=0;
+		for(int i = 0;i<feeList.size();i++){
+			int userid=(feeList.get(i)).getUserid();
+			if(userid==j){
+				flag=flag+1;
+				index=i;
+			}
+		}
+		int a=(int) ((time/(60000))-5);
+		if(flag!=0){
+			if(a>=0){
+				feeList.get(index).setFee(a+feeList.get(index).getFee());
+				feeList.get(index).setUserid(j);
+			}else{
+				feeList.get(index).setFee(feeList.get(index).getFee());
+				feeList.get(index).setUserid(j);
+			}
+		}else{
+			if(a>=0){
+				Fee fee=new Fee(j,a);
+				feeList.add(fee);
+			}else{
+				Fee fee=new Fee(j,0);
+				feeList.add(fee);
+			}
+		}
+		
+		
 	}
 	
 	

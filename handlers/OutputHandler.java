@@ -435,14 +435,21 @@ public Output payFine(String input) {
 	Output output=new Output("",0);
 	String[] strArray = null;   
     strArray = input.split(",");
+    boolean email=strArray[0].contains("@");
     int userid=UserTable.getInstance().lookup(strArray[0]);
     Object result="";
- 
-    result=FeeTable.getInstance().payfine(userid);	
-    if(result.equals("success")){
-    	output.setOutput("Success!");
-    	}
-    		
+     if(userid==-1){
+    	output.setOutput("The User Does Not Exist!");
+    	output.setState(PAYFINE);
+     }else{
+    	result=FeeTable.getInstance().payfine(userid);	
+    	if(result.equals("success")){
+    		output.setOutput("Success!");
+    		}else{
+        		output.setOutput(result+"!");
+        	}
+    		output.setState(USER);
+     }
     	
 	return output;
 }
