@@ -35,8 +35,6 @@ public class Item {
 	}
 	
 
-
-
 	public boolean sameItem(Item b){
 
 	if (this.getItemid() == b.getItemid() && this.getISBN() == b.getISBN() && this.getCopynumber() == b.getCopynumber() ){
@@ -46,6 +44,6 @@ public class Item {
 		return false;
 
 	}
-	
+
 
 }
