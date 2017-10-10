@@ -131,7 +131,6 @@ public class UnitTests {
 	public void UserInitializationTests() {
 		
 		handler.processInput("jim@carleton.ca,jim",InputHandler.CREATEUSER);
-		
 		assertEquals("Prompt for Username and Password.",handler.processInput("User",InputHandler.ROLEDETERMINED).getOutput(), "Please Input User Info: username,password:" );
 
 				
@@ -146,9 +145,6 @@ public class UnitTests {
     					+ "Renew"
     					+ "Return"
     					+ "Pay Fine." );
-		
-			
-	
 	assertEquals("Prompting user for borrow info",handler.processInput("borrow",InputHandler.USERLOGIN).getState(),InputHandler.BORROW);
 	assertEquals("Prompting user for renew info",handler.processInput("renew",InputHandler.USERLOGIN).getState(), InputHandler.RENEW);
 	assertEquals("Prompting user for return info",handler.processInput("return",InputHandler.USERLOGIN).getState(), InputHandler.RETURN);
@@ -163,8 +159,6 @@ public class UnitTests {
 		handler.processInput("jim@carleton.ca,jim",InputHandler.CREATEUSER);
 		handler.processInput("9781442668584,TestBook",InputHandler.CREATETITLE);
 
-		
-		
 		Loan testLoan = new Loan(0,"9781442668584","1", new Date()  ,"0");
 		
 		assertEquals("get id", testLoan.getUserid(),0);
@@ -175,8 +169,7 @@ public class UnitTests {
 		assertTrue( "Initializing LoanTable Class", LoanTable.getInstance().getLoanTable().get(0).sameLoan(testLoan));
 		
 		
-		assertEquals("Create a loan by borrowing",handler.processInput("jim@carleton.ca,9781442668584,1",InputHandler.BORROW).getOutput(),"Success!");	
-
+		assertEquals("Create a loan by borrowing",handler.processInput("jim@carleton.ca,9781442668584,1",InputHandler.BORROW).getOutput(),"Success!");
 		assertEquals("Create a loan by burrowing with invlaid user",handler.processInput("kjnknk@carleton.ca,9781442668584,1",InputHandler.BORROW).getOutput(), "The User Does Not Exist!");	
 		assertEquals("Create a loan by burrowing with invlaid isbn",handler.processInput("jim@carleton.ca,9781234234234584,1",InputHandler.BORROW).getOutput(), "Your input should in this format:'useremail,ISBN,copynumber'");	
 		assertEquals("Create a loan by burrowing with invlaid copynumber",handler.processInput("jim@carleton.ca,9781442668584,3",InputHandler.BORROW).getOutput(), "Copynumber Invalid!");	
@@ -207,21 +200,12 @@ public class UnitTests {
 	@Test
 	public void logOutanddMainMenuPrompts() {
 		
-		
-		
 		assertEquals("main menu",handler.processInput("main menu",InputHandler.DELETEUSER).getOutput(),"What can I do for you?Menu:Create User/Title/Item,Delete User/Title/Item.");		
 		assertEquals("main menu",handler.processInput("main menu",InputHandler.BORROW).getOutput(),"What can I do for you?Menu:Borrow,Renew,Return,Pay Fine.");	
 		assertEquals("log out.",handler.processInput("log out",InputHandler.CREATEITEM).getOutput(),"Successfully Log Out!");	
 		assertEquals("log out",handler.processInput("log out",InputHandler.DELETEITEM).getOutput(),"Successfully Log Out!");		
 		assertEquals("Log out",handler.processInput("log out",InputHandler.RETURN).getOutput(),"Successfully Log Out!");	
 		assertEquals("Log out",handler.processInput("log out",InputHandler.PAYFINE).getOutput(),"Successfully Log Out!");
-		
-		
-		
-		
-
-	
-	
 	}
 	
 
