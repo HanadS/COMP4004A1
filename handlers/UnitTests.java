@@ -34,12 +34,8 @@ public class UnitTests {
 	public void librarianInitializationTests() {
 		
 				assertEquals("Prompt for password.",handler.processInput("librarian",InputHandler.ROLEDETERMINED).getOutput(), "Please Input The Password." );
-
 				assertEquals("Librarian login",handler.processInput("admin",InputHandler.LIBRARIAN).getState(), InputHandler.LIBRARIANLOGIN );
-
 				assertEquals("Check if password is incorrect.",handler.processInput("sdcmslkd",InputHandler.LIBRARIAN).getState(), InputHandler.LIBRARIAN );
-
-
 				assertEquals("Display Librarian Terminal",handler.processInput("admin",InputHandler.LIBRARIAN).getOutput(),"What would you like to do?"
 						
 						+ "\n Menu:"
@@ -60,9 +56,9 @@ public class UnitTests {
 				assertEquals("Prompting librarian for Title.",handler.processInput("create title",InputHandler.LIBRARIANLOGIN).getOutput(),"Please Input Title Info:'ISBN,title'");
 				assertEquals("Prompting librarian for Item.",handler.processInput("create item",InputHandler.LIBRARIANLOGIN).getOutput(),"Please Input Item Info:'ISBN'");
 				
-				assertEquals("Prompting librarian for username and password to delete",handler.processInput("delete user",InputHandler.LIBRARIANLOGIN).getOutput(),"TO DELETE -> Please Input User Info: username,password:");
-				assertEquals("Prompting librarian for Title to delete",handler.processInput("delete title",InputHandler.LIBRARIANLOGIN).getOutput(),"TO DELETE -> Please Input Title Info:'ISBN,title'");
-				assertEquals("Prompting librarian for Item to delete",handler.processInput("delete item",InputHandler.LIBRARIANLOGIN).getOutput(),"TO DELETE -> Please Input Item Info:'ISBN'");		
+				assertEquals("Prompting librarian for username and password to delete",handler.processInput("delete user",InputHandler.LIBRARIANLOGIN).getOutput(),"TO DELETE -> Please Input User Info: useremail");
+				assertEquals("Prompting librarian for Title to delete",handler.processInput("delete title",InputHandler.LIBRARIANLOGIN).getOutput(),"TO DELETE -> Please Input Title Info:'ISBN'");
+				assertEquals("Prompting librarian for Item to delete",handler.processInput("delete item",InputHandler.LIBRARIANLOGIN).getOutput(),"TO DELETE -> Please Input Item Info:'ISBN',copynumber");		
 	}
 	@Test
 	public void UserCreationTests() {
@@ -220,7 +216,8 @@ public class UnitTests {
 						+ "\n\n Borrow"
 						+ "\n Renew"
 						+ "\n Return"
-						+ "\n Collect Fine");		
+						+ "\n Collect Fine");
+		
 		assertEquals("main menu",handler.processInput("main menu",InputHandler.BORROW).getOutput(),"What would you like to do?"
 				
 				+ "\n Menu:"
@@ -234,6 +231,7 @@ public class UnitTests {
 				+ "\n Renew"
 				+ "\n Return"
 				+ "\n Collect Fine");	
+		
 		assertEquals("log out.",handler.processInput("log out",InputHandler.CREATEITEM).getOutput(),"Successfully Log Out!");	
 		assertEquals("log out",handler.processInput("log out",InputHandler.DELETEITEM).getOutput(),"Successfully Log Out!");		
 		assertEquals("Log out",handler.processInput("log out",InputHandler.RETURN).getOutput(),"Successfully Log Out!");	

@@ -300,7 +300,7 @@ public Output librarianLogin(String input) {
 			output.setState(LIBRARIAN);
 			output.setOutput("Wrong password");
 		}
-	
+
 	return output;
 }
 

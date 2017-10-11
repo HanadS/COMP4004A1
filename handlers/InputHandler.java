@@ -174,7 +174,7 @@ public class InputHandler {
 	         else if (input.equalsIgnoreCase("delete user") ){
 		        	o = outputHandler.promptUserInfo();
 		    
-		        	output = o.getOutput();
+		        	output = "Please Input User Info: useremail";
 		        	output = "TO DELETE -> " + output;
 		        	
 		        	state=DELETEUSER;
@@ -184,7 +184,7 @@ public class InputHandler {
 	         else if (input.equalsIgnoreCase("delete title") ){
 		        	o = outputHandler.promptTitleInfo();
 	
-		        	output = o.getOutput();
+		        	output = "Please Input Title Info:'ISBN'";
 					state=DELETETITLE;
 					output = "TO DELETE -> " + output;
 					
@@ -195,7 +195,7 @@ public class InputHandler {
 	         else if (input.equalsIgnoreCase("delete item") ){
 		        	o = outputHandler.promptItemInfo();
 	
-		        	output = o.getOutput();
+		        	output = "Please Input Item Info:'ISBN',copynumber";
 					state=DELETEITEM;
 					output = "TO DELETE -> " + output;
 					
@@ -235,9 +235,48 @@ public class InputHandler {
             	oo.setState(state);
             	oo.setOutput(output);
             }
-	         
+        	else if(input.equalsIgnoreCase("log out")){
+            	output = "Successfully Log Out!";
+                state = WAITING;
+                oo.setOutput(output);
+	            oo.setState(state);
+        	}else if(input.equalsIgnoreCase("main menu")){
+        		output = "What would you like to do?"
+					
+					+ "\n Menu:"
+					+ "\n Create User"
+					+ "\n Create Title"
+					+ "\n Create Item"
+					+ "\n\n Delete User"
+					+ "\n Delete Title"
+					+ "\n Delete Item."
+					+ "\n\n Borrow"
+					+ "\n Renew"
+					+ "\n Return"
+					+ "\n Collect Fine";
+                state = LIBRARIANLOGIN;
+                oo.setOutput(output);
+	            oo.setState(state);
+        	}else{
+        		output = "What would you like to do?"
+					
+					+ "\n Menu:"
+					+ "\n Create User"
+					+ "\n Create Title"
+					+ "\n Create Item"
+					+ "\n\n Delete User"
+					+ "\n Delete Title"
+					+ "\n Delete Item."
+					+ "\n\n Borrow"
+					+ "\n Renew"
+					+ "\n Return"
+					+ "\n Collect Fine";
+                state = LIBRARIANLOGIN;
+                oo.setOutput(output);
+	            oo.setState(state);
+	     	
+	        	}
 	        }
-	        
 	        else if (state==USERLOGIN){
 	        	if (input.equalsIgnoreCase("borrow")) {
 	        		o=outputHandler.promptInputInfo();
@@ -302,9 +341,16 @@ public class InputHandler {
 	        	}else{
 	        	o=outputHandler.createUser(input);
         		output=o.getOutput();
+        		
+        		
+        		
+        		
         		state=o.getState();
         		oo.setOutput(output);
 	            oo.setState(state);
+	            
+	            
+	            
 	        	}
 	        }
 	        
@@ -335,6 +381,7 @@ public class InputHandler {
 	        	
 	        		o=outputHandler.deleteUser(input);
 	        		output=o.getOutput();
+	        		 
 	        		state=o.getState();
 	        		oo.setOutput(output);
 		            oo.setState(state);
@@ -369,6 +416,8 @@ public class InputHandler {
 	        	
 	        		o=outputHandler.createTitle(input);
 	        		output=o.getOutput();
+	        		 
+	        		
 	        		state=o.getState();
 	        		oo.setOutput(output);
 		            oo.setState(state);
@@ -396,11 +445,15 @@ public class InputHandler {
 						+ "\n Return"
 						+ "\n Collect Fine";
                 state = LIBRARIANLOGIN;
+                
+                
                 oo.setOutput(output);
 	            oo.setState(state);
         	}else{      	
 	        		o=outputHandler.deleteTitle(input);
 	        		output=o.getOutput();
+	        		 
+	        		
 	        		state=o.getState();
 	        		oo.setOutput(output);
 		            oo.setState(state);
@@ -433,6 +486,7 @@ public class InputHandler {
 
 	        		o=outputHandler.createItem(input);
 	        		output=o.getOutput();
+	        		 
 	        		state=o.getState();
 	        		oo.setOutput(output);
 		            oo.setState(state);
@@ -466,6 +520,7 @@ public class InputHandler {
 	        	
 	        		o=outputHandler.deleteItem(input);
 	        		output=o.getOutput();
+	        		
 	        		state=o.getState();
 	        		oo.setOutput(output);
 		            oo.setState(state);
@@ -507,6 +562,8 @@ public class InputHandler {
 	        	
 	        		o=outputHandler.borrow(input);
 	        		output=o.getOutput();
+	        		
+	        		
 	        		state=o.getState();
 	        		oo.setOutput(output);
 		            oo.setState(state);
