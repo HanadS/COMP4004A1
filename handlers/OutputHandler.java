@@ -37,7 +37,10 @@ public class OutputHandler {
     public static final int RETURN=14;
     public static final int PAYFINE=15;
 
+    public static final int ADDCOPY=16;
 
+    
+    
 	
 
 	
@@ -45,6 +48,8 @@ public class OutputHandler {
 		
 		Output output=new Output("",0);
 		output.setOutput("Are you a librarian or a User?");
+		output.setState(ROLEDETERMINED);
+		
 		return output;
 	}
 	
@@ -76,7 +81,7 @@ public class OutputHandler {
 	public Output promptItemInfo() {
 
 		Output output=new Output("",0);
-		output.setOutput("Please Input Item Info:'ISBN,copynumber'");
+		output.setOutput("Please Input Item Info:'ISBN'");
 		output.setState(CREATEITEM);
 		return output;
 
@@ -216,6 +221,7 @@ public class OutputHandler {
 	}
 
 	public Output createItem(String input) {
+
 		Output output=new Output("",0);
 		String[] strArray = null;   
         strArray = input.split(",");
@@ -224,14 +230,20 @@ public class OutputHandler {
         if(strArray.length!=1 || number!=true){
         	output.setOutput("Your input should in this format:'ISBN',ISBN should be a 13-digit number");
         	output.setState(CREATEITEM);
+
         }else{
+
         	result=ItemTable.getInstance().createitem(strArray[0]);
         	if(result.equals(true)){
+
         		output.setOutput("Success!");
+            	output.setState(LIBRARIANLOGIN);
         	}else{
-        		output.setOutput("The Title Does Not Exists!");
+        		output.setOutput("The title does not exist. Would you like to add it? Yes/No?");
+            	output.setState(ADDCOPY);
+
+        		
         	}
-        	output.setState(LIBRARIANLOGIN);
         }
 		return output;
 	}
@@ -268,14 +280,20 @@ public Output librarianLogin(String input) {
 	Output output = new Output("",0);
 	if(input.equalsIgnoreCase("admin")){
 			output.setState(LIBRARIANLOGIN);
-			output.setOutput("What can I do for you?"
-					+ " Menu:"
-					+ "Create User"
-					+ "Create Title"
-					+ "Create Item"
-					+ "Delete User"
-					+ "Delete Title"
-					+ "Delete Item.");
+			output.setOutput("What would you like to do?"
+					
+					+ "\n Menu:"
+					+ "\n Create User"
+					+ "\n Create Title"
+					+ "\n Create Item"
+					+ "\n\n Delete User"
+					+ "\n Delete Title"
+					+ "\n Delete Item."
+					+ "\n\n Borrow"
+					+ "\n Renew"
+					+ "\n Return"
+					+ "\n Collect Fine"
+						);
 	}
 	
 	else{

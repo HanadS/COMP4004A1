@@ -42,9 +42,8 @@ public class LoanTable {
 			result="User Invalid";
 		}else if(isbn==false){
 			result="ISBN Invalid";
-		}else if(copynumber==false){
-			result="Copynumber Invalid";
-		}else{
+		}
+		else{
 			if(oloan){
 				if(limit){
 				Loan loan=new Loan(i,string,string2,date,"0");

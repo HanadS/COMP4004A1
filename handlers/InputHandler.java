@@ -28,6 +28,9 @@ public class InputHandler {
     public static final int RENEW=13;
     public static final int RETURN=14;
     public static final int PAYFINE=15;
+    public static final int ADDCOPY=16;
+
+    
 
 	
 
@@ -39,21 +42,28 @@ public class InputHandler {
 	public ServerOutput processInput(String input, int state) {
 		 String output = "";
 		 Output o = new Output("",0);
+		 
 		 ServerOutput oo = new ServerOutput(output,o.getState());
 		 
 	
 	        if (state == WAITING) {
 	        	o = outputHandler.determineRole();
 	        	output = o.getOutput();
+	        	state = o.getState();
 		        oo.setOutput(output);
+		        oo.setState(state);
+		        		        
 	         }else if (state == ROLEDETERMINED) {
 	        	 
 	        	 if (input.equalsIgnoreCase("librarian")) {	            
 			            o = outputHandler.promptPassword();
+			            
+			            
 			            output = o.getOutput();
 			            state=LIBRARIAN;
 			            oo.setState(state);
 			            oo.setOutput(output);
+			         
 			            
 		            }
 	        	 else if (input.equalsIgnoreCase("user")) {
@@ -71,6 +81,7 @@ public class InputHandler {
 	        		 	o = outputHandler.determineRole();
 	 	        		output = "Role not recognized. "+o.getOutput();
 	 	        		oo.setOutput(output);
+	 	        		oo.setState(state);
 		            }
 	        	 
 	        }else if(state==LIBRARIAN){
@@ -90,6 +101,38 @@ public class InputHandler {
 		           		            
 		        }
 	        
+	        
+		        else if(state == ADDCOPY ){
+		        	if(input.equalsIgnoreCase("yes")) {
+		        		
+		        		o = outputHandler.promptTitleInfo();
+			        	output = o.getOutput();			        	
+		            	oo.setState(state);
+		            	oo.setOutput(output);
+		        	}
+		        	else{
+		        		output = "What would you like to do?"
+								
+						+ "\n Menu:"
+						+ "\n Create User"
+						+ "\n Create Title"
+						+ "\n Create Item"
+						+ "\n\n Delete User"
+						+ "\n Delete Title"
+						+ "\n Delete Item."
+						+ "\n\n Borrow"
+						+ "\n Renew"
+						+ "\n Return"
+						+ "\n Collect Fine";
+	                state = LIBRARIANLOGIN;
+	                oo.setOutput(output);
+		            oo.setState(state);
+		        		
+		        		
+		        	}
+		         }
+		         
+	        
 	        else if(state == LIBRARIANLOGIN) {
 	         if (input.equalsIgnoreCase("create user") ){
 	        	
@@ -101,12 +144,14 @@ public class InputHandler {
 	            	oo.setOutput(output);
 		        }
 	         
+	      
 	         else if (input.equalsIgnoreCase("create title")) {
 	        		
 		        	o = outputHandler.promptTitleInfo();
 		        	output = o.getOutput();
 		        	
-		     
+		        	state = o.getState();
+
 		        	
 	            	oo.setState(state);
 	            	oo.setOutput(output);
@@ -114,10 +159,13 @@ public class InputHandler {
 		        }
 	         
 	         else if (input.equalsIgnoreCase("create item")) {
+	        	 
 	        		
 		        	o = outputHandler.promptItemInfo();
 		        	output = o.getOutput();
-		        		        	
+		        		    
+		        	state = o.getState();
+
 	            	oo.setState(state);
 	            	oo.setOutput(output);
 		        
@@ -153,7 +201,41 @@ public class InputHandler {
 					
 					oo.setState(state);
 					oo.setOutput(output);
-		        }	
+		        }
+	         
+	         else if (input.equalsIgnoreCase("borrow")) {
+        		o=outputHandler.promptInputInfo();
+        		output=o.getOutput();
+        		
+        		state = BORROW;
+        		
+        		oo.setOutput(output);
+	            oo.setState(state);
+            }
+	         else if (input.equalsIgnoreCase("renew")) {
+
+                o=outputHandler.promptInputInfo();
+                output=o.getOutput();
+                state=RENEW;
+                oo.setOutput(output);
+                oo.setState(state);
+
+        	}else if (input.equalsIgnoreCase("return")) {
+                o=outputHandler.promptInputInfo();
+	            state=RETURN;
+	            oo.setOutput(output);
+	            oo.setState(state);
+            }
+        	else if (input.equalsIgnoreCase("pay fine")) {
+        		
+        		o = outputHandler.promptPayFine();
+	        	state = o.getState();
+	        	output = o.getOutput();
+	        	
+            	oo.setState(state);
+            	oo.setOutput(output);
+            }
+	         
 	        }
 	        
 	        else if (state==USERLOGIN){
@@ -166,7 +248,7 @@ public class InputHandler {
 	        		oo.setOutput(output);
 		            oo.setState(state);
 	            }
-	        	if (input.equalsIgnoreCase("renew")) {
+	        	else if (input.equalsIgnoreCase("renew")) {
 
 	                o=outputHandler.promptInputInfo();
 	                output=o.getOutput();
@@ -201,7 +283,19 @@ public class InputHandler {
 	                oo.setOutput(output);
 		            oo.setState(state);
 	        	}else if(input.equalsIgnoreCase("main menu")){
-	        		output = "What can I do for you?Menu:Create User/Title/Item,Delete User/Title/Item.";
+	        		output = "What would you like to do?"
+						
+						+ "\n Menu:"
+						+ "\n Create User"
+						+ "\n Create Title"
+						+ "\n Create Item"
+						+ "\n\n Delete User"
+						+ "\n Delete Title"
+						+ "\n Delete Item."
+						+ "\n\n Borrow"
+						+ "\n Renew"
+						+ "\n Return"
+						+ "\n Collect Fine";
 	                state = LIBRARIANLOGIN;
 	                oo.setOutput(output);
 		            oo.setState(state);
@@ -221,7 +315,19 @@ public class InputHandler {
 	                oo.setOutput(output);
 		            oo.setState(state);
 	        	}else if(input.equalsIgnoreCase("main menu")){
-	        		output = "What can I do for you?Menu:Create User/Title/Item,Delete User/Title/Item.";
+	        		output = "What would you like to do?"
+						
+						+ "\n Menu:"
+						+ "\n Create User"
+						+ "\n Create Title"
+						+ "\n Create Item"
+						+ "\n\n Delete User"
+						+ "\n Delete Title"
+						+ "\n Delete Item."
+						+ "\n\n Borrow"
+						+ "\n Renew"
+						+ "\n Return"
+						+ "\n Collect Fine";
 	                state = LIBRARIANLOGIN;
 	                oo.setOutput(output);
 		            oo.setState(state);
@@ -243,7 +349,19 @@ public class InputHandler {
 	                oo.setOutput(output);
 		            oo.setState(state);
 	        	}else if(input.equalsIgnoreCase("main menu")){
-	        		output = "What can I do for you?Menu:Create User/Title/Item,Delete User/Title/Item.";
+	        		output = "What would you like to do?"
+						
+						+ "\n Menu:"
+						+ "\n Create User"
+						+ "\n Create Title"
+						+ "\n Create Item"
+						+ "\n\n Delete User"
+						+ "\n Delete Title"
+						+ "\n Delete Item."
+						+ "\n\n Borrow"
+						+ "\n Renew"
+						+ "\n Return"
+						+ "\n Collect Fine";
 	                state = LIBRARIANLOGIN;
 	                oo.setOutput(output);
 		            oo.setState(state);
@@ -264,7 +382,19 @@ public class InputHandler {
                 oo.setOutput(output);
 	            oo.setState(state);
         	}else if(input.equalsIgnoreCase("main menu")){
-        		output = "What can I do for you?Menu:Create User/Title/Item,Delete User/Title/Item.";
+        		output = "What would you like to do?"
+						
+						+ "\n Menu:"
+						+ "\n Create User"
+						+ "\n Create Title"
+						+ "\n Create Item"
+						+ "\n\n Delete User"
+						+ "\n Delete Title"
+						+ "\n Delete Item."
+						+ "\n\n Borrow"
+						+ "\n Renew"
+						+ "\n Return"
+						+ "\n Collect Fine";
                 state = LIBRARIANLOGIN;
                 oo.setOutput(output);
 	            oo.setState(state);
@@ -274,7 +404,7 @@ public class InputHandler {
 	        		state=o.getState();
 	        		oo.setOutput(output);
 		            oo.setState(state);
-        	}
+        		}
 	        }
 	        else if(state==CREATEITEM){
 	        	if(input.equalsIgnoreCase("log out")){
@@ -283,11 +413,24 @@ public class InputHandler {
 	                oo.setOutput(output);
 		            oo.setState(state);
 	        	}else if(input.equalsIgnoreCase("main menu")){
-	        		output = "What can I do for you?Menu:Create User/Title/Item,Delete User/Title/Item.";
+	        		output = "What would you like to do?"
+						
+						+ "\n Menu:"
+						+ "\n Create User"
+						+ "\n Create Title"
+						+ "\n Create Item"
+						+ "\n\n Delete User"
+						+ "\n Delete Title"
+						+ "\n Delete Item."
+						+ "\n\n Borrow"
+						+ "\n Renew"
+						+ "\n Return"
+						+ "\n Collect Fine";
 	                state = LIBRARIANLOGIN;
 	                oo.setOutput(output);
 		            oo.setState(state);
 	        	}else{
+
 	        		o=outputHandler.createItem(input);
 	        		output=o.getOutput();
 	        		state=o.getState();
@@ -303,7 +446,19 @@ public class InputHandler {
 	                oo.setOutput(output);
 		            oo.setState(state);
 	        	}else if(input.equalsIgnoreCase("main menu")){
-	        		output = "What can I do for you?Menu:Create User/Title/Item,Delete User/Title/Item.";
+	        		output = "What would you like to do?"
+						
+						+ "\n Menu:"
+						+ "\n Create User"
+						+ "\n Create Title"
+						+ "\n Create Item"
+						+ "\n\n Delete User"
+						+ "\n Delete Title"
+						+ "\n Delete Item."
+						+ "\n\n Borrow"
+						+ "\n Renew"
+						+ "\n Return"
+						+ "\n Collect Fine";
 	                state = LIBRARIANLOGIN;
 	                oo.setOutput(output);
 		            oo.setState(state);
@@ -330,7 +485,19 @@ public class InputHandler {
 	                oo.setOutput(output);
 		            oo.setState(state);
 	        	}else if(input.equalsIgnoreCase("main menu")){
-	        		output = "What can I do for you?Menu:Borrow,Renew,Return,Pay Fine.";
+	        		output = "What would you like to do?"
+						
+						+ "\n Menu:"
+						+ "\n Create User"
+						+ "\n Create Title"
+						+ "\n Create Item"
+						+ "\n\n Delete User"
+						+ "\n Delete Title"
+						+ "\n Delete Item."
+						+ "\n\n Borrow"
+						+ "\n Renew"
+						+ "\n Return"
+						+ "\n Collect Fine";
 	                state = USERLOGIN;
 	                oo.setOutput(output);
 		            oo.setState(state);
@@ -354,7 +521,19 @@ public class InputHandler {
 	                oo.setOutput(output);
 		            oo.setState(state);
 	        	}else if(input.equalsIgnoreCase("main menu")){
-	        		output = "What can I do for you?Menu:Borrow,Renew,Return,Pay Fine.";
+	        		output = "What would you like to do?"
+						
+						+ "\n Menu:"
+						+ "\n Create User"
+						+ "\n Create Title"
+						+ "\n Create Item"
+						+ "\n\n Delete User"
+						+ "\n Delete Title"
+						+ "\n Delete Item."
+						+ "\n\n Borrow"
+						+ "\n Renew"
+						+ "\n Return"
+						+ "\n Collect Fine";
 	                state = USERLOGIN;
 	                oo.setOutput(output);
 		            oo.setState(state);
@@ -378,7 +557,19 @@ public class InputHandler {
 	                oo.setOutput(output);
 		            oo.setState(state);
 	        	}else if(input.equalsIgnoreCase("main menu")){
-	        		output = "What can I do for you?Menu:Borrow,Renew,Return,Pay Fine.";
+	        		output = "What would you like to do?"
+						
+						+ "\n Menu:"
+						+ "\n Create User"
+						+ "\n Create Title"
+						+ "\n Create Item"
+						+ "\n\n Delete User"
+						+ "\n Delete Title"
+						+ "\n Delete Item."
+						+ "\n\n Borrow"
+						+ "\n Renew"
+						+ "\n Return"
+						+ "\n Collect Fine";
 	                state = USERLOGIN;
 	                oo.setOutput(output);
 		            oo.setState(state);
@@ -402,7 +593,19 @@ public class InputHandler {
 	                oo.setOutput(output);
 		            oo.setState(state);
 	        	}else if(input.equalsIgnoreCase("main menu")){
-	        		output = "What can I do for you?Menu:Borrow,Renew,Return,Pay Fine.";
+	        		output = "What would you like to do?"
+						
+						+ "\n Menu:"
+						+ "\n Create User"
+						+ "\n Create Title"
+						+ "\n Create Item"
+						+ "\n\n Delete User"
+						+ "\n Delete Title"
+						+ "\n Delete Item."
+						+ "\n\n Borrow"
+						+ "\n Renew"
+						+ "\n Return"
+						+ "\n Collect Fine";
 	                state = USERLOGIN;
 	                oo.setOutput(output);
 		            oo.setState(state);
