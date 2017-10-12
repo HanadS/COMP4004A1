@@ -161,7 +161,10 @@ public class UnitTests {
 		
 		
 		handler.processInput("jim@carleton.ca,jim",InputHandler.CREATEUSER);
-		handler.processInput("9781442668584,TestBook",InputHandler.CREATETITLE);
+		handler.processInput("9781442668583,TestBook2",InputHandler.CREATETITLE);
+		handler.processInput("9781442668583",InputHandler.CREATEITEM);
+
+		
 
 		Loan testLoan = new Loan(0,"9781442668584","1", new Date()  ,"0");
 		
@@ -173,11 +176,21 @@ public class UnitTests {
 		assertTrue( "Initializing LoanTable Class", LoanTable.getInstance().getLoanTable().get(0).sameLoan(testLoan));
 		
 		
-		assertEquals("Create a loan by borrowing",handler.processInput("jim@carleton.ca,9781442668584,1",InputHandler.BORROW).getOutput(),"Success!");
+	//	System.out.println(handler.processInput("jim@carleton.ca,9781442668583,1",InputHandler.BORROW).getOutput());
+		//System.out.println(handler.processInput("9781442668583",InputHandler.CREATEITEM).getOutput());
+		//System.out.println(handler.processInput("monitor system",InputHandler.LIBRARIANLOGIN).getOutput());
+		
+		//System.out.println("\n"+handler.processInput("jim@carleton.ca,9781442668583,1",InputHandler.BORROW).getOutput());
+
+	
+		assertEquals("Create a loan by borrowing",handler.processInput("jim@carleton.ca,9781442668583,1",InputHandler.BORROW).getOutput(),"Success!");
 		assertEquals("Create a loan by burrowing with invlaid user",handler.processInput("kjnknk@carleton.ca,9781442668584,1",InputHandler.BORROW).getOutput(), "The User Does Not Exist!");	
 		assertEquals("Create a loan by burrowing with invlaid isbn",handler.processInput("jim@carleton.ca,9781234234234584,1",InputHandler.BORROW).getOutput(), "Your input should in this format:'useremail,ISBN,copynumber'");	
-		//assertEquals("Create a loan by burrowing with invlaid copynumber",handler.processInput("jim@carleton.ca,9781442668584,3",InputHandler.BORROW).getOutput(), "Copynumber Invalid!");	
-//		
+		assertEquals("Create a loan by burrowing with invlaid copynumber",handler.processInput("jim@carleton.ca,9781442668584,3",InputHandler.BORROW).getOutput(), "Copynumber Invalid!");	
+		assertEquals("Create a loan by borrowing an item that was already borrowed",handler.processInput("jim@carleton.ca,9781442668583,1",InputHandler.BORROW).getOutput(),"Already been loaned!");
+
+		
+		
 		assertEquals("Create a loan by renewing",handler.processInput("jim@carleton.ca,9781442668584,1",InputHandler.RENEW).getOutput(),"Success!");	
 		assertEquals("Create a loan by renewing with invalid user",handler.processInput("tim@carleton.ca,9781442668584,1",InputHandler.RENEW).getOutput(),"The User Does Not Exist!");	
 		assertEquals("Create a loan by renewing with invalid isbn",handler.processInput("jim@carleton.ca,9781234234234584,1",InputHandler.RENEW).getOutput(), "Your input should in this format:'useremail,ISBN,copynumber'");	
