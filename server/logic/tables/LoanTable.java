@@ -178,5 +178,30 @@ public class LoanTable {
 		return result;
 	}
 	
+	 public String print() {
+			
+			String output = "";
+			
+			
+			for(int i=0;i<loanList.size();i++){
+
+				output += "UserID- ";
+				output += loanList.get(i).getUserid();
+				output += "    ";
+				
+				output += "ISBN- ";
+				output += loanList.get(i).getIsbn();
+				output += "    ";
+				
+				output += "CopyNumber- ";
+				output += loanList.get(i).getCopynumber();	
+				output += "    ";
+				
+				
+				output += "\n";
+			}
+		return output;	
+	 }
+	
 	
 }

@@ -106,24 +106,27 @@ public class InputHandler {
 		        	if(input.equalsIgnoreCase("yes")) {
 		        		
 		        		o = outputHandler.promptTitleInfo();
-			        	output = o.getOutput();			        	
+			        	output = o.getOutput();
+			        	
+			        	state = o.getState();
 		            	oo.setState(state);
 		            	oo.setOutput(output);
 		        	}
 		        	else{
 		        		output = "What would you like to do?"
 								
-						+ "\n Menu:"
-						+ "\n Create User"
-						+ "\n Create Title"
-						+ "\n Create Item"
-						+ "\n\n Delete User"
-						+ "\n Delete Title"
-						+ "\n Delete Item."
-						+ "\n\n Borrow"
-						+ "\n Renew"
-						+ "\n Return"
-						+ "\n Collect Fine";
+								+ "\n Menu:"
+								+ "\n Create User"
+								+ "\n Create Title"
+								+ "\n Create Item"
+								+ "\n\n Delete User"
+								+ "\n Delete Title"
+								+ "\n Delete Item."
+								+ "\n\n Borrow"
+								+ "\n Renew"
+								+ "\n Return"
+								+ "\n Collect Fine"
+								+ "\n Monitor System";
 	                state = LIBRARIANLOGIN;
 	                oo.setOutput(output);
 		            oo.setState(state);
@@ -242,35 +245,52 @@ public class InputHandler {
 	            oo.setState(state);
         	}else if(input.equalsIgnoreCase("main menu")){
         		output = "What would you like to do?"
-					
-					+ "\n Menu:"
-					+ "\n Create User"
-					+ "\n Create Title"
-					+ "\n Create Item"
-					+ "\n\n Delete User"
-					+ "\n Delete Title"
-					+ "\n Delete Item."
-					+ "\n\n Borrow"
-					+ "\n Renew"
-					+ "\n Return"
-					+ "\n Collect Fine";
+						
+						+ "\n Menu:"
+						+ "\n Create User"
+						+ "\n Create Title"
+						+ "\n Create Item"
+						+ "\n\n Delete User"
+						+ "\n Delete Title"
+						+ "\n Delete Item."
+						+ "\n\n Borrow"
+						+ "\n Renew"
+						+ "\n Return"
+						+ "\n Collect Fine"
+						+ "\n Monitor System";
                 state = LIBRARIANLOGIN;
                 oo.setOutput(output);
 	            oo.setState(state);
-        	}else{
+        	}else if (input.equalsIgnoreCase("monitor system")){
+        		
+        		
+        		o = outputHandler.monitorSystem();
+	        	state = o.getState();
+	        	output = o.getOutput();
+	        	
+            	oo.setState(state);
+            	oo.setOutput(output);
+        		
+        		
+        		
+        	}
+        	
+        	
+        	else{
         		output = "What would you like to do?"
-					
-					+ "\n Menu:"
-					+ "\n Create User"
-					+ "\n Create Title"
-					+ "\n Create Item"
-					+ "\n\n Delete User"
-					+ "\n Delete Title"
-					+ "\n Delete Item."
-					+ "\n\n Borrow"
-					+ "\n Renew"
-					+ "\n Return"
-					+ "\n Collect Fine";
+						
+						+ "\n Menu:"
+						+ "\n Create User"
+						+ "\n Create Title"
+						+ "\n Create Item"
+						+ "\n\n Delete User"
+						+ "\n Delete Title"
+						+ "\n Delete Item."
+						+ "\n\n Borrow"
+						+ "\n Renew"
+						+ "\n Return"
+						+ "\n Collect Fine"
+						+ "\n Monitor System";
                 state = LIBRARIANLOGIN;
                 oo.setOutput(output);
 	            oo.setState(state);
@@ -334,7 +354,8 @@ public class InputHandler {
 						+ "\n\n Borrow"
 						+ "\n Renew"
 						+ "\n Return"
-						+ "\n Collect Fine";
+						+ "\n Collect Fine"
+						+ "\n Monitor System";
 	                state = LIBRARIANLOGIN;
 	                oo.setOutput(output);
 		            oo.setState(state);
@@ -373,7 +394,8 @@ public class InputHandler {
 						+ "\n\n Borrow"
 						+ "\n Renew"
 						+ "\n Return"
-						+ "\n Collect Fine";
+						+ "\n Collect Fine"
+						+ "\n Monitor System";
 	                state = LIBRARIANLOGIN;
 	                oo.setOutput(output);
 		            oo.setState(state);
@@ -408,7 +430,8 @@ public class InputHandler {
 						+ "\n\n Borrow"
 						+ "\n Renew"
 						+ "\n Return"
-						+ "\n Collect Fine";
+						+ "\n Collect Fine"
+						+ "\n Monitor System";
 	                state = LIBRARIANLOGIN;
 	                oo.setOutput(output);
 		            oo.setState(state);
@@ -443,7 +466,8 @@ public class InputHandler {
 						+ "\n\n Borrow"
 						+ "\n Renew"
 						+ "\n Return"
-						+ "\n Collect Fine";
+						+ "\n Collect Fine"
+						+ "\n Monitor System";
                 state = LIBRARIANLOGIN;
                 
                 
@@ -478,7 +502,8 @@ public class InputHandler {
 						+ "\n\n Borrow"
 						+ "\n Renew"
 						+ "\n Return"
-						+ "\n Collect Fine";
+						+ "\n Collect Fine"
+						+ "\n Monitor System";
 	                state = LIBRARIANLOGIN;
 	                oo.setOutput(output);
 		            oo.setState(state);
@@ -512,7 +537,8 @@ public class InputHandler {
 						+ "\n\n Borrow"
 						+ "\n Renew"
 						+ "\n Return"
-						+ "\n Collect Fine";
+						+ "\n Collect Fine"
+						+ "\n Monitor System";
 	                state = LIBRARIANLOGIN;
 	                oo.setOutput(output);
 		            oo.setState(state);
@@ -552,7 +578,8 @@ public class InputHandler {
 						+ "\n\n Borrow"
 						+ "\n Renew"
 						+ "\n Return"
-						+ "\n Collect Fine";
+						+ "\n Collect Fine"
+						+ "\n Monitor System";
 	                state = USERLOGIN;
 	                oo.setOutput(output);
 		            oo.setState(state);
@@ -564,7 +591,10 @@ public class InputHandler {
 	        		output=o.getOutput();
 	        		
 	        		
-	        		state=o.getState();
+	        	//	state=o.getState();
+	        		
+	                state = LIBRARIANLOGIN;
+
 	        		oo.setOutput(output);
 		            oo.setState(state);
 		            
@@ -590,7 +620,8 @@ public class InputHandler {
 						+ "\n\n Borrow"
 						+ "\n Renew"
 						+ "\n Return"
-						+ "\n Collect Fine";
+						+ "\n Collect Fine"
+						+ "\n Monitor System";
 	                state = USERLOGIN;
 	                oo.setOutput(output);
 		            oo.setState(state);
@@ -599,7 +630,10 @@ public class InputHandler {
 	        	
 	        		o=outputHandler.renew(input);
 	        		output=o.getOutput();
-	        		state=o.getState();
+	        		//state=o.getState();
+	                state = LIBRARIANLOGIN;
+
+	        		
 	        		oo.setOutput(output);
 		            oo.setState(state);
 		            
@@ -626,7 +660,8 @@ public class InputHandler {
 						+ "\n\n Borrow"
 						+ "\n Renew"
 						+ "\n Return"
-						+ "\n Collect Fine";
+						+ "\n Collect Fine"
+						+ "\n Monitor System";
 	                state = USERLOGIN;
 	                oo.setOutput(output);
 		            oo.setState(state);
@@ -635,7 +670,10 @@ public class InputHandler {
 	        	
 	        		o=outputHandler.returnBook(input);
 	        		output=o.getOutput();
-	        		state=o.getState();
+	        		//state=o.getState();
+	                state = LIBRARIANLOGIN;
+
+	        		
 	        		oo.setOutput(output);
 		            oo.setState(state);
 		            
@@ -662,7 +700,8 @@ public class InputHandler {
 						+ "\n\n Borrow"
 						+ "\n Renew"
 						+ "\n Return"
-						+ "\n Collect Fine";
+						+ "\n Collect Fine"
+						+ "\n Monitor System";
 	                state = USERLOGIN;
 	                oo.setOutput(output);
 		            oo.setState(state);
@@ -670,7 +709,9 @@ public class InputHandler {
 	        	else{
 	        		 o = outputHandler.payFine(input);
 	        		output=o.getOutput();
-	        		state=o.getState();
+	        		//state=o.getState();
+	                state = LIBRARIANLOGIN;
+
 	        		oo.setOutput(output);
 		            oo.setState(state);
 	        	}

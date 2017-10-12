@@ -86,6 +86,46 @@ public class ItemTable {
 		return result;
 	}		
 		
+	
+	
+	public String print() {
+		
+		String output = "";
+		
+		
+		for(int i=0;i<itemList.size();i++){
+		
+			
+			output += "Item ID- ";
+			output += itemList.get(i).getItemid();
+			output += "    ";
+			
+			output += "ISBN- ";
+			output += itemList.get(i).getISBN();
+			output += "    ";
+			
+			output += "CopyNumber- ";
+			output += itemList.get(i).getCopynumber();	
+			output += "    ";
+			
+			output += "\n";
+
+
+			
+			
+		//	Item deitem=new Item(i,ISBNList[i],cnList[i]);
+		//	itemList.add(deitem);
+		}
+		
+		return output;
+		
+		
+		
+	}	
+	
+	
+	
+	
 	public List<Item> getItemTable() {
 		return itemList;
 	}

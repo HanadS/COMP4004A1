@@ -140,6 +140,38 @@ public class UserTable {
 			}
 			return result;
 		}
-	
+	  public String print() {
+			
+			String output = "";
+			
+			
+			for(int i=0;i<userList.size();i++){
+			
+				
+				output += "User ID- ";
+				output += userList.get(i).getUserid();
+				output += "    ";
+				
+				output += "Username- ";
+				output += userList.get(i).getUsername();
+				output += "    ";
+				
+				output += "Passowrd- ";
+				output += userList.get(i).getPassword();	
+				output += "    ";
+
+				
+				output += "\n";
+				
+				
+			//	Item deitem=new Item(i,ISBNList[i],cnList[i]);
+			//	itemList.add(deitem);
+			}
+			
+			return output;
+			
+			
+			
+		}	
 	
 }

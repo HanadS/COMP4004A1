@@ -48,7 +48,8 @@ public class UnitTests {
 						+ "\n\n Borrow"
 						+ "\n Renew"
 						+ "\n Return"
-						+ "\n Collect Fine");
+						+ "\n Collect Fine"
+						+ "\n Monitor System");
 				
 				
 				
@@ -205,18 +206,19 @@ public class UnitTests {
 	public void logOutanddMainMenuPrompts() {
 		
 		assertEquals("main menu",handler.processInput("main menu",InputHandler.DELETEUSER).getOutput(),"What would you like to do?"
-						
-						+ "\n Menu:"
-						+ "\n Create User"
-						+ "\n Create Title"
-						+ "\n Create Item"
-						+ "\n\n Delete User"
-						+ "\n Delete Title"
-						+ "\n Delete Item."
-						+ "\n\n Borrow"
-						+ "\n Renew"
-						+ "\n Return"
-						+ "\n Collect Fine");
+				
+				+ "\n Menu:"
+				+ "\n Create User"
+				+ "\n Create Title"
+				+ "\n Create Item"
+				+ "\n\n Delete User"
+				+ "\n Delete Title"
+				+ "\n Delete Item."
+				+ "\n\n Borrow"
+				+ "\n Renew"
+				+ "\n Return"
+				+ "\n Collect Fine"
+				+ "\n Monitor System");
 		
 		assertEquals("main menu",handler.processInput("main menu",InputHandler.BORROW).getOutput(),"What would you like to do?"
 				
@@ -230,12 +232,16 @@ public class UnitTests {
 				+ "\n\n Borrow"
 				+ "\n Renew"
 				+ "\n Return"
-				+ "\n Collect Fine");	
+				+ "\n Collect Fine"
+				+ "\n Monitor System");	
 		
 		assertEquals("log out.",handler.processInput("log out",InputHandler.CREATEITEM).getOutput(),"Successfully Log Out!");	
 		assertEquals("log out",handler.processInput("log out",InputHandler.DELETEITEM).getOutput(),"Successfully Log Out!");		
 		assertEquals("Log out",handler.processInput("log out",InputHandler.RETURN).getOutput(),"Successfully Log Out!");	
 		assertEquals("Log out",handler.processInput("log out",InputHandler.PAYFINE).getOutput(),"Successfully Log Out!");
+		
+		
+		
 	}
 	
 

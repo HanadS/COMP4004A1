@@ -85,5 +85,24 @@ public class TitleTable {
 		}
 		return result;
 	}
+	
+	 public String print() {
+			
+			String output = "";
+			
+			
+			for(int i=0;i<titleList.size();i++){
+
+				output += "ISBN- ";
+				output += titleList.get(i).getISBN();
+				output += "    ";
+				output += "Title- ";
+				output += titleList.get(i).getBooktitle();
+				output += "    ";
+				output += "\n";
+			}
+		return output;	
+	 }	
+			
 
 }

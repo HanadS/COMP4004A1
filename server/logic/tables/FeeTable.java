@@ -109,6 +109,24 @@ public class FeeTable {
 		
 	}
 	
+	 public String print() {
+			
+			String output = "";
+			
+			
+			for(int i=0;i<feeList.size();i++){
+
+				output += "UserID- ";
+				output += feeList.get(i).getUserid();
+				output += "    ";
+				output += "Fee- ";
+				output += feeList.get(i).getFee();
+				output += "    ";
+				output += "\n";
+			}
+		return output;	
+	 }	
+	
 	
 
 }

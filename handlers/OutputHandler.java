@@ -193,6 +193,39 @@ public class OutputHandler {
 		return output;
 	}
 	
+	
+	public Output monitorSystem() {
+		Output output=new Output("",0);
+		
+		String monitorSystem = "";
+		
+		
+		monitorSystem += "User \n";
+		monitorSystem += UserTable.getInstance().print();
+		
+		monitorSystem += "\nTitle \n";
+		monitorSystem += TitleTable.getInstance().print();
+		
+		monitorSystem += "\nItems \n";
+		monitorSystem += ItemTable.getInstance().print();
+		
+		monitorSystem += "\nFee \n";
+		monitorSystem += FeeTable.getInstance().print();
+		
+		monitorSystem += "\nLoan \n";
+		monitorSystem += LoanTable.getInstance().print();
+		
+		
+		
+		
+        output.setOutput(monitorSystem);
+        
+        output.setState(LIBRARIANLOGIN);
+
+        
+		return output;
+	}
+	
 
 	public Output deleteTitle(String input) {
 
@@ -293,7 +326,7 @@ public Output librarianLogin(String input) {
 					+ "\n Renew"
 					+ "\n Return"
 					+ "\n Collect Fine"
-						);
+					+ "\n Monitor System");
 	}
 	
 	else{
