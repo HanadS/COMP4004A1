@@ -7,7 +7,7 @@ import org.junit.Test;
 
 import server.logic.model.*;
 import server.logic.tables.*;
-
+import utilities.Config;
 
 
 public class UnitTests {
@@ -166,12 +166,20 @@ public class UnitTests {
 
 		
 
-		Loan testLoan = new Loan(0,"9781442668584","1", new Date(100)  ,"0");
+		Loan testLoan = new Loan(0,"9781442668584","1", new Date(100)  ,0);
+		
+		Date date  = new Date();
+		
+		Long time  = date.getTime()-Config.STIMULATED_DAY*7;
+		Loan testLoan2 = new Loan(0,"9876543211234","1", new Date(time)  ,0);
+		
+		LoanTable.getInstance().getLoanTable().add(testLoan2);
+
 		
 		assertEquals("get id", testLoan.getUserid(),0);
 		assertEquals("get ISBN", testLoan.getIsbn(),"9781442668584");
 		assertEquals("get Copynumber", testLoan.getCopynumber(),"1");
-		assertEquals("get renewstate", testLoan.getRenewstate(),"0");
+		assertEquals("get renewstate", testLoan.getRenewstate(),0);
 
 		assertTrue( "Initializing LoanTable Class", LoanTable.getInstance().getLoanTable().get(0).sameLoan(testLoan));
 		
@@ -185,6 +193,8 @@ public class UnitTests {
 
 	
 		assertEquals("Create a loan by borrowing",handler.processInput("jim@carleton.ca,9781442668583,1",InputHandler.BORROW).getOutput(),"Success!");
+		
+		
 		assertEquals("Create a loan by burrowing with invlaid user",handler.processInput("kjnknk@carleton.ca,9781442668583,1",InputHandler.BORROW).getOutput(), "The User Does Not Exist!");	
 		assertEquals("Create a loan by burrowing with invlaid isbn",handler.processInput("jim@carleton.ca,9781234234234583,1",InputHandler.BORROW).getOutput(), "Your input should in this format:'useremail,ISBN,copynumber'");	
 		assertEquals("Create a loan by burrowing with invlaid copynumber",handler.processInput("jim@carleton.ca,9781442668583,3",InputHandler.BORROW).getOutput(), "Copynumber Invalid!");	
@@ -202,11 +212,15 @@ public class UnitTests {
 		assertEquals("Create a loan by renewing with invalid user",handler.processInput("tim@carleton.ca,9781442668584,1",InputHandler.RENEW).getOutput(),"The User Does Not Exist!");	
 		assertEquals("Create a loan by renewing with invalid isbn",handler.processInput("jim@carleton.ca,9781234234234584,1",InputHandler.RENEW).getOutput(), "Your input should in this format:'useremail,ISBN,copynumber'");	
 		
-		assertEquals("return an item",handler.processInput("jim@carleton.ca,9781442668583,1",InputHandler.RETURN).getOutput(),"Success!");	
-		assertEquals("returning with invalid user",handler.processInput("tim@carleton.ca,9781442668584,1",InputHandler.RETURN).getOutput(),"The User Does Not Exist!");
-		assertEquals("returning with invalid isbn",handler.processInput("jim@carleton.ca,9781234234234584,1",InputHandler.RETURN).getOutput(), "Your input should in this format:'useremail,ISBN,copynumber'");	
-		assertEquals("Create a loan by renewing an overdue book",handler.processInput("jim@carleton.ca,9781442668584,1",InputHandler.RETURN).getOutput(),"This item is overdue!");	
-		assertEquals("Create a loan by renewing an overdue book",handler.processInput("jim@carleton.ca,9781442668584,1",InputHandler.RETURN).getOutput(),"privilege revoked!");	
+		
+		//System.out.println(handler.processInput("jim@carleton.ca,9781442668583,1",InputHandler.RETURN).getOutput().contains("success!"));
+		
+		
+		assertTrue("return an item",handler.processInput("jim@carleton.ca,9781442668583,1",InputHandler.RETURN).getOutput().contains("success!"));	
+		assertTrue("returning with invalid user",handler.processInput("tim@carleton.ca,9781442668584,1",InputHandler.RETURN).getOutput().contains("The User Does Not Exist!"));
+		assertTrue("returning with invalid isbn",handler.processInput("jim@carleton.ca,9781234234234584,1",InputHandler.RETURN).getOutput().contains("Your input should in this format:'useremail,ISBN,copynumber'"));	
+		assertTrue("Create a loan by renewing an overdue book",handler.processInput("jim@carleton.ca,9876543211234,1",InputHandler.RETURN).getOutput().contains("This item is overdue!"));	
+		assertTrue("Create a loan by renewing an overdue book with a user who does not have privlage",handler.processInput("jim@carleton.ca,9781442668584,1",InputHandler.RETURN).getOutput().contains("privilege revoked!"));	
 
 		}
 	

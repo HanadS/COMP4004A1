@@ -20,7 +20,7 @@ public class LoanTable {
     private LoanTable(){
     	//set up the default list with some instances
     	
-	    	Loan loan=new Loan(0,"9781442668584","1",new Date(100),"0");
+	    	Loan loan=new Loan(0,"9781442668584","1",new Date(100),0);
 	    	
 	    	loanList.add(loan);
 	    	
@@ -55,7 +55,7 @@ public class LoanTable {
 
 				if (oloan) {
 					if (limit) {
-						Loan loan = new Loan(i, string, string2, date, "0");
+						Loan loan = new Loan(i, string, string2, date, 0);
 						loanList.add(loan);
 						result = "success";
 					} else if (limit == false) {
@@ -106,7 +106,7 @@ public class LoanTable {
 				flag=flag+0;	
 			}
 		}
-		if(flag>=3){
+		if(flag>=10){
 			result=false;
 		}
 		return result;
@@ -117,6 +117,7 @@ public class LoanTable {
 		int flag=0;
 		int index=0;
 		boolean limit=LoanTable.getInstance().checkLimit(j);
+		//boolean fee=FeeTable.getInstance().lookup(j);
 		for(int i=0;i<loanList.size();i++){
 			String ISBN=(loanList.get(i)).getIsbn();
 			String copynumber=(loanList.get(i)).getCopynumber();
@@ -128,25 +129,39 @@ public class LoanTable {
 				flag=flag+0;	
 			}
 		}
-		if(limit){
-			if(flag!=0){
-				if(loanList.get(index).getRenewstate().equalsIgnoreCase("0")){
+		
+		boolean hasPrivilege = checkPrivilege(index);
+
+		if(flag!=0){
+			
+		if (hasPrivilege == true){
+			if(limit == true){
+			
+				if(loanList.get(index).getRenewstate() < 2){
 					loanList.get(index).setUserid(j);
 					loanList.get(index).setIsbn(string);
 					loanList.get(index).setCopynumber(string2);
 					loanList.get(index).setDate(new Date());
-					loanList.get(index).setRenewstate("1");
+					loanList.get(index).setRenewstate(loanList.get(index).getRenewstate()+1);
 					result="success";
 				}else{
 					result="Renewed Item More Than Once for the Same Loan";
+				
+					
 					}
 			}else{
-				result="The loan does not exist";
-			}
+				result="The Maximun Number of Items is Reached";
+			} }else{
+				result= "Privlage revoked";
+				
+		
+		}} else{
 			
-		}else if(limit==false){
-			result="The Maximun Number of Items is Reached";
+			result= "The loan does not exist";
+
 		}
+		
+		
 		return result;	
 	}
 	
@@ -157,7 +172,6 @@ public class LoanTable {
 		String result = "";
 		int flag = 0;
 		int index = 0;
-		boolean hasPrivilege = FeeTable.getInstance().lookup(j);
 
 		for (int i = 0; i < loanList.size(); i++) {
 			String ISBN = (loanList.get(i)).getIsbn();
@@ -170,13 +184,39 @@ public class LoanTable {
 				flag = flag + 0;
 			}
 		}
+		boolean hasPrivilege = checkPrivilege(index);
+
+		
 		if (flag != 0) {
+			
+			
+			result += "UserID- ";
+			result += loanList.get(index).getUserid();
+			result += "    ";
+			
+			result += "ISBN- ";
+			result += loanList.get(index).getIsbn();
+			result += "    ";
+			
+			result += "CopyNumber- ";
+			result += loanList.get(index).getCopynumber();	
+			result += "    ";
+			
+			result += "Date- ";
+			result += loanList.get(index).getDate();	
+			result += "    ";
+			
+			result += "Renew- ";
+			result += loanList.get(index).getRenewstate();	
+			result += "    ";
+			
 
 			long time2 = date.getTime() - loanList.get(index).getDate().getTime();
 
-			int time = (int) time2;if (!hasPrivilege) {
+			int time = (int) time2;
+			if (!hasPrivilege) {
 
-				result = "privilege revoked";
+				result += "privilege revoked";
 
 			} else {
 		
@@ -188,12 +228,12 @@ public class LoanTable {
 
 				FeeTable.getInstance().applyfee(j, time);
 
-				result = "This item is overdue";
+				result += "\nThis item is overdue";
 
 			} else {
 				
 				loanList.remove(index);
-					result = "success";
+					result += "\nsuccess";
 				}
 			}
 		}
@@ -272,6 +312,30 @@ public class LoanTable {
 			}
 			return result;
 		}
+		
+		
+		public boolean checkPrivilege(int i) {
+			boolean result=true;
+			
+			Date date  = new Date();
+			long time2 = date.getTime() - loanList.get(i).getDate().getTime();
+
+			int time = (int) time2;
+			
+			
+			if (time > 8 * Config.STIMULATED_DAY) {
+				//System.out.println("overdue");
+
+				result = false;
+
+			}
+			
+			
+			
+			return result;
+		}
+		
+		
 		public boolean checkLoan(String string) {
 			boolean result=true;
 			int flag=0;

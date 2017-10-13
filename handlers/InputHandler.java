@@ -583,7 +583,7 @@ public class InputHandler {
 						+ "\n Return"
 						+ "\n Collect Fine"
 						+ "\n Monitor System";
-	                state = USERLOGIN;
+	                state = LIBRARIANLOGIN;
 	                oo.setOutput(output);
 		            oo.setState(state);
 	        	}
@@ -625,7 +625,7 @@ public class InputHandler {
 						+ "\n Return"
 						+ "\n Collect Fine"
 						+ "\n Monitor System";
-	                state = USERLOGIN;
+	                state = LIBRARIANLOGIN;
 	                oo.setOutput(output);
 		            oo.setState(state);
 	        	}
@@ -665,7 +665,7 @@ public class InputHandler {
 						+ "\n Return"
 						+ "\n Collect Fine"
 						+ "\n Monitor System";
-	                state = USERLOGIN;
+	                state = LIBRARIANLOGIN;
 	                oo.setOutput(output);
 		            oo.setState(state);
 	        	}
@@ -705,7 +705,7 @@ public class InputHandler {
 						+ "\n Return"
 						+ "\n Collect Fine"
 						+ "\n Monitor System";
-	                state = USERLOGIN;
+	                state = LIBRARIANLOGIN;
 	                oo.setOutput(output);
 		            oo.setState(state);
 	        	}

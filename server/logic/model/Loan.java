@@ -9,9 +9,9 @@ public class Loan {
 	String isbn;
 	String copynumber;
 	Date date;
-	String renewstate;
+	int renewstate;
 	
-	public Loan(int userid,String isbn,String copynumber,Date date,String renewstate){
+	public Loan(int userid,String isbn,String copynumber,Date date,int renewstate){
 		this.userid=userid;
 		this.isbn=isbn;
 		this.copynumber=copynumber;
@@ -49,10 +49,10 @@ public class Loan {
 	public void setDate(Date date) {
 		this.date = date;
 	}
-	public String getRenewstate() {
+	public int getRenewstate() {
 		return renewstate;
 	}
-	public void setRenewstate(String renewstate) {
+	public void setRenewstate(int renewstate) {
 		this.renewstate = renewstate;
 	}
 	
