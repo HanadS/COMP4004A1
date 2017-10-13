@@ -16,7 +16,7 @@ public class FeeTable {
         private static final FeeTable INSTANCE = new FeeTable();
     }
     private FeeTable(){
-    		Fee fee=new Fee(0,5);
+    		Fee fee=new Fee(100,5);
     		feeList.add(fee);
     };
     public static final FeeTable getInstance() {

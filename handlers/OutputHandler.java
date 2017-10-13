@@ -367,7 +367,7 @@ public Output borrow(String input) {
         		output.setOutput(result+"!");
         	}
     	}
-    	output.setState(USERLOGIN);
+    	output.setState(LIBRARIANLOGIN);
     }
     
     
@@ -402,7 +402,7 @@ public Output renew(String input) {
         		output.setOutput(result+"!");
         	}
     	}
-    	output.setState(USERLOGIN);
+    	output.setState(LIBRARIANLOGIN);
     }
 	return output;
 }
@@ -437,7 +437,7 @@ public Output returnBook(String input) {
         		output.setOutput(result+"!");
         	}
     	}
-    	output.setState(USERLOGIN);
+    	output.setState(LIBRARIANLOGIN);
     }
 	return output;
     
@@ -500,7 +500,7 @@ public Output payFine(String input) {
     		}else{
         		output.setOutput(result+"!");
         	}
-    		output.setState(USER);
+    		output.setState(LIBRARIANLOGIN);
     	}
     	
 	return output;

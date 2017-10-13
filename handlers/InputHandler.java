@@ -225,11 +225,14 @@ public class InputHandler {
 
         	}else if (input.equalsIgnoreCase("return")) {
                 o=outputHandler.promptInputInfo();
+        		output=o.getOutput();
+
+                
 	            state=RETURN;
 	            oo.setOutput(output);
 	            oo.setState(state);
             }
-        	else if (input.equalsIgnoreCase("pay fine")) {
+        	else if (input.equalsIgnoreCase("collect fine")) {
         		
         		o = outputHandler.promptPayFine();
 	        	state = o.getState();
@@ -321,7 +324,7 @@ public class InputHandler {
 		            oo.setOutput(output);
 		            oo.setState(state);
 	            }
-	        	else if (input.equalsIgnoreCase("pay fine")) {
+	        	else if (input.equalsIgnoreCase("collect fine")) {
 	        		
 	        		o = outputHandler.promptPayFine();
 		        	state = o.getState();
@@ -591,9 +594,9 @@ public class InputHandler {
 	        		output=o.getOutput();
 	        		
 	        		
-	        	//	state=o.getState();
+	        		state=o.getState();
 	        		
-	                state = LIBRARIANLOGIN;
+	            //    state = LIBRARIANLOGIN;
 
 	        		oo.setOutput(output);
 		            oo.setState(state);
@@ -630,8 +633,8 @@ public class InputHandler {
 	        	
 	        		o=outputHandler.renew(input);
 	        		output=o.getOutput();
-	        		//state=o.getState();
-	                state = LIBRARIANLOGIN;
+	        		state=o.getState();
+//	                state = LIBRARIANLOGIN;
 
 	        		
 	        		oo.setOutput(output);
@@ -670,8 +673,8 @@ public class InputHandler {
 	        	
 	        		o=outputHandler.returnBook(input);
 	        		output=o.getOutput();
-	        		//state=o.getState();
-	                state = LIBRARIANLOGIN;
+	        		state=o.getState();
+	                //state = LIBRARIANLOGIN;
 
 	        		
 	        		oo.setOutput(output);
@@ -709,8 +712,8 @@ public class InputHandler {
 	        	else{
 	        		 o = outputHandler.payFine(input);
 	        		output=o.getOutput();
-	        		//state=o.getState();
-	                state = LIBRARIANLOGIN;
+	        		state=o.getState();
+	                //state = LIBRARIANLOGIN;
 
 	        		oo.setOutput(output);
 		            oo.setState(state);

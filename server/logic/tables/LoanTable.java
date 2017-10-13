@@ -7,6 +7,8 @@ import java.util.Date;
 import java.util.List;
 
 import server.logic.model.Loan;
+import utilities.Config;
+import static java.lang.Math.toIntExact;
 
 
 
@@ -18,7 +20,8 @@ public class LoanTable {
     private LoanTable(){
     	//set up the default list with some instances
     	
-	    	Loan loan=new Loan(0,"9781442668584","1",new Date(),"0");
+	    	Loan loan=new Loan(0,"9781442668584","1",new Date(100),"0");
+	    	
 	    	loanList.add(loan);
 	    	
     };
@@ -149,9 +152,15 @@ public class LoanTable {
 	
 	public Object returnItem(int j, String string, String string2, Date date) {
 		
+		
+	//	System.out.println("in here");
+
+		
 		String result="";
 		int flag=0;
 		int index=0;
+		
+		
 		for(int i=0;i<loanList.size();i++){
 			String ISBN=(loanList.get(i)).getIsbn();
 			String copynumber=(loanList.get(i)).getCopynumber();
@@ -164,12 +173,31 @@ public class LoanTable {
 			}
 		}
 		if(flag!=0){
-			long time = date.getTime()-loanList.get(index).getDate().getTime();
-			loanList.remove(index);
-			if(time> 60000){
+			
+			long time2 = date.getTime()-loanList.get(index).getDate().getTime();
+			
+			
+			
+			int time  = (int) time2;
+			System.out.println( "time = "+time+ " and limit is = "+Config.OVERDUE*Config.STIMULATED_DAY+" so "+(time - Config.OVERDUE*Config.STIMULATED_DAY));
+
+			
+			if(time>Config.OVERDUE*Config.STIMULATED_DAY){
 				FeeTable.getInstance().applyfee(j,time);
 			}
+			loanList.remove(index);
+			
+			if(time >Config.OVERDUE*Config.STIMULATED_DAY ){
+				System.out.println("overdue");
+
+				FeeTable.getInstance().applyfee(j,time);
+				
+				result = "This item is overdue";
+				
+			}else{
+				
 			result="success";
+			}
 		}else{
 			result="The Loan Does Not Exist";
 		}

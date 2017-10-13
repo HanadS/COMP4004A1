@@ -61,7 +61,7 @@ public class Loan {
 				&& this.getIsbn() == b.getIsbn() 
 			&& this.getCopynumber() == b.getCopynumber() 
 				&& this.getRenewstate() == b.getRenewstate()
-				){
+			&&	this.getDate().getTime() == b.getDate().getTime() ){
 				return true;
 		}
 				

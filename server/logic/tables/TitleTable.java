@@ -12,8 +12,8 @@ public class TitleTable {
     }
     private TitleTable(){
     	//set up the default list with some instances
-    	String[] ISBNList=new String[]{"9781442668584"};
-    	String[] titlenameList=new String[]{"TestBook"};
+    	String[] ISBNList=new String[]{"9781442668584","1234567891234"};
+    	String[] titlenameList=new String[]{"TestBook","testbook2"};
     	for(int i=0;i<ISBNList.length;i++){
     		Title detitle=new Title(ISBNList[i],titlenameList[i]);
     		titleList.add(detitle);
