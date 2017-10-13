@@ -7,14 +7,14 @@ public class User {
 		int userid;
 		String username;
 		String password;
-
-
-		public User(int userid,String username,String password){
+		Boolean hasPrivilege;
+		
+		public User(int userid,String username,String password, Boolean hasPrivilege){
 			this.userid=userid;
 			this.password=password;
 			this.username=username;
+			this.hasPrivilege = hasPrivilege;
 		}
-
 		public String toString(){
 			return "["+this.userid+","+this.username+","+this.password+"]";
 		}
@@ -42,6 +42,13 @@ public class User {
 
 		public void setPassword(String password) {
 			this.password = password;
+		}
+		public Boolean getPrivilege() {
+			return hasPrivilege;
+		}
+
+		public void setPrivilege(Boolean hasPrivilege) {
+			this.hasPrivilege = hasPrivilege;
 		}
 
 	

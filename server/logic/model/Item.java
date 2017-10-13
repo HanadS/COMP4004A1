@@ -4,11 +4,13 @@ public class Item {
 	int itemid;
 	String ISBN;
 	String copynumber;
+	boolean reservation;
 	
-	public Item(int itemid,String ISBN,String copynumber){
+	public Item(int itemid,String ISBN,String copynumber, boolean reservation){
 		this.itemid=itemid;
 		this.ISBN=ISBN;
 		this.copynumber=copynumber;
+		this.reservation = reservation;
 	}
 	
 	public String toString(){
@@ -34,10 +36,17 @@ public class Item {
 		this.copynumber = copynumber;
 	}
 	
+	
+	public boolean getReservation() {
+		return reservation;
+	}
+	public void setReservation(boolean reservation) {
+		this.reservation = reservation;
+	}
 
 	public boolean sameItem(Item b){
 
-	if (this.getItemid() == b.getItemid() && this.getISBN() == b.getISBN() && this.getCopynumber() == b.getCopynumber() ){
+	if (this.getItemid() == b.getItemid() && this.getISBN() == b.getISBN() && this.getCopynumber() == b.getCopynumber() && this.getReservation() == b.getReservation() ){
 			return true;
 	}
 

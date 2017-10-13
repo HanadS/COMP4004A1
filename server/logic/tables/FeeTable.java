@@ -1,14 +1,17 @@
 package server.logic.tables;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import server.logic.model.Fee;
-import server.logic.model.Loan;
+import utilities.Trace;
+
+import org.apache.log4j.Logger;
+
 
 
 public class FeeTable {
+	private Logger logger = Trace.getInstance().getLogger("opreation_file");
 
 	
 	List<Fee> feeList=new ArrayList<Fee>();
@@ -47,11 +50,16 @@ public class FeeTable {
 			fee=0;
 		}
 		
+		
+		
+		
 			if(oloan==false){
 				result="Borrowing Items Exist";
 			}else{
 				feeList.get(index).setUserid(i);
 				feeList.get(index).setFee(0);
+				UserTable.getInstance().getUserTable().get(i).setPrivilege(false);
+
 				result="success";
 			}
 		
@@ -92,17 +100,25 @@ public class FeeTable {
 			if(a>=0){
 				feeList.get(index).setFee(a+feeList.get(index).getFee());
 				feeList.get(index).setUserid(j);
+				logger.info(String.format("Operation:Apply OutStanding Fee;Fee Info:[%d,%d];State:Success", j,a+feeList.get(index).getFee()));
+
 			}else{
 				feeList.get(index).setFee(feeList.get(index).getFee());
 				feeList.get(index).setUserid(j);
+				logger.info(String.format("Operation:Apply OutStanding Fee;Fee Info:[%d,%d];State:Success", j,a+feeList.get(index).getFee()));
+
 			}
 		}else{
 			if(a>=0){
 				Fee fee=new Fee(j,a);
 				feeList.add(fee);
+				logger.info(String.format("Operation:Apply OutStanding Fee;Fee Info:[%d,%d];State:Success", j,a));
+
 			}else{
 				Fee fee=new Fee(j,0);
 				feeList.add(fee);
+				logger.info(String.format("Operation:Apply OutStanding Fee;Fee Info:[%d,%d];State:Success", j,0));
+
 			}
 		}
 		

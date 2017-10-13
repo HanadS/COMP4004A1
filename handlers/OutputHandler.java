@@ -398,10 +398,10 @@ public Output renew(String input) {
     		result=LoanTable.getInstance().renewal(userid, strArray[1], strArray[2], new Date());
     		if(result.equals("success")){
         		output.setOutput("Success!");
-        	}else if (result.equals("Privlage revoked")){
+        	}else if (result.equals("privilege revoked")){
         		
         		
-        		String  resultString = "Privlage revoked";
+        		String  resultString = "privilege revoked";
         		 resultString += "\nIn order to collect the fine type collect fine.";
         		
         		output.setOutput(resultString);
