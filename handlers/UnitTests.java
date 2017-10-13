@@ -191,10 +191,10 @@ public class UnitTests {
 		assertEquals("Create a loan by borrowing an item that was already borrowed",handler.processInput("jim@carleton.ca,9781442668583,1",InputHandler.BORROW).getOutput(),"Already been loaned!");
 
 		
-//		System.out.println(handler.processInput("monitor system",InputHandler.LIBRARIANLOGIN).getOutput());
+		//System.out.println(handler.processInput("monitor system",InputHandler.LIBRARIANLOGIN).getOutput());
 
 		
-		//System.out.println(handler.processInput("jim@carleton.ca,9781442668584,1",InputHandler.RETURN).getOutput());
+	//	System.out.println(handler.processInput("jim@carleton.ca,9781442668583,1",InputHandler.RENEW).getOutput());
 
 		
 		
@@ -206,6 +206,7 @@ public class UnitTests {
 		assertEquals("returning with invalid user",handler.processInput("tim@carleton.ca,9781442668584,1",InputHandler.RETURN).getOutput(),"The User Does Not Exist!");
 		assertEquals("returning with invalid isbn",handler.processInput("jim@carleton.ca,9781234234234584,1",InputHandler.RETURN).getOutput(), "Your input should in this format:'useremail,ISBN,copynumber'");	
 		assertEquals("Create a loan by renewing an overdue book",handler.processInput("jim@carleton.ca,9781442668584,1",InputHandler.RETURN).getOutput(),"This item is overdue!");	
+		assertEquals("Create a loan by renewing an overdue book",handler.processInput("jim@carleton.ca,9781442668584,1",InputHandler.RETURN).getOutput(),"privilege revoked!");	
 
 		}
 	

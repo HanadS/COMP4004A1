@@ -151,57 +151,57 @@ public class LoanTable {
 	}
 	
 	public Object returnItem(int j, String string, String string2, Date date) {
-		
-		
-	//	System.out.println("in here");
 
-		
-		String result="";
-		int flag=0;
-		int index=0;
-		
-		
-		for(int i=0;i<loanList.size();i++){
-			String ISBN=(loanList.get(i)).getIsbn();
-			String copynumber=(loanList.get(i)).getCopynumber();
-			int userid=(loanList.get(i)).getUserid();
-			if((userid==j) && ISBN.equalsIgnoreCase(string) && copynumber.equalsIgnoreCase(string2)){
-				flag=flag+1;
-				index=i;
-			}else{
-				flag=flag+0;	
+		// System.out.println("in here");
+
+		String result = "";
+		int flag = 0;
+		int index = 0;
+		boolean hasPrivilege = FeeTable.getInstance().lookup(j);
+
+		for (int i = 0; i < loanList.size(); i++) {
+			String ISBN = (loanList.get(i)).getIsbn();
+			String copynumber = (loanList.get(i)).getCopynumber();
+			int userid = (loanList.get(i)).getUserid();
+			if ((userid == j) && ISBN.equalsIgnoreCase(string) && copynumber.equalsIgnoreCase(string2)) {
+				flag = flag + 1;
+				index = i;
+			} else {
+				flag = flag + 0;
 			}
 		}
-		if(flag!=0){
-			
-			long time2 = date.getTime()-loanList.get(index).getDate().getTime();
-			
-			
-			
-			int time  = (int) time2;
-			System.out.println( "time = "+time+ " and limit is = "+Config.OVERDUE*Config.STIMULATED_DAY+" so "+(time - Config.OVERDUE*Config.STIMULATED_DAY));
+		if (flag != 0) {
 
-			
-			if(time>Config.OVERDUE*Config.STIMULATED_DAY){
-				FeeTable.getInstance().applyfee(j,time);
-			}
-			loanList.remove(index);
-			
-			if(time >Config.OVERDUE*Config.STIMULATED_DAY ){
-				System.out.println("overdue");
+			long time2 = date.getTime() - loanList.get(index).getDate().getTime();
 
-				FeeTable.getInstance().applyfee(j,time);
-				
+			int time = (int) time2;if (!hasPrivilege) {
+
+				result = "privilege revoked";
+
+			} else {
+		
+			
+			
+
+			if (time > Config.OVERDUE * Config.STIMULATED_DAY) {
+				//System.out.println("overdue");
+
+				FeeTable.getInstance().applyfee(j, time);
+
 				result = "This item is overdue";
+
+			} else {
 				
-			}else{
-				
-			result="success";
+				loanList.remove(index);
+					result = "success";
+				}
 			}
-		}else{
-			result="The Loan Does Not Exist";
 		}
-		
+
+		else {
+			result = "The Loan Does Not Exist";
+		}
+
 		return result;
 	}
 	
